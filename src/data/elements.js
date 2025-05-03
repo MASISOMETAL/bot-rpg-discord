@@ -1,0 +1,1 @@
+export const elements = ["Tierra", "Agua", "Fuego", "Viento", "Oscuridad"]
