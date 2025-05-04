@@ -57,6 +57,7 @@ export default {
         title: "📜 Información",
         description: "Accede a datos generales del juego.",
         fields: [
+          { name: "`/set_monster_channel [canal]`", value: "**Admin** Asignar un canal para la aparición de monstruos." },
           { name: "`/items [categoria]`", value: "Muestra todos los ítems disponibles en una categoría." },
           { name: "`/items [categoria] [id]`", value: "Muestra información detallada sobre un ítem específico." },
           { name: "`/ayuda`", value: "Muestra información sobre los comandos disponibles." }

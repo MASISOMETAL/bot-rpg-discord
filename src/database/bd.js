@@ -117,6 +117,26 @@ async function initializeDatabase() {
     lastattack BIGINT DEFAULT 0,
     lastregen BIGINT DEFAULT 0
   );
+
+  -- 🔹 Tabla de intercambios entre jugadores
+  CREATE TABLE IF NOT EXISTS trades (
+    id SERIAL PRIMARY KEY,
+    usuario1 TEXT NOT NULL,
+    usuario2 TEXT NOT NULL,
+    estado TEXT DEFAULT 'pendiente', -- 'pendiente', 'aceptado', 'cancelado'
+    FOREIGN KEY (usuario1) REFERENCES characters(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario2) REFERENCES characters(user_id) ON DELETE CASCADE
+);
+
+-- 🔹 Tabla de ítems en intercambios
+  CREATE TABLE IF NOT EXISTS trade_items (
+    trade_id INTEGER NOT NULL,
+    user_id TEXT NOT NULL,
+    iditem INTEGER NOT NULL,
+    FOREIGN KEY (trade_id) REFERENCES trades(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES characters(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (iditem) REFERENCES inventory(iditem) ON DELETE CASCADE
+);
 `;
 
   try {
