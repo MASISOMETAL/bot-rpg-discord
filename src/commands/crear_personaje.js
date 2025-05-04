@@ -67,6 +67,7 @@ export default {
 
     // 🔹 Guardamos el personaje en la base de datos
     const success = await createCharacter(characterData);
+    await actualizarTiempo(userId, "lastregen"); // Registra el tiempo inicial
     if (!success) {
       return interaction.reply({ content: "❌ Hubo un error al crear tu personaje. Inténtalo nuevamente.", flags: MessageFlags.Ephemeral });
     }

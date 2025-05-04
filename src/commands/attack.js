@@ -51,7 +51,7 @@ export default {
     const tiempoRestante = Math.ceil((cooldownAttack - (Date.now() - tiempoUltimoAtaque)) / 1000); // 🔹 Calculamos los segundos restantes
 
     if (tiempoRestante > 0) {
-      return interaction.editReply({
+      return interaction.reply({
         content: `❌ Debes esperar 90 segundos antes de volver a atacar, quedan **${tiempoRestante}** segundos.`,
         flags: MessageFlags.Ephemeral
       });
@@ -60,7 +60,7 @@ export default {
     // 🔹 Verificar que el monstruo existe y está activo
     const monstruoDB = await obtenerDetallesMonstruo(serverId, monster_id);
     if (!monstruoDB) {
-      return interaction.editReply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
+      return interaction.reply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
     }
 
     const monstruoBase = monsters.find(m => m.id === monstruoDB.monster_id);
@@ -71,7 +71,7 @@ export default {
     const habilidad = habilidadesDisponibles.find(skill => skill.id === skillId);
 
     if (!habilidad) {
-      return interaction.editReply({ content: "❌ No puedes usar esa habilidad, no la has desbloqueado o no existe.", flags: MessageFlags.Ephemeral });
+      return interaction.reply({ content: "❌ No puedes usar esa habilidad, no la has desbloqueado o no existe.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Espacio para los chequeos antes del cálculo de daño
