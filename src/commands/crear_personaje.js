@@ -71,6 +71,15 @@ export default {
       return interaction.reply({ content: "❌ Hubo un error al crear tu personaje. Inténtalo nuevamente.", flags: MessageFlags.Ephemeral });
     }
 
+    const elementEmojis = {
+      "Fuego": "🔥",
+      "Viento": "💨",
+      "Oscuridad": "🌑",
+      "Tierra": "🍃",
+      "Agua": "💧"
+    };
+
+    const elementoEmoji = elementEmojis[characterData.elemento] || "❓"; // Usa un emoji de pregunta si el elemento no está definido
     // 🔹 Embed con estadísticas del personaje
     const embed = new EmbedBuilder()
       .setColor('#0099ff')
@@ -93,7 +102,7 @@ export default {
         { name: "", value: ``, inline: false },
         { name: "", value: `🔹 Experiencia: **${characterData.xp}**`, inline: false },
         { name: "", value: `💰 Oro: **${characterData.gold}**`, inline: false },
-        { name: "", value: `🧬 Elemento: **${characterData.elemento}**`, inline: false }
+        { name: "", value: `🧬 Elemento: ${elementoEmoji} **${characterData.elemento}**`, inline: false }
       )
       .setThumbnail(characterTemplate.img);
 

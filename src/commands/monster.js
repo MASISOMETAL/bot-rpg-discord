@@ -28,6 +28,16 @@ export default {
         return interaction.reply({ content: "❌ No se encontraron detalles del monstruo en la base de datos.", flags: MessageFlags.Ephemeral });
       }
 
+      const elementEmojis = {
+        "Fuego": "🔥",
+        "Viento": "💨",
+        "Oscuridad": "🌑",
+        "Tierra": "🍃",
+        "Agua": "💧"
+      };
+
+      const elementoEmoji = elementEmojis[monstruoActivo.element] || "❓"; // Usa un emoji de pregunta si el elemento no está definido
+
       // 🔹 Embed detallado
       const monsterEmbed = new EmbedBuilder()
         .setColor('#ff3333')
@@ -45,7 +55,7 @@ export default {
           { name: "", value: `🎯 Precisión: **${monstruoData.stats.precision}**`, inline: true },
           { name: "", value: `🌀 Evasión: **${monstruoData.stats.evasion}**`, inline: true },
           { name: "", value: ``, inline: false },
-          { name: "", value: `🧬 Elemento: **${monstruoActivo.element}**`, inline: false }
+          { name: "", value: `🧬 Elemento: ${elementoEmoji} **${monstruoActivo.element}**`, inline: false }
         )
         .setThumbnail(monstruoData.image)
 

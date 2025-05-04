@@ -35,6 +35,15 @@ export default async function messagesHandler(message) {
   // 🔹 Validar aparición de monstruo
   if (mensajeCount >= maxMessage || (mensajeCount >= minMessage && Math.random() * 100 < porcentajeDeAparicion)) {
 
+    const elementEmojis = {
+      "Fuego": "🔥",
+      "Viento": "💨",
+      "Oscuridad": "🌑",
+      "Tierra": "🍃",
+      "Agua": "💧"
+    };
+
+    const elementoEmoji = elementEmojis[randomElement] || "❓"; // Usa un emoji de pregunta si el elemento no está definido
     // 🔹 Embed con información del personaje
     const monsterEmbed = new EmbedBuilder()
       .setColor('#0099ff')
@@ -52,7 +61,7 @@ export default async function messagesHandler(message) {
         { name: "", value: `🎯 Precisión: **${monster.stats.precision}**`, inline: true },
         { name: "", value: `🌀 Evasión: **${monster.stats.evasion}**`, inline: true },
         { name: "", value: ``, inline: false },
-        { name: "", value: `🧬 Elemento: **${randomElement}**`, inline: false }
+        { name: "", value: `🧬 Elemento: ${elementoEmoji} **${randomElement}**`, inline: false }
       )
       .setThumbnail(monster.image);
 

@@ -48,11 +48,21 @@ export default {
           bonusStats[stat] += itemData.stats[stat] || 0;
         });
       }
-    });    
+    });
 
     // 🔹 Estructura de los stats con bonus
     const formatStat = (base, bonus) => `${base} ${bonus > 0 ? `(+${bonus})` : ""}`;
     const xpRequerida = calcularXPRequerida(character.nivel)
+
+    const elementEmojis = {
+      "Fuego": "🔥",
+      "Viento": "💨",
+      "Oscuridad": "🌑",
+      "Tierra": "🍃",
+      "Agua": "💧"
+    };
+
+    const elementoEmoji = elementEmojis[character.elemento] || "❓"; // Usa un emoji de pregunta si el elemento no está definido
 
     // 🔹 Embed con información del personaje
     const characterEmbed = new EmbedBuilder()
@@ -76,7 +86,7 @@ export default {
         { name: "", value: ``, inline: false },
         { name: "", value: `🔹 Experiencia: **${character.xp} / ${xpRequerida}**`, inline: false },
         { name: "", value: `💰 Oro: **${character.gold}**`, inline: false },
-        { name: "", value: `🧬 Elemento: **${character.elemento}**`, inline: false }
+        { name: "", value: `🧬 Elemento: ${elementoEmoji} **${character.elemento}**`, inline: false }
       )
       .setThumbnail(characterTemplate.img);
 
