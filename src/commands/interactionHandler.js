@@ -16,6 +16,7 @@ import estadisticas from './estadisticas.js';
 import usar_item from './usar_item.js';
 import mi_skill from './mi_skill.js';
 import ayuda from './ayuda.js';
+import elementos from './elementos.js';
 
 const commands = {
   ping: pingCommand,
@@ -36,6 +37,7 @@ const commands = {
   usar_item,
   mi_skill,
   ayuda,
+  elementos,
 };
 
 export default async function interactionHandler(interaction) {
