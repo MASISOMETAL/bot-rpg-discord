@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
+import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } from 'discord.js';
 import { itemList } from '../data/items.js';
 import { getCharacterByUserId } from '../database/characters.js';
 
@@ -64,7 +64,7 @@ export default {
         .setDisabled(currentPage === totalPages - 1)
     );
 
-    const shopMessage = await interaction.reply({ embeds: [generateEmbed(currentPage)], components: [row] });
+    const shopMessage = await interaction.reply({ embeds: [generateEmbed(currentPage)], components: [row], flags: MessageFlags.Ephemeral });
 
     const pageCollector = shopMessage.createMessageComponentCollector({ time: 60000 });
 

@@ -14,6 +14,8 @@ import attack from './attack.js';
 import asignar_puntos from './asignar_puntos.js';
 import estadisticas from './estadisticas.js';
 import usar_item from './usar_item.js';
+import mi_skill from './mi_skill.js';
+import ayuda from './ayuda.js';
 
 const commands = {
   ping: pingCommand,
@@ -32,6 +34,8 @@ const commands = {
   asignar_puntos,
   estadisticas,
   usar_item,
+  mi_skill,
+  ayuda,
 };
 
 export default async function interactionHandler(interaction) {

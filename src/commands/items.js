@@ -52,7 +52,7 @@ export default {
         .setTitle(`📜 ${itemData.name}`)
         .setDescription(`🏷️ **ID:** ${itemData.id}\n💰 **Precio:** ${itemData.coste} oro\n🛡️ **Usable por:** ${itemData.usableBy.join(', ')}\n📖 **Descripción:** "${itemData.description}"`)
         .addFields(
-          { name: "⚔️ Atributos", value: `HP: ${itemData.stats.hp}\nMana: ${itemData.stats.mana}\nAtaque Físico: ${itemData.stats.atkFisico}\nDefensa Física: ${itemData.stats.defFisica}\nAtaque Mágico: ${itemData.stats.atkMagico}\nDefensa Mágica: ${itemData.stats.defMagica}\nPrecisión: ${itemData.stats.presicion}\nEvasión: ${itemData.stats.evasion}`, inline: true },
+          { name: "⚔️ Atributos", value: `HP: ${itemData.stats.hp}\nMana: ${itemData.stats.mana}\nAtaque Físico: ${itemData.stats.atkfisico}\nDefensa Física: ${itemData.stats.deffisica}\nAtaque Mágico: ${itemData.stats.atkmagico}\nDefensa Mágica: ${itemData.stats.defmagica}\nPrecisión: ${itemData.stats.precision}\nEvasión: ${itemData.stats.evasion}`, inline: true },
           { name: "🛒 Comerciable", value: itemData.selleable ? "✅ Sí" : "❌ No", inline: true }
         );
 
@@ -93,7 +93,7 @@ export default {
           .setDisabled(currentPage === totalPages - 1)
       );
 
-      const message = await interaction.reply({ embeds: [generateEmbed(currentPage)], components: [row] });
+      const message = await interaction.reply({ embeds: [generateEmbed(currentPage)], components: [row], flags: MessageFlags.Ephemeral });
 
       const pageCollector = message.createMessageComponentCollector({ time: 60000 });
 

@@ -10,13 +10,13 @@ const multiplicadorSTAB = {
 
 export function calcularDaño(atacante, defensor, habilidad) {
   const esFisico = habilidad.type === "physical";
-  const ataque = esFisico ? atacante.atkFisico : atacante.atkMagico;
-  const defensa = esFisico ? defensor.defFisica : defensor.defMagica;
+  const ataque = esFisico ? atacante.atkfisico : atacante.atkmagico;
+  const defensa = esFisico ? defensor.deffisica : defensor.defmagica;
 
   // 🔹 Precisión y evasión
-  const presicion = atacante.presicion - defensor.evasion;  
+  const precision = atacante.precision - defensor.evasion;  
   const probabilidadBase = 0.75;
-  const ajuste = presicion / (Math.abs(presicion) + 18);
+  const ajuste = precision / (Math.abs(precision) + 18);
   const probabilidadFinal = Math.max(0.5, Math.min(0.95, probabilidadBase + ajuste)); // Máximo 95%, mínimo 15%
   const isAttack = Math.random() < probabilidadFinal
   if (!isAttack) {
@@ -27,7 +27,7 @@ export function calcularDaño(atacante, defensor, habilidad) {
   let dañoBase = ((2 * atacante.nivel / 5 + 2) * habilidad.damage * (ataque / (defensa / 1.5))) / DivisorDMGBase + 2;
 
   // 🔹 Crítico (10% de probabilidad, daño x1.5)
-  const critico = calcularCritico(atacante.presicion, defensor.evasion)
+  const critico = calcularCritico(atacante.precision, defensor.evasion)
   
   dañoBase *= critico
 
@@ -45,8 +45,8 @@ export function calcularDaño(atacante, defensor, habilidad) {
   };
 }
 
-const calcularCritico = (presicion, evasion) => {
-  const diferencia = presicion - evasion;
+const calcularCritico = (precision, evasion) => {
+  const diferencia = precision - evasion;
   const probabilidadCritico = Math.max(0.05, Math.min(0.3, diferencia / (Math.abs(diferencia) + 10)));
   const esCritico = Math.random() < probabilidadCritico;
   return esCritico ? (Math.random() < 0.5 ? 1.3 : 1.6) : 1;

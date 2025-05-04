@@ -9,8 +9,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 2,
-          atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 2,
+          atkmagico: 0, defmagica: 0, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 100,
@@ -23,8 +23,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 3,
-          atkMagico: 0, defMagica: 1, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 3,
+          atkmagico: 0, defmagica: 1, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 110,
@@ -37,8 +37,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 2,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 2,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 120,
@@ -51,8 +51,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 3,
-          atkMagico: 0, defMagica: 1, presicion: 0, evasion: 1
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 3,
+          atkmagico: 0, defmagica: 1, precision: 0, evasion: 1
         },
         selleable: true,
         coste: 130,
@@ -65,8 +65,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 4,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: -1
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 4,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: -1
         },
         selleable: true,
         coste: 150,
@@ -79,8 +79,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 0, mana: 50, atkFisico: 0, defFisica: 1,
-          atkMagico: 3, defMagica: 4, presicion: 0, evasion: 1
+          hp: 0, mana: 50, atkfisico: 0, deffisica: 1,
+          atkmagico: 3, defmagica: 4, precision: 0, evasion: 1
         },
         selleable: true,
         coste: 180,
@@ -93,8 +93,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 50, mana: 20, atkFisico: 2, defFisica: 5,
-          atkMagico: 2, defMagica: 3, presicion: 1, evasion: -1
+          hp: 50, mana: 20, atkfisico: 2, deffisica: 5,
+          atkmagico: 2, defmagica: 3, precision: 1, evasion: -1
         },
         selleable: true,
         coste: 250,
@@ -107,8 +107,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 10, mana: 40, atkFisico: 0, defFisica: 2,
-          atkMagico: 5, defMagica: 6, presicion: 2, evasion: 3
+          hp: 10, mana: 40, atkfisico: 0, deffisica: 2,
+          atkmagico: 5, defmagica: 6, precision: 2, evasion: 3
         },
         selleable: true,
         coste: 220,
@@ -121,8 +121,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 7,
         stats: {
-          hp: 20, mana: 10, atkFisico: 1, defFisica: 4,
-          atkMagico: 0, defMagica: 2, presicion: 2, evasion: 2
+          hp: 20, mana: 10, atkfisico: 1, deffisica: 4,
+          atkmagico: 0, defmagica: 2, precision: 2, evasion: 2
         },
         selleable: true,
         coste: 200,
@@ -135,8 +135,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 9,
         stats: {
-          hp: 100, mana: 50, atkFisico: 5, defFisica: 8,
-          atkMagico: 5, defMagica: 5, presicion: 3, evasion: -2
+          hp: 100, mana: 50, atkfisico: 5, deffisica: 8,
+          atkmagico: 5, defmagica: 5, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 400,
@@ -150,8 +150,8 @@ export const itemList = [
         description: "Un casco resistente con grabados antiguos.",
         nivel: 14,
         stats: {
-          hp: 30, mana: 15, atkFisico: 3, defFisica: 12,
-          atkMagico: 2, defMagica: 7, presicion: 2, evasion: 1
+          hp: 30, mana: 15, atkfisico: 3, deffisica: 12,
+          atkmagico: 2, defmagica: 7, precision: 2, evasion: 1
         },
         selleable: true,
         coste: 500,
@@ -164,8 +164,8 @@ export const itemList = [
         description: "Un casco ligero que mejora la agilidad.",
         nivel: 14,
         stats: {
-          hp: 20, mana: 30, atkFisico: 0, defFisica: 8,
-          atkMagico: 6, defMagica: 12, presicion: 3, evasion: 4
+          hp: 20, mana: 30, atkfisico: 0, deffisica: 8,
+          atkmagico: 6, defmagica: 12, precision: 3, evasion: 4
         },
         selleable: true,
         coste: 520,
@@ -178,8 +178,8 @@ export const itemList = [
         description: "Un casco con visión mística.",
         nivel: 14,
         stats: {
-          hp: 25, mana: 10, atkFisico: 2, defFisica: 10,
-          atkMagico: 3, defMagica: 6, presicion: 4, evasion: 2
+          hp: 25, mana: 10, atkfisico: 2, deffisica: 10,
+          atkmagico: 3, defmagica: 6, precision: 4, evasion: 2
         },
         selleable: true,
         coste: 540,
@@ -194,8 +194,8 @@ export const itemList = [
         description: "Un casco ornamentado con esencia mágica.",
         nivel: 15,
         stats: {
-          hp: 40, mana: 20, atkFisico: 4, defFisica: 14,
-          atkMagico: 6, defMagica: 10, presicion: 3, evasion: -1
+          hp: 40, mana: 20, atkfisico: 4, deffisica: 14,
+          atkmagico: 6, defmagica: 10, precision: 3, evasion: -1
         },
         selleable: true,
         coste: 600,
@@ -208,8 +208,8 @@ export const itemList = [
         description: "Su superficie refleja la luz y mejora la concentración.",
         nivel: 15,
         stats: {
-          hp: 30, mana: 50, atkFisico: 0, defFisica: 8,
-          atkMagico: 10, defMagica: 15, presicion: 4, evasion: 3
+          hp: 30, mana: 50, atkfisico: 0, deffisica: 8,
+          atkmagico: 10, defmagica: 15, precision: 4, evasion: 3
         },
         selleable: true,
         coste: 620,
@@ -222,8 +222,8 @@ export const itemList = [
         description: "Diseñado para una visión impecable.",
         nivel: 15,
         stats: {
-          hp: 35, mana: 15, atkFisico: 3, defFisica: 12,
-          atkMagico: 5, defMagica: 8, presicion: 5, evasion: 2
+          hp: 35, mana: 15, atkfisico: 3, deffisica: 12,
+          atkmagico: 5, defmagica: 8, precision: 5, evasion: 2
         },
         selleable: true,
         coste: 640,
@@ -238,8 +238,8 @@ export const itemList = [
         description: "Un casco robusto con resistencia extrema.",
         nivel: 16,
         stats: {
-          hp: 50, mana: 30, atkFisico: 6, defFisica: 16,
-          atkMagico: 8, defMagica: 12, presicion: 3, evasion: -2
+          hp: 50, mana: 30, atkfisico: 6, deffisica: 16,
+          atkmagico: 8, defmagica: 12, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 700,
@@ -252,8 +252,8 @@ export const itemList = [
         description: "Su interior brilla con energía mágica.",
         nivel: 16,
         stats: {
-          hp: 40, mana: 60, atkFisico: 0, defFisica: 10,
-          atkMagico: 12, defMagica: 18, presicion: 5, evasion: 3
+          hp: 40, mana: 60, atkfisico: 0, deffisica: 10,
+          atkmagico: 12, defmagica: 18, precision: 5, evasion: 3
         },
         selleable: true,
         coste: 720,
@@ -266,8 +266,8 @@ export const itemList = [
         description: "Un casco que mejora la percepción en la oscuridad.",
         nivel: 16,
         stats: {
-          hp: 45, mana: 20, atkFisico: 4, defFisica: 14,
-          atkMagico: 6, defMagica: 10, presicion: 6, evasion: 2
+          hp: 45, mana: 20, atkfisico: 4, deffisica: 14,
+          atkmagico: 6, defmagica: 10, precision: 6, evasion: 2
         },
         selleable: true,
         coste: 740,
@@ -287,8 +287,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 4,
-          atkMagico: 0, defMagica: 1, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 4,
+          atkmagico: 0, defmagica: 1, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 150,
@@ -301,8 +301,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 20, mana: 0, atkFisico: 1, defFisica: 6,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: -1
+          hp: 20, mana: 0, atkfisico: 1, deffisica: 6,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: -1
         },
         selleable: true,
         coste: 200,
@@ -315,8 +315,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 30, mana: 0, atkFisico: 2, defFisica: 8,
-          atkMagico: 0, defMagica: 3, presicion: 0, evasion: -2
+          hp: 30, mana: 0, atkfisico: 2, deffisica: 8,
+          atkmagico: 0, defmagica: 3, precision: 0, evasion: -2
         },
         selleable: true,
         coste: 250,
@@ -329,8 +329,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 10, mana: 50, atkFisico: 0, defFisica: 3,
-          atkMagico: 5, defMagica: 7, presicion: 1, evasion: 2
+          hp: 10, mana: 50, atkfisico: 0, deffisica: 3,
+          atkmagico: 5, defmagica: 7, precision: 1, evasion: 2
         },
         selleable: true,
         coste: 280,
@@ -343,8 +343,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 50, mana: 30, atkFisico: 4, defFisica: 10,
-          atkMagico: 3, defMagica: 5, presicion: 2, evasion: -1
+          hp: 50, mana: 30, atkfisico: 4, deffisica: 10,
+          atkmagico: 3, defmagica: 5, precision: 2, evasion: -1
         },
         selleable: true,
         coste: 400,
@@ -357,8 +357,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 15, mana: 40, atkFisico: 0, defFisica: 4,
-          atkMagico: 8, defMagica: 9, presicion: 3, evasion: 4
+          hp: 15, mana: 40, atkfisico: 0, deffisica: 4,
+          atkmagico: 8, defmagica: 9, precision: 3, evasion: 4
         },
         selleable: true,
         coste: 350,
@@ -371,8 +371,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 7,
         stats: {
-          hp: 25, mana: 15, atkFisico: 3, defFisica: 7,
-          atkMagico: 0, defMagica: 4, presicion: 2, evasion: 2
+          hp: 25, mana: 15, atkfisico: 3, deffisica: 7,
+          atkmagico: 0, defmagica: 4, precision: 2, evasion: 2
         },
         selleable: true,
         coste: 300,
@@ -385,8 +385,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 8,
         stats: {
-          hp: 30, mana: 50, atkFisico: 0, defFisica: 5,
-          atkMagico: 6, defMagica: 10, presicion: 3, evasion: 5
+          hp: 30, mana: 50, atkfisico: 0, deffisica: 5,
+          atkmagico: 6, defmagica: 10, precision: 3, evasion: 5
         },
         selleable: true,
         coste: 380,
@@ -399,8 +399,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 9,
         stats: {
-          hp: 40, mana: 20, atkFisico: 5, defFisica: 12,
-          atkMagico: 2, defMagica: 6, presicion: 3, evasion: -1
+          hp: 40, mana: 20, atkfisico: 5, deffisica: 12,
+          atkmagico: 2, defmagica: 6, precision: 3, evasion: -1
         },
         selleable: true,
         coste: 420,
@@ -413,8 +413,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 12,
         stats: {
-          hp: 80, mana: 40, atkFisico: 7, defFisica: 15,
-          atkMagico: 5, defMagica: 8, presicion: 4, evasion: -2
+          hp: 80, mana: 40, atkfisico: 7, deffisica: 15,
+          atkmagico: 5, defmagica: 8, precision: 4, evasion: -2
         },
         selleable: true,
         coste: 500,
@@ -428,8 +428,8 @@ export const itemList = [
         description: "Forjada con materiales de una era antigua, otorga gran resistencia.",
         nivel: 14,
         stats: {
-          hp: 100, mana: 30, atkFisico: 5, defFisica: 16,
-          atkMagico: 4, defMagica: 10, presicion: 3, evasion: -1
+          hp: 100, mana: 30, atkfisico: 5, deffisica: 16,
+          atkmagico: 4, defmagica: 10, precision: 3, evasion: -1
         },
         selleable: true,
         coste: 800,
@@ -442,8 +442,8 @@ export const itemList = [
         description: "Infundida con poder místico, mejora la magia del portador.",
         nivel: 14,
         stats: {
-          hp: 50, mana: 80, atkFisico: 0, defFisica: 10,
-          atkMagico: 10, defMagica: 18, presicion: 4, evasion: 3
+          hp: 50, mana: 80, atkfisico: 0, deffisica: 10,
+          atkmagico: 10, defmagica: 18, precision: 4, evasion: 3
         },
         selleable: true,
         coste: 820,
@@ -456,8 +456,8 @@ export const itemList = [
         description: "Un diseño ligero que otorga velocidad y precisión.",
         nivel: 14,
         stats: {
-          hp: 80, mana: 40, atkFisico: 3, defFisica: 14,
-          atkMagico: 5, defMagica: 8, presicion: 5, evasion: 4
+          hp: 80, mana: 40, atkfisico: 3, deffisica: 14,
+          atkmagico: 5, defmagica: 8, precision: 5, evasion: 4
         },
         selleable: true,
         coste: 840,
@@ -472,8 +472,8 @@ export const itemList = [
         description: "Resistente como la piedra, su brillo impone respeto.",
         nivel: 15,
         stats: {
-          hp: 120, mana: 40, atkFisico: 6, defFisica: 18,
-          atkMagico: 5, defMagica: 12, presicion: 3, evasion: -2
+          hp: 120, mana: 40, atkfisico: 6, deffisica: 18,
+          atkmagico: 5, defmagica: 12, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 900,
@@ -486,8 +486,8 @@ export const itemList = [
         description: "Tejida con energía cósmica, fortalece la magia.",
         nivel: 15,
         stats: {
-          hp: 60, mana: 100, atkFisico: 0, defFisica: 12,
-          atkMagico: 12, defMagica: 20, presicion: 5, evasion: 3
+          hp: 60, mana: 100, atkfisico: 0, deffisica: 12,
+          atkmagico: 12, defmagica: 20, precision: 5, evasion: 3
         },
         selleable: true,
         coste: 920,
@@ -500,8 +500,8 @@ export const itemList = [
         description: "Diseñada para una defensa total en combate cuerpo a cuerpo.",
         nivel: 15,
         stats: {
-          hp: 100, mana: 50, atkFisico: 4, defFisica: 16,
-          atkMagico: 6, defMagica: 10, presicion: 5, evasion: 2
+          hp: 100, mana: 50, atkfisico: 4, deffisica: 16,
+          atkmagico: 6, defmagica: 10, precision: 5, evasion: 2
         },
         selleable: true,
         coste: 940,
@@ -516,8 +516,8 @@ export const itemList = [
         description: "Una defensa impenetrable que domina el campo de batalla.",
         nivel: 16,
         stats: {
-          hp: 140, mana: 60, atkFisico: 7, defFisica: 20,
-          atkMagico: 6, defMagica: 15, presicion: 3, evasion: -2
+          hp: 140, mana: 60, atkfisico: 7, deffisica: 20,
+          atkmagico: 6, defmagica: 15, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 1000,
@@ -530,8 +530,8 @@ export const itemList = [
         description: "Canaliza una inmensa cantidad de maná para hechizos devastadores.",
         nivel: 16,
         stats: {
-          hp: 70, mana: 120, atkFisico: 0, defFisica: 14,
-          atkMagico: 15, defMagica: 24, presicion: 6, evasion: 3
+          hp: 70, mana: 120, atkfisico: 0, deffisica: 14,
+          atkmagico: 15, defmagica: 24, precision: 6, evasion: 3
         },
         selleable: true,
         coste: 1020,
@@ -544,8 +544,8 @@ export const itemList = [
         description: "Protege al usuario de impactos y mejora la movilidad.",
         nivel: 16,
         stats: {
-          hp: 120, mana: 60, atkFisico: 5, defFisica: 18,
-          atkMagico: 7, defMagica: 12, presicion: 6, evasion: 2
+          hp: 120, mana: 60, atkfisico: 5, deffisica: 18,
+          atkmagico: 7, defmagica: 12, precision: 6, evasion: 2
         },
         selleable: true,
         coste: 1040,
@@ -565,8 +565,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 2,
-          atkMagico: 0, defMagica: 1, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 2,
+          atkmagico: 0, defmagica: 1, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 110,
@@ -579,8 +579,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 5, mana: 10, atkFisico: 0, defFisica: 2,
-          atkMagico: 1, defMagica: 3, presicion: 0, evasion: 1
+          hp: 5, mana: 10, atkfisico: 0, deffisica: 2,
+          atkmagico: 1, defmagica: 3, precision: 0, evasion: 1
         },
         selleable: true,
         coste: 130,
@@ -593,8 +593,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 10, mana: 0, atkFisico: 1, defFisica: 4,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: -1
+          hp: 10, mana: 0, atkfisico: 1, deffisica: 4,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: -1
         },
         selleable: true,
         coste: 150,
@@ -607,8 +607,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 5, mana: 20, atkFisico: 0, defFisica: 3,
-          atkMagico: 3, defMagica: 5, presicion: 0, evasion: 2
+          hp: 5, mana: 20, atkfisico: 0, deffisica: 3,
+          atkmagico: 3, defmagica: 5, precision: 0, evasion: 2
         },
         selleable: true,
         coste: 180,
@@ -621,8 +621,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 20, mana: 0, atkFisico: 2, defFisica: 6,
-          atkMagico: 0, defMagica: 2, presicion: 1, evasion: -2
+          hp: 20, mana: 0, atkfisico: 2, deffisica: 6,
+          atkmagico: 0, defmagica: 2, precision: 1, evasion: -2
         },
         selleable: true,
         coste: 210,
@@ -635,8 +635,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 15, mana: 30, atkFisico: 0, defFisica: 3,
-          atkMagico: 6, defMagica: 7, presicion: 1, evasion: 3
+          hp: 15, mana: 30, atkfisico: 0, deffisica: 3,
+          atkmagico: 6, defmagica: 7, precision: 1, evasion: 3
         },
         selleable: true,
         coste: 230,
@@ -649,8 +649,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 30, mana: 10, atkFisico: 3, defFisica: 8,
-          atkMagico: 0, defMagica: 3, presicion: 2, evasion: -1
+          hp: 30, mana: 10, atkfisico: 3, deffisica: 8,
+          atkmagico: 0, defmagica: 3, precision: 2, evasion: -1
         },
         selleable: true,
         coste: 250,
@@ -663,8 +663,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 20, mana: 40, atkFisico: 0, defFisica: 4,
-          atkMagico: 5, defMagica: 9, presicion: 3, evasion: 4
+          hp: 20, mana: 40, atkfisico: 0, deffisica: 4,
+          atkmagico: 5, defmagica: 9, precision: 3, evasion: 4
         },
         selleable: true,
         coste: 270,
@@ -677,8 +677,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 8,
         stats: {
-          hp: 35, mana: 20, atkFisico: 4, defFisica: 10,
-          atkMagico: 2, defMagica: 4, presicion: 2, evasion: -1
+          hp: 35, mana: 20, atkfisico: 4, deffisica: 10,
+          atkmagico: 2, defmagica: 4, precision: 2, evasion: -1
         },
         selleable: true,
         coste: 300,
@@ -691,8 +691,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 10,
         stats: {
-          hp: 50, mana: 30, atkFisico: 5, defFisica: 12,
-          atkMagico: 5, defMagica: 6, presicion: 4, evasion: -2
+          hp: 50, mana: 30, atkfisico: 5, deffisica: 12,
+          atkmagico: 5, defmagica: 6, precision: 4, evasion: -2
         },
         selleable: true,
         coste: 350,
@@ -706,8 +706,8 @@ export const itemList = [
         "description": "Protegen con la fuerza de la tradición antigua.",
         "nivel": 14,
         "stats": {
-          "hp": 80, "mana": 30, "atkFisico": 4, "defFisica": 14,
-          "atkMagico": 3, "defMagica": 9, "presicion": 2, "evasion": 0
+          "hp": 80, "mana": 30, "atkfisico": 4, "deffisica": 14,
+          "atkmagico": 3, "defmagica": 9, "precision": 2, "evasion": 0
         },
         "selleable": true,
         "coste": 800,
@@ -720,8 +720,8 @@ export const itemList = [
         "description": "Conectan el flujo del maná con el usuario.",
         "nivel": 14,
         "stats": {
-          "hp": 40, "mana": 70, "atkFisico": 0, "defFisica": 10,
-          "atkMagico": 8, "defMagica": 15, "presicion": 3, "evasion": 3
+          "hp": 40, "mana": 70, "atkfisico": 0, "deffisica": 10,
+          "atkmagico": 8, "defmagica": 15, "precision": 3, "evasion": 3
         },
         "selleable": true,
         "coste": 820,
@@ -734,8 +734,8 @@ export const itemList = [
         "description": "Diseñadas para velocidad y precisión.",
         "nivel": 14,
         "stats": {
-          "hp": 60, "mana": 40, "atkFisico": 3, "defFisica": 12,
-          "atkMagico": 5, "defMagica": 8, "presicion": 4, "evasion": 4
+          "hp": 60, "mana": 40, "atkfisico": 3, "deffisica": 12,
+          "atkmagico": 5, "defmagica": 8, "precision": 4, "evasion": 4
         },
         "selleable": true,
         "coste": 840,
@@ -750,8 +750,8 @@ export const itemList = [
         "description": "Forjadas con materiales indestructibles.",
         "nivel": 15,
         "stats": {
-          "hp": 100, "mana": 40, "atkFisico": 6, "defFisica": 16,
-          "atkMagico": 5, "defMagica": 12, "presicion": 3, "evasion": -1
+          "hp": 100, "mana": 40, "atkfisico": 6, "deffisica": 16,
+          "atkmagico": 5, "defmagica": 12, "precision": 3, "evasion": -1
         },
         "selleable": true,
         "coste": 900,
@@ -764,8 +764,8 @@ export const itemList = [
         "description": "Tejidos con energía cósmica.",
         "nivel": 15,
         "stats": {
-          "hp": 50, "mana": 90, "atkFisico": 0, "defFisica": 12,
-          "atkMagico": 10, "defMagica": 18, "presicion": 5, "evasion": 3
+          "hp": 50, "mana": 90, "atkfisico": 0, "deffisica": 12,
+          "atkmagico": 10, "defmagica": 18, "precision": 5, "evasion": 3
         },
         "selleable": true,
         "coste": 920,
@@ -778,8 +778,8 @@ export const itemList = [
         "description": "Diseñadas para una rápida movilidad.",
         "nivel": 15,
         "stats": {
-          "hp": 80, "mana": 50, "atkFisico": 4, "defFisica": 14,
-          "atkMagico": 6, "defMagica": 10, "presicion": 5, "evasion": 3
+          "hp": 80, "mana": 50, "atkfisico": 4, "deffisica": 14,
+          "atkmagico": 6, "defmagica": 10, "precision": 5, "evasion": 3
         },
         "selleable": true,
         "coste": 940,
@@ -794,8 +794,8 @@ export const itemList = [
         "description": "Un blindaje impenetrable en combate.",
         "nivel": 16,
         "stats": {
-          "hp": 120, "mana": 60, "atkFisico": 7, "defFisica": 18,
-          "atkMagico": 6, "defMagica": 13, "presicion": 3, "evasion": -2
+          "hp": 120, "mana": 60, "atkfisico": 7, "deffisica": 18,
+          "atkmagico": 6, "defmagica": 13, "precision": 3, "evasion": -2
         },
         "selleable": true,
         "coste": 1000,
@@ -808,8 +808,8 @@ export const itemList = [
         "description": "Brillan con el poder puro del maná.",
         "nivel": 16,
         "stats": {
-          "hp": 60, "mana": 110, "atkFisico": 0, "defFisica": 14,
-          "atkMagico": 12, "defMagica": 20, "presicion": 6, "evasion": 4
+          "hp": 60, "mana": 110, "atkfisico": 0, "deffisica": 14,
+          "atkmagico": 12, "defmagica": 20, "precision": 6, "evasion": 4
         },
         "selleable": true,
         "coste": 1020,
@@ -822,8 +822,8 @@ export const itemList = [
         "description": "Protegen de impactos devastadores.",
         "nivel": 16,
         "stats": {
-          "hp": 90, "mana": 60, "atkFisico": 5, "defFisica": 16,
-          "atkMagico": 7, "defMagica": 12, "presicion": 6, "evasion": 3
+          "hp": 90, "mana": 60, "atkfisico": 5, "deffisica": 16,
+          "atkmagico": 7, "defmagica": 12, "precision": 6, "evasion": 3
         },
         "selleable": true,
         "coste": 1040,
@@ -843,8 +843,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 1,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 1,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 70,
@@ -857,8 +857,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 5, mana: 0, atkFisico: 1, defFisica: 2,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: 1
+          hp: 5, mana: 0, atkfisico: 1, deffisica: 2,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: 1
         },
         selleable: true,
         coste: 90,
@@ -871,8 +871,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 0, mana: 20, atkFisico: 0, defFisica: 1,
-          atkMagico: 3, defMagica: 4, presicion: 1, evasion: 2
+          hp: 0, mana: 20, atkfisico: 0, deffisica: 1,
+          atkmagico: 3, defmagica: 4, precision: 1, evasion: 2
         },
         selleable: true,
         coste: 120,
@@ -885,8 +885,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 10, mana: 0, atkFisico: 2, defFisica: 3,
-          atkMagico: 0, defMagica: 2, presicion: 1, evasion: -1
+          hp: 10, mana: 0, atkfisico: 2, deffisica: 3,
+          atkmagico: 0, defmagica: 2, precision: 1, evasion: -1
         },
         selleable: true,
         coste: 140,
@@ -899,8 +899,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 15, mana: 10, atkFisico: 3, defFisica: 4,
-          atkMagico: 1, defMagica: 3, presicion: 2, evasion: 0
+          hp: 15, mana: 10, atkfisico: 3, deffisica: 4,
+          atkmagico: 1, defmagica: 3, precision: 2, evasion: 0
         },
         selleable: true,
         coste: 160,
@@ -913,8 +913,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 10, mana: 30, atkFisico: 0, defFisica: 2,
-          atkMagico: 5, defMagica: 6, presicion: 2, evasion: 3
+          hp: 10, mana: 30, atkfisico: 0, deffisica: 2,
+          atkmagico: 5, defmagica: 6, precision: 2, evasion: 3
         },
         selleable: true,
         coste: 180,
@@ -927,8 +927,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 20, mana: 5, atkFisico: 4, defFisica: 5,
-          atkMagico: 0, defMagica: 3, presicion: 3, evasion: -2
+          hp: 20, mana: 5, atkfisico: 4, deffisica: 5,
+          atkmagico: 0, defmagica: 3, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 200,
@@ -941,8 +941,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 25, mana: 40, atkFisico: 0, defFisica: 3,
-          atkMagico: 6, defMagica: 8, presicion: 3, evasion: 4
+          hp: 25, mana: 40, atkfisico: 0, deffisica: 3,
+          atkmagico: 6, defmagica: 8, precision: 3, evasion: 4
         },
         selleable: true,
         coste: 220,
@@ -955,8 +955,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 8,
         stats: {
-          hp: 35, mana: 15, atkFisico: 5, defFisica: 6,
-          atkMagico: 2, defMagica: 4, presicion: 3, evasion: -1
+          hp: 35, mana: 15, atkfisico: 5, deffisica: 6,
+          atkmagico: 2, defmagica: 4, precision: 3, evasion: -1
         },
         selleable: true,
         coste: 250,
@@ -969,8 +969,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 10,
         stats: {
-          hp: 50, mana: 30, atkFisico: 6, defFisica: 8,
-          atkMagico: 5, defMagica: 6, presicion: 4, evasion: -2
+          hp: 50, mana: 30, atkfisico: 6, deffisica: 8,
+          atkmagico: 5, defmagica: 6, precision: 4, evasion: -2
         },
         selleable: true,
         coste: 300,
@@ -988,8 +988,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 0, atkFisico: 0, defFisica: 1,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: 0
+          hp: 0, mana: 0, atkfisico: 0, deffisica: 1,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: 0
         },
         selleable: true,
         coste: 70,
@@ -1002,8 +1002,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 2,
         stats: {
-          hp: 5, mana: 0, atkFisico: 1, defFisica: 2,
-          atkMagico: 0, defMagica: 2, presicion: 0, evasion: 1
+          hp: 5, mana: 0, atkfisico: 1, deffisica: 2,
+          atkmagico: 0, defmagica: 2, precision: 0, evasion: 1
         },
         selleable: true,
         coste: 90,
@@ -1016,8 +1016,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 0, mana: 20, atkFisico: 0, defFisica: 1,
-          atkMagico: 3, defMagica: 4, presicion: 1, evasion: 2
+          hp: 0, mana: 20, atkfisico: 0, deffisica: 1,
+          atkmagico: 3, defmagica: 4, precision: 1, evasion: 2
         },
         selleable: true,
         coste: 120,
@@ -1030,8 +1030,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 3,
         stats: {
-          hp: 10, mana: 0, atkFisico: 2, defFisica: 3,
-          atkMagico: 0, defMagica: 2, presicion: 1, evasion: -1
+          hp: 10, mana: 0, atkfisico: 2, deffisica: 3,
+          atkmagico: 0, defmagica: 2, precision: 1, evasion: -1
         },
         selleable: true,
         coste: 140,
@@ -1044,8 +1044,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 15, mana: 10, atkFisico: 3, defFisica: 4,
-          atkMagico: 1, defMagica: 3, presicion: 2, evasion: 0
+          hp: 15, mana: 10, atkfisico: 3, deffisica: 4,
+          atkmagico: 1, defmagica: 3, precision: 2, evasion: 0
         },
         selleable: true,
         coste: 160,
@@ -1058,8 +1058,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 4,
         stats: {
-          hp: 10, mana: 30, atkFisico: 0, defFisica: 2,
-          atkMagico: 5, defMagica: 6, presicion: 2, evasion: 3
+          hp: 10, mana: 30, atkfisico: 0, deffisica: 2,
+          atkmagico: 5, defmagica: 6, precision: 2, evasion: 3
         },
         selleable: true,
         coste: 180,
@@ -1072,8 +1072,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 20, mana: 5, atkFisico: 4, defFisica: 5,
-          atkMagico: 0, defMagica: 3, presicion: 3, evasion: -2
+          hp: 20, mana: 5, atkfisico: 4, deffisica: 5,
+          atkmagico: 0, defmagica: 3, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 200,
@@ -1086,8 +1086,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 6,
         stats: {
-          hp: 25, mana: 40, atkFisico: 0, defFisica: 3,
-          atkMagico: 6, defMagica: 8, presicion: 3, evasion: 4
+          hp: 25, mana: 40, atkfisico: 0, deffisica: 3,
+          atkmagico: 6, defmagica: 8, precision: 3, evasion: 4
         },
         selleable: true,
         coste: 220,
@@ -1100,8 +1100,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 8,
         stats: {
-          hp: 35, mana: 15, atkFisico: 5, defFisica: 6,
-          atkMagico: 2, defMagica: 4, presicion: 3, evasion: -1
+          hp: 35, mana: 15, atkfisico: 5, deffisica: 6,
+          atkmagico: 2, defmagica: 4, precision: 3, evasion: -1
         },
         selleable: true,
         coste: 250,
@@ -1114,8 +1114,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 10,
         stats: {
-          hp: 50, mana: 30, atkFisico: 6, defFisica: 8,
-          atkMagico: 5, defMagica: 6, presicion: 4, evasion: -2
+          hp: 50, mana: 30, atkfisico: 6, deffisica: 8,
+          atkmagico: 5, defmagica: 6, precision: 4, evasion: -2
         },
         selleable: true,
         coste: 300,
@@ -1129,8 +1129,8 @@ export const itemList = [
         "description": "Protegen las manos con el legado de los antiguos guerreros.",
         "nivel": 14,
         "stats": {
-          "hp": 30, "mana": 20, "atkFisico": 3, "defFisica": 9,
-          "atkMagico": 2, "defMagica": 5, "presicion": 2, "evasion": 1
+          "hp": 30, "mana": 20, "atkfisico": 3, "deffisica": 9,
+          "atkmagico": 2, "defmagica": 5, "precision": 2, "evasion": 1
         },
         "selleable": true,
         "coste": 550,
@@ -1143,8 +1143,8 @@ export const itemList = [
         "description": "Canalizan el flujo de la magia a través de sus finos tejidos.",
         "nivel": 14,
         "stats": {
-          "hp": 15, "mana": 50, "atkFisico": 0, "defFisica": 6,
-          "atkMagico": 8, "defMagica": 12, "presicion": 3, "evasion": 2
+          "hp": 15, "mana": 50, "atkfisico": 0, "deffisica": 6,
+          "atkmagico": 8, "defmagica": 12, "precision": 3, "evasion": 2
         },
         "selleable": true,
         "coste": 570,
@@ -1157,8 +1157,8 @@ export const itemList = [
         "description": "Mejoran la precisión y la velocidad de los ataques rápidos.",
         "nivel": 14,
         "stats": {
-          "hp": 25, "mana": 30, "atkFisico": 2, "defFisica": 7,
-          "atkMagico": 3, "defMagica": 6, "presicion": 4, "evasion": 3
+          "hp": 25, "mana": 30, "atkfisico": 2, "deffisica": 7,
+          "atkmagico": 3, "defmagica": 6, "precision": 4, "evasion": 3
         },
         "selleable": true,
         "coste": 590,
@@ -1173,8 +1173,8 @@ export const itemList = [
         "description": "Fortifican los puños para golpes devastadores.",
         "nivel": 15,
         "stats": {
-          "hp": 40, "mana": 25, "atkFisico": 5, "defFisica": 11,
-          "atkMagico": 3, "defMagica": 7, "presicion": 3, "evasion": 0
+          "hp": 40, "mana": 25, "atkfisico": 5, "deffisica": 11,
+          "atkmagico": 3, "defmagica": 7, "precision": 3, "evasion": 0
         },
         "selleable": true,
         "coste": 650,
@@ -1187,8 +1187,8 @@ export const itemList = [
         "description": "Tejidos con energía cósmica para potenciar la magia.",
         "nivel": 15,
         "stats": {
-          "hp": 20, "mana": 70, "atkFisico": 0, "defFisica": 7,
-          "atkMagico": 10, "defMagica": 14, "presicion": 4, "evasion": 3
+          "hp": 20, "mana": 70, "atkfisico": 0, "deffisica": 7,
+          "atkmagico": 10, "defmagica": 14, "precision": 4, "evasion": 3
         },
         "selleable": true,
         "coste": 670,
@@ -1201,8 +1201,8 @@ export const itemList = [
         "description": "Permiten una manipulación precisa del arco y los proyectiles.",
         "nivel": 15,
         "stats": {
-          "hp": 30, "mana": 40, "atkFisico": 3, "defFisica": 9,
-          "atkMagico": 5, "defMagica": 8, "presicion": 5, "evasion": 2
+          "hp": 30, "mana": 40, "atkfisico": 3, "deffisica": 9,
+          "atkmagico": 5, "defmagica": 8, "precision": 5, "evasion": 2
         },
         "selleable": true,
         "coste": 690,
@@ -1217,8 +1217,8 @@ export const itemList = [
         "description": "Revestidos de poder para desatar golpes masivos.",
         "nivel": 16,
         "stats": {
-          "hp": 50, "mana": 30, "atkFisico": 6, "defFisica": 12,
-          "atkMagico": 4, "defMagica": 9, "presicion": 3, "evasion": -1
+          "hp": 50, "mana": 30, "atkfisico": 6, "deffisica": 12,
+          "atkmagico": 4, "defmagica": 9, "precision": 3, "evasion": -1
         },
         "selleable": true,
         "coste": 750,
@@ -1231,8 +1231,8 @@ export const itemList = [
         "description": "Canalizan grandes cantidades de maná para lanzar hechizos.",
         "nivel": 16,
         "stats": {
-          "hp": 30, "mana": 90, "atkFisico": 0, "defFisica": 9,
-          "atkMagico": 12, "defMagica": 18, "presicion": 5, "evasion": 4
+          "hp": 30, "mana": 90, "atkfisico": 0, "deffisica": 9,
+          "atkmagico": 12, "defmagica": 18, "precision": 5, "evasion": 4
         },
         "selleable": true,
         "coste": 770,
@@ -1245,8 +1245,8 @@ export const itemList = [
         "description": "Brindan protección contra impactos y aumentan la velocidad de reacción.",
         "nivel": 16,
         "stats": {
-          "hp": 45, "mana": 50, "atkFisico": 4, "defFisica": 10,
-          "atkMagico": 6, "defMagica": 10, "presicion": 5, "evasion": 3
+          "hp": 45, "mana": 50, "atkfisico": 4, "deffisica": 10,
+          "atkmagico": 6, "defmagica": 10, "precision": 5, "evasion": 3
         },
         "selleable": true,
         "coste": 790,
@@ -1265,8 +1265,8 @@ export const itemList = [
         "description": "Una espada ligera y fácil de manejar, perfecta para principiantes.",
         "nivel": 1,
         "stats": {
-          "hp": 0, "mana": 0, "atkFisico": 3, "defFisica": 0,
-          "atkMagico": 0, "defMagica": 0, "presicion": 1, "evasion": 0
+          "hp": 0, "mana": 0, "atkfisico": 3, "deffisica": 0,
+          "atkmagico": 0, "defmagica": 0, "precision": 1, "evasion": 0
         },
         "selleable": true,
         "coste": 70,
@@ -1280,8 +1280,8 @@ export const itemList = [
         "description": "Más resistente que la espada corta, ideal para guerreros en entrenamiento.",
         "nivel": 2,
         "stats": {
-          "hp": 0, "mana": 0, "atkFisico": 5, "defFisica": 1,
-          "atkMagico": 0, "defMagica": 0, "presicion": 2, "evasion": 0
+          "hp": 0, "mana": 0, "atkfisico": 5, "deffisica": 1,
+          "atkmagico": 0, "defmagica": 0, "precision": 2, "evasion": 0
         },
         "selleable": true,
         "coste": 120,
@@ -1295,8 +1295,8 @@ export const itemList = [
         "description": "Un arma pesada y letal, diseñada para batallas más intensas.",
         "nivel": 4,
         "stats": {
-          "hp": 15, "mana": 0, "atkFisico": 10, "defFisica": 3,
-          "atkMagico": 0, "defMagica": 0, "presicion": 3, "evasion": -1
+          "hp": 15, "mana": 0, "atkfisico": 10, "deffisica": 3,
+          "atkmagico": 0, "defmagica": 0, "precision": 3, "evasion": -1
         },
         "selleable": true,
         "coste": 180,
@@ -1312,8 +1312,8 @@ export const itemList = [
         "description": "Un arco básico, ideal para arqueros en entrenamiento.",
         "nivel": 1,
         "stats": {
-          "hp": 0, "mana": 0, "atkFisico": 3, "defFisica": 0,
-          "atkMagico": 0, "defMagica": 0, "presicion": 1, "evasion": 0
+          "hp": 0, "mana": 0, "atkfisico": 3, "deffisica": 0,
+          "atkmagico": 0, "defmagica": 0, "precision": 1, "evasion": 0
         },
         "selleable": true,
         "coste": 70,
@@ -1327,8 +1327,8 @@ export const itemList = [
         "description": "Un arco de mayor alcance y precisión, perfecto para batallas a distancia.",
         "nivel": 3,
         "stats": {
-          "hp": 0, "mana": 0, "atkFisico": 6, "defFisica": 0,
-          "atkMagico": 0, "defMagica": 0, "presicion": 2, "evasion": 1
+          "hp": 0, "mana": 0, "atkfisico": 6, "deffisica": 0,
+          "atkmagico": 0, "defmagica": 0, "precision": 2, "evasion": 1
         },
         "selleable": true,
         "coste": 120,
@@ -1342,8 +1342,8 @@ export const itemList = [
         "description": "Una herramienta letal para cazadores experimentados, con gran precisión.",
         "nivel": 5,
         "stats": {
-          "hp": 10, "mana": 0, "atkFisico": 9, "defFisica": 1,
-          "atkMagico": 0, "defMagica": 0, "presicion": 3, "evasion": 2
+          "hp": 10, "mana": 0, "atkfisico": 9, "deffisica": 1,
+          "atkmagico": 0, "defmagica": 0, "precision": 3, "evasion": 2
         },
         "selleable": true,
         "coste": 180,
@@ -1359,8 +1359,8 @@ export const itemList = [
         "description": "Un bastón simple que canaliza energía mágica básica.",
         "nivel": 1,
         "stats": {
-          "hp": 0, "mana": 0, "atkFisico": 0, "defFisica": 0,
-          "atkMagico": 3, "defMagica": 0, "presicion": 1, "evasion": 0
+          "hp": 0, "mana": 0, "atkfisico": 0, "deffisica": 0,
+          "atkmagico": 3, "defmagica": 0, "precision": 1, "evasion": 0
         },
         "selleable": true,
         "coste": 70,
@@ -1374,8 +1374,8 @@ export const itemList = [
         "description": "Un bastón imbuido con energía mágica, mejora la resistencia del usuario.",
         "nivel": 3,
         "stats": {
-          "hp": 5, "mana": 20, "atkFisico": 0, "defFisica": 1,
-          "atkMagico": 6, "defMagica": 3, "presicion": 2, "evasion": 1
+          "hp": 5, "mana": 20, "atkfisico": 0, "deffisica": 1,
+          "atkmagico": 6, "defmagica": 3, "precision": 2, "evasion": 1
         },
         "selleable": true,
         "coste": 150,
@@ -1389,8 +1389,8 @@ export const itemList = [
         "description": "Una herramienta poderosa utilizada por magos experimentados.",
         "nivel": 6,
         "stats": {
-          "hp": 10, "mana": 40, "atkFisico": 0, "defFisica": 2,
-          "atkMagico": 12, "defMagica": 5, "presicion": 3, "evasion": 2
+          "hp": 10, "mana": 40, "atkfisico": 0, "deffisica": 2,
+          "atkmagico": 12, "defmagica": 5, "precision": 3, "evasion": 2
         },
         "selleable": true,
         "coste": 220,
@@ -1406,8 +1406,8 @@ export const itemList = [
         "description": "Un hacha rápida y manejable, ideal para luchadores ágiles.",
         "nivel": 2,
         "stats": {
-          "hp": 0, "mana": 0, "atkFisico": 5, "defFisica": 1,
-          "atkMagico": 0, "defMagica": 0, "presicion": 1, "evasion": -1
+          "hp": 0, "mana": 0, "atkfisico": 5, "deffisica": 1,
+          "atkmagico": 0, "defmagica": 0, "precision": 1, "evasion": -1
         },
         "selleable": true,
         "coste": 90,
@@ -1421,8 +1421,8 @@ export const itemList = [
         "description": "Un arma brutal con gran fuerza de impacto, usada por guerreros experimentados.",
         "nivel": 4,
         "stats": {
-          "hp": 15, "mana": 0, "atkFisico": 10, "defFisica": 3,
-          "atkMagico": 0, "defMagica": 0, "presicion": 2, "evasion": -2
+          "hp": 15, "mana": 0, "atkfisico": 10, "deffisica": 3,
+          "atkmagico": 0, "defmagica": 0, "precision": 2, "evasion": -2
         },
         "selleable": true,
         "coste": 150,
@@ -1436,8 +1436,8 @@ export const itemList = [
         "description": "Un arma colosal capaz de partir enemigos con un solo golpe.",
         "nivel": 7,
         "stats": {
-          "hp": 25, "mana": 0, "atkFisico": 16, "defFisica": 4,
-          "atkMagico": 0, "defMagica": 0, "presicion": 3, "evasion": -3
+          "hp": 25, "mana": 0, "atkfisico": 16, "deffisica": 4,
+          "atkmagico": 0, "defmagica": 0, "precision": 3, "evasion": -3
         },
         "selleable": true,
         "coste": 220,
@@ -1453,8 +1453,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 15, atkFisico: 0, defFisica: 0,
-          atkMagico: 7, defMagica: 4, presicion: 2, evasion: 1
+          hp: 0, mana: 15, atkfisico: 0, deffisica: 0,
+          atkmagico: 7, defmagica: 4, precision: 2, evasion: 1
         },
         selleable: true,
         coste: 180,
@@ -1470,8 +1470,8 @@ export const itemList = [
         description: "Descripcion",
         nivel: 1,
         stats: {
-          hp: 0, mana: 0, atkFisico: 6, defFisica: 1,
-          atkMagico: 0, defMagica: 0, presicion: 3, evasion: 2
+          hp: 0, mana: 0, atkfisico: 6, deffisica: 1,
+          atkmagico: 0, defmagica: 0, precision: 3, evasion: 2
         },
         selleable: true,
         coste: 200,
@@ -1485,8 +1485,8 @@ export const itemList = [
         "description": "Forjada con técnicas ancestrales, su filo es impecable.",
         "nivel": 14,
         "stats": {
-          "hp": 20, "mana": 0, "atkFisico": 22, "defFisica": 5,
-          "atkMagico": 0, "defMagica": 2, "presicion": 5, "evasion": -1
+          "hp": 20, "mana": 0, "atkfisico": 22, "deffisica": 5,
+          "atkmagico": 0, "defmagica": 2, "precision": 5, "evasion": -1
         },
         "selleable": true,
         "coste": 850,
@@ -1500,8 +1500,8 @@ export const itemList = [
         "description": "Una espada robusta diseñada para la defensa y ataque.",
         "nivel": 15,
         "stats": {
-          "hp": 30, "mana": 0, "atkFisico": 26, "defFisica": 6,
-          "atkMagico": 0, "defMagica": 3, "presicion": 6, "evasion": -2
+          "hp": 30, "mana": 0, "atkfisico": 26, "deffisica": 6,
+          "atkmagico": 0, "defmagica": 3, "precision": 6, "evasion": -2
         },
         "selleable": true,
         "coste": 900,
@@ -1517,8 +1517,8 @@ export const itemList = [
         "description": "Un arco fino y preciso, ideal para ataques certeros.",
         "nivel": 14,
         "stats": {
-          "hp": 10, "mana": 0, "atkFisico": 21, "defFisica": 3,
-          "atkMagico": 0, "defMagica": 0, "presicion": 6, "evasion": 2
+          "hp": 10, "mana": 0, "atkfisico": 21, "deffisica": 3,
+          "atkmagico": 0, "defmagica": 0, "precision": 6, "evasion": 2
         },
         "selleable": true,
         "coste": 800,
@@ -1532,8 +1532,8 @@ export const itemList = [
         "description": "Diseñado para la velocidad y precisión extrema.",
         "nivel": 15,
         "stats": {
-          "hp": 15, "mana": 0, "atkFisico": 24, "defFisica": 4,
-          "atkMagico": 0, "defMagica": 0, "presicion": 7, "evasion": 3
+          "hp": 15, "mana": 0, "atkfisico": 24, "deffisica": 4,
+          "atkmagico": 0, "defmagica": 0, "precision": 7, "evasion": 3
         },
         "selleable": true,
         "coste": 850,
@@ -1549,8 +1549,8 @@ export const itemList = [
         "description": "Imbuido con la esencia de la magia pura.",
         "nivel": 14,
         "stats": {
-          "hp": 10, "mana": 50, "atkFisico": 0, "defFisica": 2,
-          "atkMagico": 22, "defMagica": 6, "presicion": 4, "evasion": 2
+          "hp": 10, "mana": 50, "atkfisico": 0, "deffisica": 2,
+          "atkmagico": 22, "defmagica": 6, "precision": 4, "evasion": 2
         },
         "selleable": true,
         "coste": 900,
@@ -1564,8 +1564,8 @@ export const itemList = [
         "description": "Potencia el conocimiento y el poder mágico del usuario.",
         "nivel": 15,
         "stats": {
-          "hp": 15, "mana": 60, "atkFisico": 0, "defFisica": 3,
-          "atkMagico": 25, "defMagica": 8, "presicion": 5, "evasion": 3
+          "hp": 15, "mana": 60, "atkfisico": 0, "deffisica": 3,
+          "atkmagico": 25, "defmagica": 8, "precision": 5, "evasion": 3
         },
         "selleable": true,
         "coste": 950,
@@ -1581,8 +1581,8 @@ export const itemList = [
         "description": "Un arma robusta con un filo letal.",
         "nivel": 14,
         "stats": {
-          "hp": 25, "mana": 0, "atkFisico": 23, "defFisica": 6,
-          "atkMagico": 0, "defMagica": 2, "presicion": 5, "evasion": -2
+          "hp": 25, "mana": 0, "atkfisico": 23, "deffisica": 6,
+          "atkmagico": 0, "defmagica": 2, "precision": 5, "evasion": -2
         },
         "selleable": true,
         "coste": 880,
@@ -1596,8 +1596,8 @@ export const itemList = [
         "description": "Un arma brutal utilizada por los guerreros más experimentados.",
         "nivel": 15,
         "stats": {
-          "hp": 35, "mana": 0, "atkFisico": 28, "defFisica": 8,
-          "atkMagico": 0, "defMagica": 2, "presicion": 6, "evasion": -3
+          "hp": 35, "mana": 0, "atkfisico": 28, "deffisica": 8,
+          "atkmagico": 0, "defmagica": 2, "precision": 6, "evasion": -3
         },
         "selleable": true,
         "coste": 950,
@@ -1613,8 +1613,8 @@ export const itemList = [
         "description": "Potencia las habilidades mágicas del usuario.",
         "nivel": 14,
         "stats": {
-          "hp": 5, "mana": 40, "atkFisico": 0, "defFisica": 3,
-          "atkMagico": 18, "defMagica": 8, "presicion": 4, "evasion": 2
+          "hp": 5, "mana": 40, "atkfisico": 0, "deffisica": 3,
+          "atkmagico": 18, "defmagica": 8, "precision": 4, "evasion": 2
         },
         "selleable": true,
         "coste": 920,
@@ -1630,8 +1630,8 @@ export const itemList = [
         "description": "Diseñada para disparos precisos y letales.",
         "nivel": 14,
         "stats": {
-          "hp": 10, "mana": 0, "atkFisico": 20, "defFisica": 3,
-          "atkMagico": 0, "defMagica": 0, "presicion": 6, "evasion": 3
+          "hp": 10, "mana": 0, "atkfisico": 20, "deffisica": 3,
+          "atkmagico": 0, "defmagica": 0, "precision": 6, "evasion": 3
         },
         "selleable": true,
         "coste": 880,
@@ -1648,7 +1648,7 @@ export const itemList = [
         type: "Consumible",
         name: "Poción Pequeña de Vida",
         nivel: 1,
-        stats: { hp: 50, mana: 0, atkFisico: 0, defFisica: 0, atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0 },
+        stats: { hp: 50, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
         coste: 50,
         usableBy: ["Todos"],
@@ -1659,7 +1659,7 @@ export const itemList = [
         type: "Consumible",
         name: "Poción Mediana de Vida",
         nivel: 1,
-        stats: { hp: 250, mana: 0, atkFisico: 0, defFisica: 0, atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0 },
+        stats: { hp: 250, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
         coste: 200,
         usableBy: ["Todos"],
@@ -1670,7 +1670,7 @@ export const itemList = [
         type: "Consumible",
         name: "Poción Grande de Vida",
         nivel: 1,
-        stats: { hp: 600, mana: 0, atkFisico: 0, defFisica: 0, atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0 },
+        stats: { hp: 600, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
         coste: 500,
         usableBy: ["Todos"],
@@ -1681,7 +1681,7 @@ export const itemList = [
         type: "Consumible",
         name: "Poción Pequeña de Mana",
         nivel: 1,
-        stats: { hp: 0, mana: 50, atkFisico: 0, defFisica: 0, atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0 },
+        stats: { hp: 0, mana: 50, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
         coste: 50,
         usableBy: ["Todos"],
@@ -1692,7 +1692,7 @@ export const itemList = [
         type: "Consumible",
         name: "Poción Mediana de Mana",
         nivel: 1,
-        stats: { hp: 0, mana: 250, atkFisico: 0, defFisica: 0, atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0 },
+        stats: { hp: 0, mana: 250, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
         coste: 200,
         usableBy: ["Todos"],
@@ -1703,7 +1703,7 @@ export const itemList = [
         type: "Consumible",
         name: "Poción Grande de Mana",
         nivel: 1,
-        stats: { hp: 0, mana: 600, atkFisico: 0, defFisica: 0, atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0 },
+        stats: { hp: 0, mana: 600, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
         coste: 500,
         usableBy: ["Todos"],

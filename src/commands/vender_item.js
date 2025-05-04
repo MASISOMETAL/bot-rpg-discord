@@ -32,7 +32,7 @@ export default {
 
     // 🔹 Buscamos el ítem en `itemList`
     const itemData = itemList.find(cat => cat.category === inventoryItem.category)
-      ?.items.find(i => i.id === inventoryItem.idItem);
+      ?.items.find(i => i.id === inventoryItem.iditem);
 
     if (!itemData) {
       return interaction.reply({ content: "❌ No se encontró información sobre el objeto. Contacta a un administrador.", flags: MessageFlags.Ephemeral });

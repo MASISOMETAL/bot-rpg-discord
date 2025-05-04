@@ -18,6 +18,8 @@ import attack from './commands/attack.js';
 import asignar_puntos from './commands/asignar_puntos.js';
 import estadisticas from './commands/estadisticas.js';
 import usar_item from './commands/usar_item.js';
+import mi_skill from './commands/mi_skill.js';
+import ayuda from './commands/ayuda.js';
 
 const TOKEN = process.env.TOKEN
 const CLIENT_ID = process.env.CLIENT_ID
@@ -39,6 +41,8 @@ const commands = [
   asignar_puntos.data.toJSON(),
   estadisticas.data.toJSON(),
   usar_item.data.toJSON(),
+  mi_skill.data.toJSON(),
+  ayuda.data.toJSON(),
 ];
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);

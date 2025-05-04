@@ -38,7 +38,7 @@ export default {
 
     // 🔹 Buscamos el ítem en `itemList`
     const selectedItem = itemList.find(cat => cat.category === inventoryItem.category)
-      ?.items.find(i => i.id === inventoryItem.idItem);
+      ?.items.find(i => i.id === inventoryItem.iditem);
 
     if (!selectedItem) {
       return interaction.reply({ content: "❌ No se encontró el objeto en la lista de ítems. Contacta a un administrador.", flags: MessageFlags.Ephemeral });
@@ -67,17 +67,17 @@ export default {
         // 🔹 Restamos los stats de las armas equipadas antes de eliminarlas
         if (mainHandItem) {
           const mainHandData = itemList.find(cat => cat.category === mainHandItem.category)
-            ?.items.find(i => i.id === mainHandItem.idItem);
+            ?.items.find(i => i.id === mainHandItem.iditem);
           await modificarStatsPersonaje(userId, mainHandData.stats, "restar");
-          await addItemToInventory(userId, mainHandItem.idItem, mainHandItem.category);
+          await addItemToInventory(userId, mainHandItem.iditem, mainHandItem.category);
           previouslyEquipped = mainHandItem;
         }
 
         if (offHandItem) {
           const offHandData = itemList.find(cat => cat.category === offHandItem.category)
-            ?.items.find(i => i.id === offHandItem.idItem);
+            ?.items.find(i => i.id === offHandItem.iditem);
           await modificarStatsPersonaje(userId, offHandData.stats, "restar");
-          await addItemToInventory(userId, offHandItem.idItem, offHandItem.category);
+          await addItemToInventory(userId, offHandItem.iditem, offHandItem.category);
           replacedItems.push(offHandItem);
         }
 
@@ -91,11 +91,11 @@ export default {
         } else if (!offHandOccupied) {
           const mainHandItem = equippedItems.find(item => item.slot === "mainHand");
           const mainHandData = itemList.find(cat => cat.category === mainHandItem.category)
-            ?.items.find(i => i.id === mainHandItem.idItem);
+            ?.items.find(i => i.id === mainHandItem.iditem);
 
           if (mainHandData && !mainHandData.onehand) {
             await modificarStatsPersonaje(userId, mainHandData.stats, "restar");
-            await addItemToInventory(userId, mainHandItem.idItem, mainHandItem.category);
+            await addItemToInventory(userId, mainHandItem.iditem, mainHandItem.category);
             await removeItemFromEquipment(userId, "mainHand");
             previouslyEquipped = mainHandItem;
             slot = "mainHand";
@@ -113,10 +113,10 @@ export default {
 
       if (previouslyEquipped) {
         const prevItemData = itemList.find(cat => cat.category === previouslyEquipped.category)
-          ?.items.find(i => i.id === previouslyEquipped.idItem);
+          ?.items.find(i => i.id === previouslyEquipped.iditem);
 
         await modificarStatsPersonaje(userId, prevItemData.stats, "restar");
-        await addItemToInventory(userId, previouslyEquipped.idItem, previouslyEquipped.category);
+        await addItemToInventory(userId, previouslyEquipped.iditem, previouslyEquipped.category);
         await removeItemFromEquipment(userId, slot);
       }
     }
@@ -144,7 +144,7 @@ export default {
     let message = `✅ Has equipado **${selectedItem.name}** en **${slotMessages[slot]}**.`;
     if (previouslyEquipped) {
       const prevName = itemList.find(cat => cat.category === previouslyEquipped.category)
-        ?.items.find(i => i.id === previouslyEquipped.idItem)?.name || "Objeto desconocido";
+        ?.items.find(i => i.id === previouslyEquipped.iditem)?.name || "Objeto desconocido";
       message += ` 🔄 Se ha guardado **${prevName}** en tu inventario.`;
     }
 

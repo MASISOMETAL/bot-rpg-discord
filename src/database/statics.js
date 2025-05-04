@@ -1,71 +1,63 @@
-import { db } from './bd.js';
+import { client } from './bd.js';
 
 export async function actualizarEstadisticas(userId, campo, cantidad) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `INSERT INTO statistics (user_id, ${campo}) VALUES (?, ?)
-      ON CONFLICT(user_id) DO UPDATE SET ${campo} = ${campo} + ?`,
-      [userId, cantidad, cantidad],
-      function (err) {
-        if (err) {
-          console.error(`❌ Error al actualizar estadísticas en ${campo}:`, err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = `
+      INSERT INTO statistics (user_id, ${campo}) VALUES ($1, $2)
+      ON CONFLICT (user_id) DO UPDATE SET ${campo} = statistics.${campo} + EXCLUDED.${campo}
+    `;
+    const values = [userId, cantidad];
+
+    await client.query(query, values);
+
+    return true;
+  } catch (err) {
+    console.error(`❌ Error al actualizar estadísticas en ${campo}:`, err);
+    throw err;
+  }
 }
 
 export async function getStatisticsByUserId(userId) {
-  return new Promise((resolve, reject) => {
-    db.get(
-      "SELECT * FROM statistics WHERE user_id = ?",
-      [userId],
-      function (err, row) {
-        if (err) {
-          console.error("❌ Error al obtener estadísticas:", err);
-          return reject(err);
-        }
-        resolve(row || { monstersDefeated: 0, totalDamage: 0 });
-      }
-    );
-  });
-}
+  try {
+    const query = "SELECT * FROM statistics WHERE user_id = $1";
+    const values = [userId];
 
+    const result = await client.query(query, values);
+    return result.rows[0] || { monstersdefeated: 0, totaldamage: 0 };
+  } catch (err) {
+    console.error("❌ Error al obtener estadísticas:", err);
+    throw err;
+  }
+}
 
 // Tiempos
 
 export async function actualizarTiempo(userId, campo) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `INSERT INTO timers (user_id, ${campo}) VALUES (?, ?)
-      ON CONFLICT(user_id) DO UPDATE SET ${campo} = ?`,
-      [userId, Date.now(), Date.now()],
-      function (err) {
-        if (err) {
-          console.error(`❌ Error al actualizar ${campo}:`, err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = `
+      INSERT INTO timers (user_id, ${campo}) VALUES ($1, $2)
+      ON CONFLICT (user_id) DO UPDATE SET ${campo} = EXCLUDED.${campo}
+    `;
+    const values = [userId, Date.now()];
+
+    await client.query(query, values);
+
+    return true;
+  } catch (err) {
+    console.error(`❌ Error al actualizar ${campo}:`, err);
+    throw err;
+  }
 }
 
 export async function obtenerTiempo(userId, campo) {
-  return new Promise((resolve, reject) => {
-    db.get(
-      `SELECT ${campo} FROM timers WHERE user_id = ?`,
-      [userId],
-      function (err, row) {
-        if (err) {
-          console.error(`❌ Error al obtener ${campo}:`, err);
-          return reject(err);
-        }
-        resolve(row ? row[campo] : 0);
-      }
-    );
-  });
-}
+  try {
+    const query = `SELECT ${campo} FROM timers WHERE user_id = $1`;
+    const values = [userId];
 
+    const result = await client.query(query, values);
+    return result.rows[0]?.[campo] || 0;
+  } catch (err) {
+    console.error(`❌ Error al obtener ${campo}:`, err);
+    throw err;
+  }
+}

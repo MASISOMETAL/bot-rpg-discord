@@ -36,17 +36,18 @@ export default {
         .addFields(
           { name: "", value: `❤️ HP: **${monstruoActivo.hp}** / ${monstruoData.stats.hp}`, inline: true },
           { name: "", value: ``, inline: false },
-          { name: "", value: `⚔️ Atk. físico: **${monstruoData.stats.atkFisico}**`, inline: true },
-          { name: "", value: `🛡️ Def. física: **${monstruoData.stats.defFisica}**`, inline: true },
+          { name: "", value: `⚔️ Atk. físico: **${monstruoData.stats.atkfisico}**`, inline: true },
+          { name: "", value: `🛡️ Def. física: **${monstruoData.stats.deffisica}**`, inline: true },
           { name: "", value: ``, inline: false },
-          { name: "", value: `🔥 Atk. mágico: **${monstruoData.stats.atkMagico}**`, inline: true },
-          { name: "", value: `🔰 Def. mágica: **${monstruoData.stats.defMagica}**`, inline: true },
+          { name: "", value: `🔥 Atk. mágico: **${monstruoData.stats.atkmagico}**`, inline: true },
+          { name: "", value: `🔰 Def. mágica: **${monstruoData.stats.defmagica}**`, inline: true },
           { name: "", value: ``, inline: false },
-          { name: "", value: `🎯 Precisión: **${monstruoData.stats.presicion}**`, inline: true },
+          { name: "", value: `🎯 Precisión: **${monstruoData.stats.precision}**`, inline: true },
           { name: "", value: `🌀 Evasión: **${monstruoData.stats.evasion}**`, inline: true },
           { name: "", value: ``, inline: false },
           { name: "", value: `🧬 Elemento: **${monstruoActivo.element}**`, inline: false }
-        );
+        )
+        .setThumbnail(monstruoData.image)
 
       return interaction.reply({ embeds: [monsterEmbed] });
     }

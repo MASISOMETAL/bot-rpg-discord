@@ -28,8 +28,8 @@ export default {
       .setTitle(`📊 Estadísticas de ${interaction.user.username}`)
       .setDescription("Aquí puedes ver tu progreso en el juego.")
       .addFields(
-        { name: "💀 Monstruos derrotados", value: `${stats.monstersDefeated}`, inline: true },
-        { name: "⚔️ Daño total causado", value: `${stats.totalDamage}`, inline: true }
+        { name: "", value: `💀 Monstruos derrotados: ${stats.monstersdefeated}`, inline: false },
+        { name: "", value: `⚔️ Daño total causado: ${stats.totaldamage}`, inline: false }
       )
       .setThumbnail(interaction.user.displayAvatarURL());
 

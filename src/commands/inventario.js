@@ -20,7 +20,7 @@ export default {
       });
     }
 
-    const inventory = await getInventoryItems(userId);
+    const inventory = await getInventoryItems(userId);       
 
     if (inventory.length === 0) {
       return interaction.reply({ content: "❌ No tienes objetos en tu inventario.", flags: MessageFlags.Ephemeral });
@@ -40,9 +40,9 @@ export default {
         .setTitle("🎒 Inventario")
         .setDescription(`Página ${page + 1} de ${totalPages}`)
         .addFields(
-          ...pageItems.map(item => {
+          ...pageItems.map(item => {            
             const foundItem = itemList.find(cat => cat.category === item.category)
-                                      ?.items.find(i => i.id === item.idItem);
+                                      ?.items.find(i => i.id === item.iditem);
             return {
               name: ``,
               value: `ID ${item.item_order} - 🔹 ${foundItem ? foundItem.name : "❌ No encontrado"}`,

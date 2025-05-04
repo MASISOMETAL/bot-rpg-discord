@@ -1,137 +1,163 @@
-import { db } from "./bd.js";
+import { client } from "./bd.js";
 
 export async function setMonsterChannel(serverId, channelId) {
-  return new Promise((resolve, reject) => {
-    db.run(`
+  try {
+    const query = `
       INSERT INTO monster_channels (server_id, channel_id) 
-      VALUES (?, ?) 
-      ON CONFLICT(server_id) DO UPDATE SET channel_id = excluded.channel_id
-    `, [serverId, channelId], (err) => {
-      if (err) {
-        console.error("❌ Error al registrar el canal:", err.message);
-        reject(false);
-      } else {
-        resolve(true);
-      }
-    });
-  });
+      VALUES ($1, $2) 
+      ON CONFLICT (server_id) DO UPDATE SET channel_id = EXCLUDED.channel_id
+    `;
+    const values = [serverId, channelId];
+
+    await client.query(query, values);
+    return true;
+  } catch (err) {
+    console.error("❌ Error al registrar el canal:", err);
+    throw err;
+  }
 }
 
 export async function verificarCanalMonstruo(serverId) {
-  return new Promise((resolve, reject) => {
-    db.get(`SELECT channel_id FROM monster_channels WHERE server_id = ?`, [serverId], (err, row) => {
-      if (err) return reject(err);
-      resolve(row ? row.channel_id : null);
-    });
-  });
+  try {
+    const query = "SELECT channel_id FROM monster_channels WHERE server_id = $1";
+    const values = [serverId];
+
+    const result = await client.query(query, values);
+    return result.rows[0]?.channel_id || null;
+  } catch (err) {
+    console.error("❌ Error al verificar canal de monstruos:", err);
+    throw err;
+  }
 }
 
 export async function incrementarMensaje(serverId) {
-  return new Promise((resolve, reject) => {
-    db.run(`
-      INSERT INTO message_count (server_id, count) VALUES (?, 1)
-      ON CONFLICT(server_id) DO UPDATE SET count = count + 1;
-    `, [serverId], (err) => {
-      if (err) {
-        console.error("❌ Error al incrementar el contador:", err.message);
-        return reject(err);
-      }
-      resolve();
-    });
-  });
+  try {
+    const query = `
+      INSERT INTO message_count (server_id, count) 
+      VALUES ($1, 1)
+      ON CONFLICT (server_id) DO UPDATE SET count = message_count.count + 1
+    `;
+    const values = [serverId];
+
+    await client.query(query, values);
+    return true;
+  } catch (err) {
+    console.error("❌ Error al incrementar el contador:", err);
+    throw err;
+  }
 }
 
-
 export async function obtenerMensajeCount(serverId) {
-  return new Promise((resolve, reject) => {
-    db.get(`SELECT count FROM message_count WHERE server_id = ?`, [serverId], (err, row) => {
-      if (err) return reject(err);
-      resolve(row ? row.count : 0);
-    });
-  });
+  try {
+    const query = "SELECT count FROM message_count WHERE server_id = $1";
+    const values = [serverId];
+
+    const result = await client.query(query, values);
+    return result.rows[0]?.count || 0;
+  } catch (err) {
+    console.error("❌ Error al obtener contador de mensajes:", err);
+    throw err;
+  }
 }
 
 export async function reiniciarMensajeCount(serverId) {
-  return new Promise((resolve, reject) => {
-    db.run(`UPDATE message_count SET count = 0 WHERE server_id = ?`, [serverId], (err) => {
-      if (err) return reject(err);
-      resolve();
-    });
-  });
+  try {
+    const query = "UPDATE message_count SET count = 0 WHERE server_id = $1";
+    const values = [serverId];
+
+    await client.query(query, values);
+    return true;
+  } catch (err) {
+    console.error("❌ Error al reiniciar contador de mensajes:", err);
+    throw err;
+  }
 }
 
 // Monstruo
 
 export async function agregarMonstruoActivo(serverId, monsterId, hp, element) {
-  return new Promise((resolve, reject) => {
-    db.run(`
+  try {
+    const query = `
       INSERT INTO active_monsters (server_id, monster_id, hp, element) 
-      VALUES (?, ?, ?, ?);
-    `, [serverId, monsterId, hp, element], (err) => {
-      if (err) return reject(err);
-      resolve();
-    });
-  });
+      VALUES ($1, $2, $3, $4)
+    `;
+    const values = [serverId, monsterId, hp, element];
+
+    await client.query(query, values);
+    return true;
+  } catch (err) {
+    console.error("❌ Error al agregar monstruo:", err);
+    throw err;
+  }
 }
 
 export async function verificarMonstruoActivo(serverId, monsterId) {
-  return new Promise((resolve, reject) => {
-    db.get(`
-      SELECT id FROM active_monsters 
-      WHERE server_id = ? AND monster_id = ?;
-    `, [serverId, monsterId], (err, row) => {
-      if (err) return reject(err);
-      resolve(row ? true : false);
-    });
-  });
+  try {
+    const query = "SELECT id FROM active_monsters WHERE server_id = $1 AND monster_id = $2";
+    const values = [serverId, monsterId];
+
+    const result = await client.query(query, values);
+    return result.rows.length > 0;
+  } catch (err) {
+    console.error("❌ Error al verificar monstruo activo:", err);
+    throw err;
+  }
 }
 
 export async function obtenerMonstruosActivos(serverId) {
-  return new Promise((resolve, reject) => {
-    db.all(`SELECT monster_id, hp FROM active_monsters WHERE server_id = ?`, [serverId], (err, rows) => {
-      if (err) return reject(err);
-      resolve(rows);
-    });
-  });
+  try {
+    const query = `
+      SELECT monster_id, hp 
+      FROM active_monsters 
+      WHERE server_id = $1
+    `;
+    const values = [serverId];
+
+    const result = await client.query(query, values);
+    return result.rows; // 🔹 Devuelve lista de monstruos activos
+  } catch (err) {
+    console.error("❌ Error al obtener monstruos activos:", err);
+    throw err;
+  }
 }
 
+
 export async function obtenerDetallesMonstruo(serverId, monsterId) {
-  return new Promise((resolve, reject) => {
-    db.get(`SELECT monster_id, hp, element FROM active_monsters WHERE server_id = ? AND monster_id = ?`, [serverId, monsterId], (err, row) => {
-      if (err) return reject(err);
-      resolve(row || null);
-    });
-  });
+  try {
+    const query = "SELECT monster_id, hp, element FROM active_monsters WHERE server_id = $1 AND monster_id = $2";
+    const values = [serverId, monsterId];
+
+    const result = await client.query(query, values);
+    return result.rows[0] || null;
+  } catch (err) {
+    console.error("❌ Error al obtener detalles del monstruo:", err);
+    throw err;
+  }
 }
 
 export async function actualizarHPMonstruo(serverId, monsterId, newHP) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `UPDATE active_monsters SET hp = ? WHERE server_id = ? AND monster_id = ?`,
-      [newHP, serverId, monsterId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al actualizar HP del monstruo:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = "UPDATE active_monsters SET hp = $1 WHERE server_id = $2 AND monster_id = $3";
+    const values = [newHP, serverId, monsterId];
+
+    await client.query(query, values);
+    return true;
+  } catch (err) {
+    console.error("❌ Error al actualizar HP del monstruo:", err);
+    throw err;
+  }
 }
 
 export async function eliminarMonstruo(serverId, monsterId) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `DELETE FROM active_monsters WHERE server_id = ? AND monster_id = ? AND hp <= 0`,
-      [serverId, monsterId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al eliminar el monstruo:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = "DELETE FROM active_monsters WHERE server_id = $1 AND monster_id = $2 AND hp <= 0";
+    const values = [serverId, monsterId];
+
+    await client.query(query, values);
+    return true;
+  } catch (err) {
+    console.error("❌ Error al eliminar monstruo:", err);
+    throw err;
+  }
 }
+

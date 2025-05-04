@@ -25,6 +25,7 @@ export default {
         .setRequired(true)),
 
   async execute(interaction) {
+    await interaction.deferReply();
     const userId = interaction.user.id;
     const serverId = interaction.guild.id;
     const monster_id = interaction.options.getInteger('monster_id');
@@ -33,24 +34,24 @@ export default {
     // 🔹 Obtener datos del jugador
     const character = await getCharacterByUserId(userId);
     if (!character) {
-      return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
+      return interaction.editReply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
-    const tiempoUltimaRegen = await obtenerTiempo(userId, "lastRegen");
+    const tiempoUltimaRegen = await obtenerTiempo(userId, "lastregen");
     if (Date.now() - tiempoUltimaRegen >= cooldownRestoreHP) {
       await regenerarRecursos(userId);
-      await actualizarTiempo(userId, "lastRegen");
+      await actualizarTiempo(userId, "lastregen");
     }
 
     if (character.hp <= 0) {
-      return interaction.reply({ content: "❌ Estás fuera de combate. Debes esperar a recuperar vida o usar una curación antes de atacar nuevamente.", flags: MessageFlags.Ephemeral });
+      return interaction.editReply({ content: "❌ Estás fuera de combate. Debes esperar a recuperar vida o usar una curación antes de atacar nuevamente.", flags: MessageFlags.Ephemeral });
     }
 
-    const tiempoUltimoAtaque = await obtenerTiempo(userId, "lastAttack");
+    const tiempoUltimoAtaque = await obtenerTiempo(userId, "lastattack");
     const tiempoRestante = Math.ceil((cooldownAttack - (Date.now() - tiempoUltimoAtaque)) / 1000); // 🔹 Calculamos los segundos restantes
 
     if (tiempoRestante > 0) {
-      return interaction.reply({
+      return interaction.editReply({
         content: `❌ Debes esperar 90 segundos antes de volver a atacar, quedan **${tiempoRestante}** segundos.`,
         flags: MessageFlags.Ephemeral
       });
@@ -59,7 +60,7 @@ export default {
     // 🔹 Verificar que el monstruo existe y está activo
     const monstruoDB = await obtenerDetallesMonstruo(serverId, monster_id);
     if (!monstruoDB) {
-      return interaction.reply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
+      return interaction.editReply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
     }
 
     const monstruoBase = monsters.find(m => m.id === monstruoDB.monster_id);
@@ -70,7 +71,7 @@ export default {
     const habilidad = habilidadesDisponibles.find(skill => skill.id === skillId);
 
     if (!habilidad) {
-      return interaction.reply({ content: "❌ No puedes usar esa habilidad, no la has desbloqueado o no existe.", flags: MessageFlags.Ephemeral });
+      return interaction.editReply({ content: "❌ No puedes usar esa habilidad, no la has desbloqueado o no existe.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Espacio para los chequeos antes del cálculo de daño
@@ -82,7 +83,7 @@ export default {
     // 🔹 Cálculo de daño preliminar
 
     let atacante = {
-      ...character
+      ...character,
     }
 
     let defensor = {
@@ -97,9 +98,9 @@ export default {
     // 🔹 Actualizar HP del monstruo en la base de datos
     await actualizarHPMonstruo(serverId, monstruoBase.id, newHP);
     // 🔹 Guardamos el daño realizado en estadisticas
-    await actualizarEstadisticas(userId, "totalDamage", damage.daño); // Daño causado
+    await actualizarEstadisticas(userId, "totaldamage", damage.daño); // Daño causado
     // 🔹 Actualizarmos el tiempo para esperar 90 segundos
-    await actualizarTiempo(userId, "lastAttack"); // Actualiza el momento del ataque
+    await actualizarTiempo(userId, "lastattack"); // Actualiza el momento del ataque
     // 🔹 Vamos almacenando el daño para luego poder dar una recompensa
     await registrarAtaque(serverId, monstruoBase.id, userId, damage.daño);
 
@@ -126,7 +127,12 @@ export default {
       // actualizar hp del personaje
       await actualizarHPPersonaje(userId, newHP)
 
-      return interaction.reply({ content: `⚔️ Atacaste a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}. ¡El monstruo contraataco, ${damageMob.mensaje} con daño ${habilidadMob.type}!` });
+      const normalizeHabilidadType = {
+        physical: "fisico",
+        magical: "mágico"
+      }
+
+      return interaction.editReply({ content: `⚔️ Atacaste a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}. ¡El monstruo contraataco, ${damageMob.mensaje} con daño ${normalizeHabilidadType[habilidadMob.type]}!` });
     } else {
       // 🔹 Si el monstruo muere
 
@@ -150,12 +156,12 @@ export default {
         const oroGanado = Math.round(total_damage * 0.05 * ajusteRecompensa); // 5% de recompensa
         const xpGanado = Math.round(total_damage * 0.01 * ajusteRecompensa); // 1% de recompensa
 
-        await actualizarEstadisticas(userId, "monstersDefeated", 1); // Monstruo eliminado
+        await actualizarEstadisticas(userId, "monstersdefeated", 1); // Monstruo eliminado
         await actualizarRecompensas(user_id, oroGanado, xpGanado, interaction);
 
         // 🔹 Verificar si el usuario hizo más del 20% del daño total
         const porcentajeDanio = (total_damage / monstruoBase.hp) * 100;
-        let mensajeRecompensa = `💀 **El monstruo ${monstruoBase.name} ha sido derrotado!** 🎉\nHas ganado **${oroGanado} oro** y **${xpGanado} XP** por tu participación en la batalla.`;
+        let mensajeRecompensa = `💀 El monstruo **${monstruoBase.name}** ha sido derrotado! 🎉\nHas ganado **${oroGanado} oro** y **${xpGanado} XP** por tu participación en la batalla.`;
 
         if (porcentajeDanio >= 20) {
           // 🔹 Definir si el drop sucede con un 30% de probabilidad
@@ -182,8 +188,7 @@ export default {
       }
 
       await limpiarRegistroCombate(serverId, monster_id); // 🔥 Limpiar registros
-      console.log("🔹 Recompensas calculadas:", recompensas);
-      return interaction.reply({ content: `💀 Has derrotado a **${monstruoBase.name}** con **${habilidad.name}**! 🎉` });
+      return interaction.editReply({ content: `💀 Has derrotado a **${monstruoBase.name}** con **${habilidad.name}**! 🎉` });
     }
   }
 };

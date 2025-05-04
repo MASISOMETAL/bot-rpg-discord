@@ -47,14 +47,14 @@ export default {
 
     // 🔹 Buscamos el ítem en `itemList`
     const itemData = itemList.find(cat => cat.category === equippedItem.category)
-      ?.items.find(i => i.id === equippedItem.idItem);
+      ?.items.find(i => i.id === equippedItem.iditem);
 
     if (!itemData) {
       return interaction.reply({ content: "❌ No se encontró información sobre el objeto. Contacta a un administrador.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Movemos el ítem al inventario
-    await addItemToInventory(userId, equippedItem.idItem, equippedItem.category);
+    await addItemToInventory(userId, equippedItem.iditem, equippedItem.category);
 
     // 🔹 Modificar los stats del usuario
     await modificarStatsPersonaje(userId, itemData.stats, "restar")

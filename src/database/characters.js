@@ -1,167 +1,193 @@
-import { db } from './bd.js';
+import { client } from './bd.js';
 
 // 🔹 Guarda el personaje sin validaciones
-async function createCharacter(characterData) {
+export async function createCharacter(characterData) {
   const {
-    user_id, name, race, nivel, xp, hpMax, hp, mana, manaMax,
-    atkFisico, defFisica, atkMagico, defMagica,
-    presicion, evasion, gold, elemento
+    user_id, name, race, nivel = 1, xp = 0, hpmax, hp, mana, manamax,
+    atkfisico, deffisica, atkmagico, defmagica,
+    precision, evasion, gold = 100, elemento
   } = characterData;
 
-  return new Promise((resolve, reject) => {
-    db.run(`
-      INSERT INTO characters (user_id, name, race, nivel, xp, hp, hpMax, mana, manaMax, atkFisico, defFisica, atkMagico, defMagica, presicion, evasion, gold, elemento)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `, [user_id, name, race, nivel, xp, hp, hpMax, mana, manaMax, atkFisico, defFisica, atkMagico, defMagica, presicion, evasion, gold, elemento], function (err) {
-      if (err) reject(err);
-      else resolve(true);
-    });
-  });
+  try {
+    const query = `
+      INSERT INTO characters 
+      (user_id, name, race, nivel, xp, hp, hpmax, mana, manamax, atkfisico, deffisica, atkmagico, defmagica, precision, evasion, gold, elemento) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
+      RETURNING *;
+    `;
+
+    const values = [
+      user_id, name, race, nivel, xp, hp, hpmax, mana, manamax,
+      atkfisico, deffisica, atkmagico, defmagica,
+      precision, evasion, gold, elemento
+    ];
+
+    const result = await client.query(query, values);
+
+    return result.rows[0]; // Devuelve el personaje recién creado
+  } catch (err) {
+    console.error("❌ Error al crear personaje:", err);
+    throw err; // Propaga el error para manejarlo en la llamada
+  }
 }
+
 
 // 🔹 Obtiene el personaje si existe
-async function getCharacterByUserId(userId) {
-  return new Promise((resolve, reject) => {
-    db.get("SELECT * FROM characters WHERE user_id = ?", [userId], (err, row) => {
-      if (err) reject(err);
-      else resolve(row);
-    });
-  });
+export async function getCharacterByUserId(userId) {
+  try {
+    const query = "SELECT * FROM characters WHERE user_id = $1";
+    const values = [userId];
+
+    const result = await client.query(query, values);
+    return result.rows[0] || null; // 🔹 Devuelve el personaje si existe, o `null` si no hay resultado
+  } catch (err) {
+    console.error("❌ Error al obtener el personaje:", err);
+    throw err; // 🔹 Rechaza el error para manejarlo en el llamado de la función
+  }
 }
 
-async function updateCharacterGold(userId, newGoldAmount) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `UPDATE characters SET gold = ? WHERE user_id = ?`,
-      [newGoldAmount, userId],
-      function (err) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      }
-    );
-  });
+
+export async function updateCharacterGold(userId, newGoldAmount) {
+  try {
+    const query = "UPDATE characters SET gold = $1 WHERE user_id = $2";
+    const values = [newGoldAmount, userId];
+
+    await client.query(query, values);
+
+    return true; // Devuelve `true` si la actualización fue exitosa
+  } catch (err) {
+    console.error("❌ Error al actualizar el oro del personaje:", err);
+    throw err; // Propaga el error para manejarlo en la llamada de la función
+  }
 }
 
-export { createCharacter, getCharacterByUserId, updateCharacterGold };
 
 export async function obtenerNivelUsuario(userId) {
-  return new Promise((resolve, reject) => {
-    db.get(`SELECT nivel FROM characters WHERE user_id = ?`, [userId], (err, row) => {
-      if (err) return reject(err);
-      resolve(row ? row.nivel : null); // 🔹 Si el usuario no tiene personaje, devuelve `null`
-    });
-  });
+  try {
+    const query = "SELECT nivel FROM characters WHERE user_id = $1";
+    const values = [userId];
+
+    const result = await client.query(query, values);
+    return result.rows[0]?.nivel || null; // 🔹 Si el usuario no tiene personaje, devuelve `null`
+  } catch (err) {
+    console.error("❌ Error al obtener el nivel del usuario:", err);
+    throw err; // 🔹 Propaga el error para manejarlo en la llamada de la función
+  }
 }
+
 
 export async function actualizarStat(userId, stat, incremento, cantidad) {
-  let query = `UPDATE characters SET ${stat} = ${stat} + ?, statPoints = statPoints - ?`;
+  try {
+    // 🔹 Base de la consulta UPDATE
+    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statPoints = statPoints - $2`;
 
-  if (stat === "hp") {
-    query += `, hpMax = hpMax + ?`;
-  } else if (stat === "mana") {
-    query += `, manaMax = manaMax + ?`;
+    // 🔹 Ajuste de hpmax y manamax si aplica
+    const values = [incremento, cantidad, userId];
+    if (stat === "hp") {
+      query += `, hpmax = hpmax + $3`;
+      values.splice(2, 0, incremento); // Inserta el incremento en la posición correcta
+    } else if (stat === "mana") {
+      query += `, manamax = manamax + $3`;
+      values.splice(2, 0, incremento);
+    }
+
+    query += ` WHERE user_id = $${values.length}`;
+
+    await client.query(query, values);
+
+    return true; // Devuelve `true` si la actualización fue exitosa
+  } catch (err) {
+    console.error("❌ Error al actualizar stat:", err);
+    throw err; // Propaga el error para manejarlo en la llamada de la función
   }
-
-  query += ` WHERE user_id = ?`;
-
-  return new Promise((resolve, reject) => {
-    db.run(
-      query,
-      stat === "hp" || stat === "mana" ? [incremento, cantidad, incremento, userId] : [incremento, cantidad, userId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al asignar puntos:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
 }
 
-
-
 export async function regenerarRecursos(userId) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `UPDATE characters 
-      SET hp = MIN(hpMax, hp + 10), 
-          mana = MIN(manaMax, mana + 10) 
-      WHERE user_id = ?`,
-      [userId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al regenerar HP y Mana:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = `
+      UPDATE characters 
+      SET hp = LEAST(hpmax, hp + 10), 
+          mana = LEAST(manamax, mana + 10) 
+      WHERE user_id = $1
+    `;
+
+    const values = [userId];
+
+    await client.query(query, values);
+
+    return true; // Devuelve `true` si la actualización fue exitosa
+  } catch (err) {
+    console.error("❌ Error al regenerar HP y Mana:", err);
+    throw err; // Propaga el error para manejarlo en la llamada de la función
+  }
 }
 
 export async function actualizarRecursos(userId, hpRecuperado, manaRecuperado) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `UPDATE characters 
-      SET hp = MIN(hpMax, hp + ?), 
-        mana = MIN(manaMax, mana + ?) 
-      WHERE user_id = ?`,
-      [hpRecuperado, manaRecuperado, userId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al actualizar HP y Mana:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = `
+      UPDATE characters 
+      SET hp = LEAST(hpmax, hp + $1), 
+          mana = LEAST(manamax, mana + $2) 
+      WHERE user_id = $3
+    `;
+
+    const values = [hpRecuperado, manaRecuperado, userId];
+
+    await client.query(query, values);
+
+    return true; // 🔹 Devuelve `true` si la actualización fue exitosa
+  } catch (err) {
+    console.error("❌ Error al actualizar HP y Mana:", err);
+    throw err;
+  }
 }
+
 
 // Nueva funcion equipar y desequipar items
 
 export async function modificarStatsPersonaje(userId, stats, operacion) {
-  return new Promise((resolve, reject) => {
+  try {
     const signo = operacion === "sumar" ? "+" : "-";
-    db.run(
-      `UPDATE characters 
-        SET hpMax = hpMax ${signo} ?, manaMax = manaMax ${signo} ?, 
-            atkFisico = atkFisico ${signo} ?, defFisica = defFisica ${signo} ?, 
-            atkMagico = atkMagico ${signo} ?, defMagica = defMagica ${signo} ?, 
-            presicion = presicion ${signo} ?, evasion = evasion ${signo} ?, 
-            hp = MIN(hp, hpMax), -- 🔹 Asegurar que HP no supere hpMax
-            mana = MIN(mana, manaMax) -- 🔹 Asegurar que Mana no supere manaMax
-        WHERE user_id = ?`,
-      [stats.hp || 0, stats.mana || 0, stats.atkFisico || 0, stats.defFisica || 0, stats.atkMagico || 0, stats.defMagica || 0, stats.presicion || 0, stats.evasion || 0, userId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al modificar stats del personaje:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+    const query = `
+      UPDATE characters 
+      SET hpmax = hpmax ${signo} $1, manamax = manamax ${signo} $2, 
+          atkfisico = atkfisico ${signo} $3, deffisica = deffisica ${signo} $4, 
+          atkmagico = atkmagico ${signo} $5, defmagica = defmagica ${signo} $6, 
+          precision = precision ${signo} $7, evasion = evasion ${signo} $8, 
+          hp = LEAST(hpmax, hp), -- 🔹 Asegurar que HP no supere hpmax
+          mana = LEAST(manamax, mana) -- 🔹 Asegurar que Mana no supere manamax
+      WHERE user_id = $9
+    `;
+
+    const values = [
+      stats.hp || 0, stats.mana || 0, stats.atkfisico || 0, stats.deffisica || 0,
+      stats.atkmagico || 0, stats.defmagica || 0, stats.precision || 0, stats.evasion || 0, userId
+    ];
+
+    await client.query(query, values);
+
+    return true;
+  } catch (err) {
+    console.error("❌ Error al modificar stats del personaje:", err);
+    throw err;
+  }
 }
 
 export async function actualizarHPPersonaje(userId, newHP) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      `UPDATE characters 
-      SET hp = MAX(0, ?) -- 🔹 Asegura que HP nunca sea negativo
-      WHERE user_id = ?`,
-      [newHP, userId],
-      function (err) {
-        if (err) {
-          console.error("❌ Error al actualizar HP del personaje:", err);
-          return reject(err);
-        }
-        resolve();
-      }
-    );
-  });
+  try {
+    const query = `
+      UPDATE characters 
+      SET hp = GREATEST(0, $1) -- 🔹 Asegura que HP nunca sea negativo
+      WHERE user_id = $2
+    `;
+
+    const values = [newHP, userId];
+
+    await client.query(query, values);
+
+    return true;
+  } catch (err) {
+    console.error("❌ Error al actualizar HP del personaje:", err);
+    throw err;
+  }
 }

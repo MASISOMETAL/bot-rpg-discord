@@ -23,10 +23,10 @@ export default {
       });
     }
 
-    const tiempoUltimaRegen = await obtenerTiempo(userId, "lastRegen");
+    const tiempoUltimaRegen = await obtenerTiempo(userId, "lastregen");
     if (Date.now() - tiempoUltimaRegen >= 60000) {
       await regenerarRecursos(userId);
-      await actualizarTiempo(userId, "lastRegen");
+      await actualizarTiempo(userId, "lastregen");
     }
 
     const characterTemplate = characters.find(char => char.race === character.race);
@@ -34,20 +34,21 @@ export default {
     // 🔹 Buscamos los objetos equipados
     const equippedItems = await getEquippedItems(userId);
 
+
     const bonusStats = {
-      hp: 0, mana: 0, atkFisico: 0, defFisica: 0,
-      atkMagico: 0, defMagica: 0, presicion: 0, evasion: 0
+      hp: 0, mana: 0, atkfisico: 0, deffisica: 0,
+      atkmagico: 0, defmagica: 0, precision: 0, evasion: 0
     };
 
-    equippedItems.forEach(({ idItem, category }) => {
+    equippedItems.forEach(({ iditem, category }) => {
       const itemData = itemList.find(cat => cat.category === category)
-        ?.items.find(i => i.id === idItem);
+        ?.items.find(i => i.id === iditem);
       if (itemData) {
         Object.keys(bonusStats).forEach(stat => {
           bonusStats[stat] += itemData.stats[stat] || 0;
         });
       }
-    });
+    });    
 
     // 🔹 Estructura de los stats con bonus
     const formatStat = (base, bonus) => `${base} ${bonus > 0 ? `(+${bonus})` : ""}`;
@@ -61,16 +62,16 @@ export default {
       .addFields(
         { name: "", value: `🧑‍🎤 Clase: **${character.race}**`, inline: false },
         { name: "", value: `🔹 Nivel: **${character.nivel}**`, inline: false },
-        { name: "", value: `❤️ HP: **${formatStat(character.hp, bonusStats.hp)}/${character.hpMax}**`, inline: true },
-        { name: "", value: `🔮 Mana: **${formatStat(character.mana, bonusStats.mana)}/${character.manaMax}**`, inline: true },
+        { name: "", value: `❤️ HP: **${character.hp}/${character.hpmax}**`, inline: true },
+        { name: "", value: `🔮 Mana: **${character.mana}/${character.manamax}**`, inline: true },
         { name: "", value: ``, inline: false },
-        { name: "", value: `⚔️ Atk. físico: **${formatStat(character.atkFisico, bonusStats.atkFisico)}**`, inline: true },
-        { name: "", value: `🛡️ Def. física: **${formatStat(character.defFisica, bonusStats.defFisica)}**`, inline: true },
+        { name: "", value: `⚔️ Atk. físico: **${formatStat(character.atkfisico, bonusStats.atkfisico)}**`, inline: true },
+        { name: "", value: `🛡️ Def. física: **${formatStat(character.deffisica, bonusStats.deffisica)}**`, inline: true },
         { name: "", value: ``, inline: false },
-        { name: "", value: `🔥 Atk. mágico: **${formatStat(character.atkMagico, bonusStats.atkMagico)}**`, inline: true },
-        { name: "", value: `🔰 Def. mágica: **${formatStat(character.defMagica, bonusStats.defMagica)}**`, inline: true },
+        { name: "", value: `🔥 Atk. mágico: **${formatStat(character.atkmagico, bonusStats.atkmagico)}**`, inline: true },
+        { name: "", value: `🔰 Def. mágica: **${formatStat(character.defmagica, bonusStats.defmagica)}**`, inline: true },
         { name: "", value: ``, inline: false },
-        { name: "", value: `🎯 Precisión: **${formatStat(character.presicion, bonusStats.presicion)}**`, inline: true },
+        { name: "", value: `🎯 Precisión: **${formatStat(character.precision, bonusStats.precision)}**`, inline: true },
         { name: "", value: `🌀 Evasión: **${formatStat(character.evasion, bonusStats.evasion)}**`, inline: true },
         { name: "", value: ``, inline: false },
         { name: "", value: `🔹 Experiencia: **${character.xp} / ${xpRequerida}**`, inline: false },
@@ -93,9 +94,9 @@ export default {
     };
 
     // 🔹 Organizamos los objetos equipados según `category` y `slot`
-    equippedItems.forEach(({ idItem, category, slot }) => {
+    equippedItems.forEach(({ iditem, category, slot }) => {
       const item = itemList.find(cat => cat.category === category)
-        ?.items.find(i => i.id === idItem);
+        ?.items.find(i => i.id === iditem);
       if (item) {
         if (category === "Weapons") {
           equippedSlots.Weapons[slot] = item.name;

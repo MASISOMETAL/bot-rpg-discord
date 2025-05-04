@@ -13,11 +13,11 @@ export default {
         .addChoices(
           { name: 'HP', value: 'hp' },
           { name: 'Mana', value: 'mana' },
-          { name: 'Atk Físico', value: 'atkFisico' },
-          { name: 'Def Física', value: 'defFisica' },
-          { name: 'Atk Mágico', value: 'atkMagico' },
-          { name: 'Def Mágica', value: 'defMagica' },
-          { name: 'Precisión', value: 'presicion' },
+          { name: 'Atk Físico', value: 'atkfisico' },
+          { name: 'Def Física', value: 'deffisica' },
+          { name: 'Atk Mágico', value: 'atkmagico' },
+          { name: 'Def Mágica', value: 'defmagica' },
+          { name: 'Precisión', value: 'precision' },
           { name: 'Evasión', value: 'evasion' }
         ))
     .addIntegerOption(option =>

@@ -1,116 +1,130 @@
-import sqlite3 from "sqlite3";
+import dotenv from "dotenv";
+dotenv.config();
 
-sqlite3.verbose();
-const db = new sqlite3.Database('./src/database/game.db', (err) => {
-  if (err) {
-    console.error("❌ Error al abrir la base de datos:", err.message);
-  } else {
+import { Client } from "pg";
+
+// 🔹 Configuración de la conexión con PostgreSQL en Render
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { mode: "require" }
+});
+
+// 🔹 Conectar a la base de datos
+async function initializeDatabase() {
+  try {
+    await client.connect();
     console.log("✅ Base de datos conectada correctamente.");
+  } catch (err) {
+    console.error("❌ Error al conectar:", err.message);
   }
-});
 
-// 🔹 Creación de tablas
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS characters (
-      user_id TEXT PRIMARY KEY,
-      name TEXT NOT NULL,
-      race TEXT NOT NULL,
-      nivel INTEGER DEFAULT 1,
-      xp INTEGER DEFAULT 0,
-      hp INTEGER NOT NULL,
-      hpMax INTEGER NOT NULL, -- 🔹 Nuevo campo para HP máximo
-      mana INTEGER NOT NULL,
-      manaMax INTEGER NOT NULL, -- 🔹 Nuevo campo para Mana máximo
-      atkFisico INTEGER NOT NULL,
-      defFisica INTEGER NOT NULL,
-      atkMagico INTEGER NOT NULL,
-      defMagica INTEGER NOT NULL,
-      presicion INTEGER NOT NULL,
-      evasion INTEGER NOT NULL,
-      gold INTEGER DEFAULT 100,
-      elemento TEXT DEFAULT NULL,
-      statPoints INTEGER DEFAULT 0
-    )
-  `);
+  // 🔹 Eliminar tablas si existen (se ejecutan por separado)
+  const dropTables = [
+    "DROP TABLE IF EXISTS inventory",
+    "DROP TABLE IF EXISTS equipment",
+    "DROP TABLE IF EXISTS monster_channels",
+    "DROP TABLE IF EXISTS active_monsters",
+    "DROP TABLE IF EXISTS message_count",
+    "DROP TABLE IF EXISTS combat_log",
+    "DROP TABLE IF EXISTS statistics",
+    "DROP TABLE IF EXISTS timers",
+    "DROP TABLE IF EXISTS characters"
+  ];
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS inventory (
-      user_id TEXT NOT NULL,
-      idItem INTEGER NOT NULL,
-      category TEXT NOT NULL,
-      item_order INTEGER NOT NULL,
-      PRIMARY KEY (user_id, item_order),
-      FOREIGN KEY (user_id) REFERENCES characters(user_id),
-      FOREIGN KEY (idItem) REFERENCES items(id)
-    )
-  `);
+  // for (const query of dropTables) {
+  //   await client.query(query);
+  //   console.log(`✅ Tabla eliminada: ${query}`);
+  // }
 
+  // const myquery = `UPDATE characters SET gold = 10000 WHERE user_id = '1016566942267605002'`
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS equipment (
-      user_id TEXT NOT NULL,
-      idItem INTEGER NOT NULL,
-      category TEXT NOT NULL,
-      slot TEXT NOT NULL,
-      PRIMARY KEY (user_id, slot),
-      FOREIGN KEY (user_id) REFERENCES characters(user_id),
-      FOREIGN KEY (idItem) REFERENCES items(id)
-    )
-`);
+  // 🔹 Creación de tablas si no existen
+  const createTablesQuery = `
+  CREATE TABLE IF NOT EXISTS characters (
+    user_id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    race TEXT NOT NULL,
+    nivel INTEGER DEFAULT 1,
+    xp INTEGER DEFAULT 0,
+    hp INTEGER NOT NULL,
+    hpmax INTEGER NOT NULL,
+    mana INTEGER NOT NULL,
+    manamax INTEGER NOT NULL,
+    atkfisico INTEGER NOT NULL,
+    deffisica INTEGER NOT NULL,
+    atkmagico INTEGER NOT NULL,
+    defmagica INTEGER NOT NULL,
+    precision INTEGER NOT NULL,
+    evasion INTEGER NOT NULL,
+    gold INTEGER DEFAULT 100,
+    elemento TEXT DEFAULT NULL,
+    statPoints INTEGER DEFAULT 0
+  );
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS monster_channels (
-      server_id TEXT PRIMARY KEY,
-      channel_id TEXT NOT NULL
-    )
-  `);
+  CREATE TABLE IF NOT EXISTS inventory (
+    user_id TEXT NOT NULL,
+    iditem INTEGER NOT NULL,
+    category TEXT NOT NULL,
+    item_order INTEGER NOT NULL,
+    PRIMARY KEY (user_id, item_order),
+    FOREIGN KEY (user_id) REFERENCES characters(user_id) ON DELETE CASCADE
+  );
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS active_monsters (
-      id INTEGER AUTO_INCREMENT PRIMARY KEY,
-      server_id TEXT NOT NULL, -- 🔹 ID del servidor donde aparece el monstruo
-      monster_id INTEGER NOT NULL, -- 🔹 ID del monstruo, tomado de monsters.js
-      hp INTEGER NOT NULL, -- 🔹 HP restante del monstruo
-      element TEXT NOT NULL, -- Elemento generado automaticamente
-      status TEXT DEFAULT NULL -- 🔹 Estado activo aplicado al monstruo
-    )
-  `);
+  CREATE TABLE IF NOT EXISTS equipment (
+    user_id TEXT NOT NULL,
+    iditem INTEGER NOT NULL,
+    category TEXT NOT NULL,
+    slot TEXT NOT NULL,
+    PRIMARY KEY (user_id, slot),
+    FOREIGN KEY (user_id) REFERENCES characters(user_id) ON DELETE CASCADE
+  );
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS message_count (
-      server_id TEXT PRIMARY KEY,
-      count INTEGER DEFAULT 0
-    )
-  `);
+  CREATE TABLE IF NOT EXISTS monster_channels (
+    server_id TEXT PRIMARY KEY,
+    channel_id TEXT NOT NULL
+  );
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS combat_log (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      server_id TEXT NOT NULL,
-      monster_id INT NOT NULL,
-      user_id TEXT NOT NULL,
-      damage INT NOT NULL
-    )
-  `);
+  CREATE TABLE IF NOT EXISTS active_monsters (
+    id SERIAL PRIMARY KEY,
+    server_id TEXT NOT NULL,
+    monster_id INTEGER NOT NULL,
+    hp INTEGER NOT NULL,
+    element TEXT NOT NULL,
+    status TEXT DEFAULT NULL
+  );
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS statistics (
-      user_id TEXT PRIMARY KEY,
-      monstersDefeated INTEGER DEFAULT 0,
-      totalDamage INTEGER DEFAULT 0
-    )
-  `);
+  CREATE TABLE IF NOT EXISTS message_count (
+    server_id TEXT PRIMARY KEY,
+    count INTEGER DEFAULT 0
+  );
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS timers (
-      user_id TEXT PRIMARY KEY,
-      lastAttack INTEGER DEFAULT 0,
-      lastRegen INTEGER DEFAULT 0
-    )
-  `);
+  CREATE TABLE IF NOT EXISTS combat_log (
+    id SERIAL PRIMARY KEY,
+    server_id TEXT NOT NULL,
+    monster_id INTEGER NOT NULL,
+    user_id TEXT NOT NULL,
+    damage INTEGER NOT NULL
+  );
 
-  console.log("✅ Tablas creadas correctamente.");
-});
+  CREATE TABLE IF NOT EXISTS statistics (
+    user_id TEXT PRIMARY KEY,
+    monstersdefeated INTEGER DEFAULT 0,
+    totaldamage INTEGER DEFAULT 0
+  );
 
-export { db };
+  CREATE TABLE IF NOT EXISTS timers (
+    user_id TEXT PRIMARY KEY,
+    lastattack BIGINT DEFAULT 0,
+    lastregen BIGINT DEFAULT 0
+  );
+`;
+
+  try {
+    await client.query(createTablesQuery);
+    console.log("✅ Tablas creadas correctamente.");
+  } catch (err) {
+    console.error("❌ Error en la creación de tablas:", err.message);
+  }
+}
+// 🔹 Exportar la conexión
+export { client, initializeDatabase };

@@ -60,6 +60,6 @@ export default {
     await deductGold(userId, item.coste);
     await addItemToInventory(userId, item.id, selectedCategory);
 
-    return interaction.reply({ content: `✅ Has comprado **${item.name}** por 💰 ${item.coste} oro.`, flags: MessageFlags.Ephemeral });
+    return interaction.reply({ content: `✅ Has comprado **${item.name}** por 💰 ${item.coste} oro.` });
   }
 };

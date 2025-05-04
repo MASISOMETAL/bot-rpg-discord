@@ -30,7 +30,7 @@ export default {
 
     // 🔹 Validar que el ítem sea consumible
     const categoriaConsumibles = itemList.find(c => c.category === "Consumibles");
-    const itemData = categoriaConsumibles?.items.find(i => i.id === inventarioItem.idItem);
+    const itemData = categoriaConsumibles?.items.find(i => i.id === inventarioItem.iditem);
 
     if (!itemData) {
       return interaction.reply({ content: "❌ No puedes usar este objeto, solo los consumibles pueden ser utilizados.", flags: MessageFlags.Ephemeral });

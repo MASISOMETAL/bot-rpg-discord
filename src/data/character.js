@@ -6,8 +6,8 @@ export const characters = [
     nivel: 1,
     xp: 0,
     stats: {
-      hp: 1500, mana: 100, atkFisico: 110, defFisica: 90,
-      atkMagico: 30, defMagica: 50, presicion: 85, evasion: 75
+      hp: 1200, mana: 100, atkfisico: 110, deffisica: 90,
+      atkmagico: 30, defmagica: 50, precision: 85, evasion: 75
     },
     gold: 300,
     elemento: null,
@@ -20,8 +20,8 @@ export const characters = [
     nivel: 1,
     xp: 0,
     stats: {
-      hp: 1000, mana: 500, atkFisico: 40, defFisica: 50,
-      atkMagico: 120, defMagica: 100, presicion: 90, evasion: 80
+      hp: 850, mana: 500, atkfisico: 40, deffisica: 50,
+      atkmagico: 120, defmagica: 100, precision: 90, evasion: 80
     },
     gold: 300,
     elemento: null,
@@ -34,8 +34,8 @@ export const characters = [
     nivel: 1,
     xp: 0,
     stats: {
-      hp: 1200, mana: 200, atkFisico: 100, defFisica: 70,
-      atkMagico: 50, defMagica: 60, presicion: 95, evasion: 90
+      hp: 1000, mana: 200, atkfisico: 100, deffisica: 70,
+      atkmagico: 50, defmagica: 60, precision: 95, evasion: 90
     },
     gold: 300,
     elemento: null,
@@ -44,7 +44,7 @@ export const characters = [
 ];
 
 export const statMultipliers = {
-  Guerrero: { hp: 15, mana: 5, atkFisico: 3, defFisica: 3, atkMagico: 1, defMagica: 1, presicion: 1, evasion: 1 },
-  Mago: { hp: 7, mana: 15, atkFisico: 1, defFisica: 1, atkMagico: 3, defMagica: 3, presicion: 1, evasion: 1 },
-  Arquero: { hp: 10, mana: 7, atkFisico: 2, defFisica: 2, atkMagico: 2, defMagica: 2, presicion: 2, evasion: 2 }
+  Guerrero: { hp: 15, mana: 5, atkfisico: 3, deffisica: 3, atkmagico: 1, defmagica: 1, precision: 1, evasion: 1 },
+  Mago: { hp: 7, mana: 15, atkfisico: 1, deffisica: 1, atkmagico: 3, defmagica: 3, precision: 1, evasion: 1 },
+  Arquero: { hp: 10, mana: 7, atkfisico: 2, deffisica: 2, atkmagico: 2, defmagica: 2, precision: 2, evasion: 2 }
 };
