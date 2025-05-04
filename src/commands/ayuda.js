@@ -47,6 +47,7 @@ export default {
         description: "Interacciones con monstruos y habilidades.",
         fields: [
           { name: "`/attack [monster id] [skill id]`", value: "Ataca a un monstruo. Actualmente el `skill id` es siempre `1`." },
+          { name: "`/elementos`", value: "Muestra la tabla de debilidad y resistencia de los elementos." },
           { name: "`/mi_skill`", value: "Muestra todas las habilidades que has aprendido." },
           { name: "`/mi_skill [id]`", value: "Muestra detalles de una habilidad específica." },
           { name: "`/monster`", value: "Muestra todos los monstruos activos en el servidor." },
