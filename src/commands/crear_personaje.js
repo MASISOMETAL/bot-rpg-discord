@@ -2,6 +2,7 @@ import { SlashCommandBuilder, EmbedBuilder, MessageFlags } from 'discord.js';
 import { createCharacter, getCharacterByUserId } from '../database/characters.js';
 import { characters } from '../data/character.js';
 import { elements } from '../data/elements.js';
+import { actualizarTiempo } from '../database/statics.js';
 
 export default {
   data: new SlashCommandBuilder()
