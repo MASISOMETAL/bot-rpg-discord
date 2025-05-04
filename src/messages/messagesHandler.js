@@ -18,6 +18,10 @@ export default async function messagesHandler(message) {
 
   const responseChannel = message.guild.channels.cache.get(canalRegistrado);
 
+  const monsterSpawn = seleccionarMonstruoAleatorio(nivelUsuario);
+
+  const { monster, randomElement } = monsterSpawn
+
   // 🔹 Verificar existencia antes de incrementar el contador
   const yaExiste = await verificarMonstruoActivo(serverId, monster.id);
   if (yaExiste) return; // 🔹 Si ya hay uno, no generar otro
@@ -30,9 +34,6 @@ export default async function messagesHandler(message) {
 
   // 🔹 Validar aparición de monstruo
   if (mensajeCount >= maxMessage || (mensajeCount >= minMessage && Math.random() * 100 < porcentajeDeAparicion)) {
-    const monsterSpawn = seleccionarMonstruoAleatorio(nivelUsuario);
-
-    const { monster, randomElement } = monsterSpawn
 
     // 🔹 Embed con información del personaje
     const monsterEmbed = new EmbedBuilder()
@@ -53,7 +54,7 @@ export default async function messagesHandler(message) {
         { name: "", value: ``, inline: false },
         { name: "", value: `🧬 Elemento: **${randomElement}**`, inline: false }
       )
-    .setThumbnail(monster.image);
+      .setThumbnail(monster.image);
 
     await responseChannel.send({ embeds: [monsterEmbed] });
     await agregarMonstruoActivo(serverId, monster.id, monster.stats.hp, randomElement);
