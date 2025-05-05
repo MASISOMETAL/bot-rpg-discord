@@ -192,3 +192,55 @@ export async function actualizarHPPersonaje(userId, newHP) {
     throw err;
   }
 }
+
+// ranking
+
+// src/database/characters.js
+import { client } from './bd.js';
+
+export async function getTopCharacters(limit = 50) {
+  try {
+    const query = `
+      SELECT user_id, name, race, nivel, xp 
+      FROM characters
+      ORDER BY nivel DESC, xp DESC
+      LIMIT $1
+    `;
+    const values = [limit];
+    const { rows } = await client.query(query, values);
+    return rows;
+  } catch (error) {
+    console.error("❌ Error al obtener el ranking:", error);
+    throw error;
+  }
+}
+
+import { client } from './bd.js';
+
+export async function getUserRanking(userId) {
+  try {
+    // Obtenemos el nivel y xp del usuario
+    const characterQuery = `SELECT nivel, xp FROM characters WHERE user_id = $1`;
+    const characterRes = await client.query(characterQuery, [userId]);
+    if (!characterRes.rows.length) {
+      throw new Error("El personaje no se encontró");
+    }
+    const { nivel, xp } = characterRes.rows[0];
+
+    // Contamos cuántos personajes tienen un nivel mayor
+    // o el mismo nivel y mayor xp, lo que significa que están por encima.
+    const rankingQuery = `
+      SELECT COUNT(*) AS count
+      FROM characters
+      WHERE nivel > $1
+        OR (nivel = $1 AND xp > $2)
+    `;
+    const rankingRes = await client.query(rankingQuery, [nivel, xp]);
+    const count = parseInt(rankingRes.rows[0].count, 10);
+    // La posición del usuario será el conteo + 1
+    return count + 1;
+  } catch (error) {
+    console.error("❌ Error al obtener el ranking del usuario:", error);
+    return null;
+  }
+}

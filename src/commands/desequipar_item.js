@@ -27,6 +27,12 @@ export default {
     const userId = interaction.user.id;
     const slot = interaction.options.getString('slot');
 
+    // 🔹 Obtener datos del jugador
+    const character = await getCharacterByUserId(userId);
+    if (!character) {
+      return interaction.editReply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
+    }
+
     // 🔹 Buscamos el ítem equipado en el slot indicado
     const equippedItems = await getEquippedItems(userId);
     const equippedItem = equippedItems.find(item => item.slot === slot);

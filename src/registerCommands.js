@@ -21,6 +21,7 @@ import usar_item from './commands/usar_item.js';
 import mi_skill from './commands/mi_skill.js';
 import ayuda from './commands/ayuda.js';
 import elementos from './commands/elementos.js';
+import rank from './commands/rank.js';
 
 const TOKEN = process.env.TOKEN
 const CLIENT_ID = process.env.CLIENT_ID
@@ -45,6 +46,7 @@ const commands = [
   mi_skill.data.toJSON(),
   ayuda.data.toJSON(),
   elementos.data.toJSON(),
+  rank.data.toJSON(),
 ];
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
