@@ -102,25 +102,26 @@ export async function actualizarStat(userId, stat, incremento, cantidad) {
   }
 }
 
-export async function regenerarRecursos(userId) {
+export async function regenerarRecursos(userId, bloques) {
   try {
+    const cantidadRegen = 25 * bloques; // Regeneración acumulada
+
     const query = `
       UPDATE characters 
-      SET hp = LEAST(hpmax, hp + 25), 
-          mana = LEAST(manamax, mana + 25) 
-      WHERE user_id = $1
+      SET hp = LEAST(hpmax, hp + $1), 
+          mana = LEAST(manamax, mana + $1) 
+      WHERE user_id = $2
     `;
-
-    const values = [userId];
+    const values = [cantidadRegen, userId];
 
     await client.query(query, values);
-
-    return true; // Devuelve `true` si la actualización fue exitosa
+    return true;
   } catch (err) {
     console.error("❌ Error al regenerar HP y Mana:", err);
-    throw err; // Propaga el error para manejarlo en la llamada de la función
+    throw err;
   }
 }
+
 
 export async function actualizarRecursos(userId, hpRecuperado, manaRecuperado) {
   try {

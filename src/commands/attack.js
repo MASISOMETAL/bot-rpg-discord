@@ -38,8 +38,13 @@ export default {
     }
 
     const tiempoUltimaRegen = await obtenerTiempo(userId, "lastregen");
-    if (Date.now() - tiempoUltimaRegen >= cooldownRestoreHP) {
-      await regenerarRecursos(userId);
+    const tiempoTranscurrido = Date.now() - tiempoUltimaRegen;
+
+    const bloquesDeRegen = Math.floor(tiempoTranscurrido / 600000);
+
+    if (bloquesDeRegen > 0) {
+      // 🔹 Aplicamos la regeneración proporcional
+      await regenerarRecursos(userId, bloquesDeRegen);
       await actualizarTiempo(userId, "lastregen");
     }
 
