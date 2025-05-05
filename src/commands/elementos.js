@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import { getCharacterByUserId } from '../database/characters';
+import { getCharacterByUserId } from '../database/characters.js';
 
 export default {
   data: new SlashCommandBuilder()
