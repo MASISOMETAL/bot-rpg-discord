@@ -195,9 +195,6 @@ export async function actualizarHPPersonaje(userId, newHP) {
 
 // ranking
 
-// src/database/characters.js
-import { client } from './bd.js';
-
 export async function getTopCharacters(limit = 50) {
   try {
     const query = `
@@ -214,8 +211,6 @@ export async function getTopCharacters(limit = 50) {
     throw error;
   }
 }
-
-import { client } from './bd.js';
 
 export async function getUserRanking(userId) {
   try {
