@@ -2,7 +2,7 @@ import { SlashCommandBuilder, MessageFlags } from 'discord.js';
 import { getEquippedItems, removeItemFromEquipment } from '../database/equipment.js';
 import { addItemToInventory } from '../database/inventory.js';
 import { itemList } from '../data/items.js';
-import { modificarStatsPersonaje } from '../database/characters.js';
+import { getCharacterByUserId, modificarStatsPersonaje } from '../database/characters.js';
 
 export default {
   data: new SlashCommandBuilder()

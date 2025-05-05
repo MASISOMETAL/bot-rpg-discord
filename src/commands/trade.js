@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, MessageFlags } from 'discord.js';
 import { client } from '../database/bd.js';
 import { iniciarTrade, verificarTradeActivo } from '../database/trades.js';
+import { getCharacterByUserId } from '../database/characters.js';
 
 export default {
   data: new SlashCommandBuilder()

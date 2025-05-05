@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } from 'discord.js';
 import { obtenerMonstruosActivos, obtenerDetallesMonstruo } from '../database/monster.js';
 import { monsters } from '../data/monsters.js';
+import { getCharacterByUserId } from '../database/characters.js';
 
 export default {
   data: new SlashCommandBuilder()
