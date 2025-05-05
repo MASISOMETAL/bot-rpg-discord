@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } from 'discord.js';
-import { getTopCharacters, getUserRanking } from '../database/characters.js';
+import { getCharacterByUserId, getTopCharacters, getUserRanking } from '../database/characters.js';
 
 export default {
   data: new SlashCommandBuilder()
