@@ -84,6 +84,7 @@ export default {
 
     let atacante = {
       ...character,
+      ataca: "Personaje"
     }
 
     let defensor = {
@@ -108,7 +109,8 @@ export default {
     if (newHP > 0) {
       let atacante = {
         ...monstruoBase.stats,
-        nivel: monstruoBase.nivel
+        nivel: monstruoBase.nivel,
+        ataca: "Mob"
       }
 
       let defensor = {

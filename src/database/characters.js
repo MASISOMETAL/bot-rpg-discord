@@ -106,8 +106,8 @@ export async function regenerarRecursos(userId) {
   try {
     const query = `
       UPDATE characters 
-      SET hp = LEAST(hpmax, hp + 10), 
-          mana = LEAST(manamax, mana + 10) 
+      SET hp = LEAST(hpmax, hp + 25), 
+          mana = LEAST(manamax, mana + 25) 
       WHERE user_id = $1
     `;
 

@@ -41,7 +41,7 @@ export function calcularDaño(atacante, defensor, habilidad) {
 
   return {
     daño: Math.round(dañoBase), // sacar el +500
-    mensaje: ` ${critico !== 1 ? "¡Golpe Crítico! " : ""} causaste **${Math.round(dañoBase)}** de daño.`
+    mensaje: ` ${critico !== 1 ? "¡Golpe Crítico! " : ""} ${atacante.ataca === "Personaje" ? "causaste" : "causó"} **${Math.round(dañoBase)}** de daño.`
   };
 }
 
