@@ -9,7 +9,7 @@ export async function checkKitRedemption(userId, kitCode) {
     `;
     const values = [userId, kitCode];
     const { rows } = await client.query(query, values);
-    return rows.length > 0;
+    return rows.length > 0 ? rows[0] : null
   } catch (error) {
     console.error("❌ Error al verificar redención del kit:", error);
     throw error;
