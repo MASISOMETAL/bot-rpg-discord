@@ -15,11 +15,14 @@ export default {
     const serverId = interaction.guild.id;
     const channel = interaction.options.getChannel('canal');
 
-    const success = await setMonsterChannel(serverId, channel.id);
-    if (success) {
-      interaction.reply(`✅ **El canal ${channel} ha sido registrado para la aparición de monstruos.**`);
-    } else {
-      interaction.reply({ content: "❌ Error al registrar el canal.", flags: MessageFlags.Ephemeral });
+    if (!channel) {
+      return interaction.reply({ content: "❌ Debes seleccionar un canal válido. o darle permisos para que el bot lo vea.", flags: MessageFlags.Ephemeral });
     }
+
+    const success = await setMonsterChannel(serverId, channel.id);
+    interaction.reply(success
+      ? `✅ **El canal ${channel} ha sido registrado para la aparición de monstruos.**`
+      : { content: "❌ Error al registrar el canal.", flags: MessageFlags.Ephemeral }
+    );
   }
 };
