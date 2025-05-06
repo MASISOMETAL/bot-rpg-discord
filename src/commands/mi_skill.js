@@ -4,7 +4,7 @@ import { skillsByRace } from '../data/skills.js';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName('mi_habilidades')
+    .setName('mis_habilidades')
     .setDescription('Muestra tus habilidades disponibles según tu nivel.')
     .addIntegerOption(option =>
       option.setName('id')

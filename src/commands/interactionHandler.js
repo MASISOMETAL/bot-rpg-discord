@@ -38,7 +38,7 @@ const commands = {
   asignar_puntos,
   estadisticas,
   usar_item,
-  mi_habilidad: mi_skill,
+  mis_habilidades: mi_skill,
   ayuda,
   elementos,
   rank,

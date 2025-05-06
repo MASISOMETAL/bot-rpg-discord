@@ -47,10 +47,10 @@ export default {
         title: "⚔️ Comandos de Combate",
         description: "Interacciones con monstruos y habilidades.",
         fields: [
-          { name: "`/attack [monster id] [skill id]`", value: "Ataca a un monstruo. Actualmente el `skill id` es siempre `1`." },
+          { name: "`/ataque [monster id] [skill id]`", value: "Ataca a un monstruo. Actualmente el `skill id` es siempre `1`." },
           { name: "`/elementos`", value: "Muestra la tabla de debilidad y resistencia de los elementos." },
-          { name: "`/mi_habilidades`", value: "Muestra todas las habilidades que has aprendido." },
-          { name: "`/mi_habilidades [id]`", value: "Muestra detalles de una habilidad específica." },
+          { name: "`/mis_habilidades`", value: "Muestra todas las habilidades que has aprendido." },
+          { name: "`/mis_habilidades [id]`", value: "Muestra detalles de una habilidad específica." },
           { name: "`/monster`", value: "Muestra todos los monstruos activos en el servidor." },
           { name: "`/monster [id]`", value: "Muestra detalles de un monstruo específico." }
         ]
