@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits } from 'discord.js';
+import { SlashCommandBuilder, PermissionFlagsBits, MessageFlags } from 'discord.js';
 import { setMonsterChannel } from '../database/monster.js';
 
 export default {
@@ -19,7 +19,7 @@ export default {
     if (success) {
       interaction.reply(`✅ **El canal ${channel} ha sido registrado para la aparición de monstruos.**`);
     } else {
-      interaction.reply({ content: "❌ Error al registrar el canal.", ephemeral: true });
+      interaction.reply({ content: "❌ Error al registrar el canal.", flags: MessageFlags.Ephemeral });
     }
   }
 };

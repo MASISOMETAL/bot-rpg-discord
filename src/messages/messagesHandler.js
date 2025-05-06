@@ -7,9 +7,9 @@ import { maxMessage, minMessage, porcentajeDeAparicion } from '../../configs.js'
 export default async function messagesHandler(message) {
   if (message.author.bot) return; // Ignorar mensajes de bots
 
-  const serverId = message.guild.id;
-  const channelId = message.channel.id;
-  const userId = message.author.id;
+  const serverId = message.guild?.id;
+  const channelId = message.channel?.id;
+  const userId = message.author?.id;
   const nivelUsuario = await obtenerNivelUsuario(userId);
 
   // 🔹 Verificar si el canal donde se escribió está registrado
@@ -23,7 +23,7 @@ export default async function messagesHandler(message) {
   const { monster, randomElement } = monsterSpawn
 
   // 🔹 Verificar existencia antes de incrementar el contador
-  const yaExiste = await verificarMonstruoActivo(serverId, monster.id);
+  const yaExiste = await verificarMonstruoActivo(serverId, monster?.id);
   if (yaExiste) return; // 🔹 Si ya hay uno, no generar otro
 
   // 🔹 Incrementar contador de mensajes
@@ -47,7 +47,7 @@ export default async function messagesHandler(message) {
     // 🔹 Embed con información del personaje
     const monsterEmbed = new EmbedBuilder()
       .setColor('#0099ff')
-      .setTitle(`📜 ${monster.name} - ID: ${monster.id}`)
+      .setTitle(`📜 ${monster.name} - ID: ${monster?.id}`)
       .setDescription(`Un monstruo de **nivel ${monster.nivel}** ha aparecido!.`)
       .addFields(
         { name: "", value: `❤️ HP: **${monster.stats.hp}**`, inline: true },
@@ -66,7 +66,7 @@ export default async function messagesHandler(message) {
       .setThumbnail(monster.image);
 
     await responseChannel.send({ embeds: [monsterEmbed] });
-    await agregarMonstruoActivo(serverId, monster.id, monster.stats.hp, randomElement);
+    await agregarMonstruoActivo(serverId, monster?.id, monster.stats.hp, randomElement);
     await reiniciarMensajeCount(serverId);
 
     // 🔹 Reiniciamos contador

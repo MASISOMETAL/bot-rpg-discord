@@ -103,8 +103,8 @@ export default {
       Gloves: "Ninguno",
       Boots: "Ninguno",
       Weapons: {
-        mainHand: "Ninguno",
-        offHand: "Ninguno"
+        mainHand: "Puño",
+        offHand: "Puño"
       }
     };
 

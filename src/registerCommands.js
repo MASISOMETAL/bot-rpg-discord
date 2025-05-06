@@ -1,5 +1,5 @@
 // Link = https://discord.com/oauth2/authorize?client_id=1366544486477332563&permissions=8&scope=bot%20applications.commands
-
+// Link sin admin: https://discord.com/oauth2/authorize?client_id=1366544486477332563&permissions=84992&integration_type=0&scope=bot+applications.commands
 import { REST, Routes } from 'discord.js';
 import 'dotenv/config'
 import pingCommand from './commands/ping.js';

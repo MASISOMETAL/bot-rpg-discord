@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import { SlashCommandBuilder, EmbedBuilder, MessageFlags } from 'discord.js';
 import { getCharacterByUserId } from '../database/characters.js';
 
 export default {
@@ -22,6 +22,6 @@ export default {
       .setImage("https://i.ibb.co/JR0rk0xQ/elementos.png")
       .setColor(0x3498db);
 
-    await interaction.reply({ embeds: [embed] });
+    await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
   }
 };

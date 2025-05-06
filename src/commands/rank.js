@@ -72,7 +72,7 @@ export default {
       const response = await interaction.reply({
         embeds: [generateEmbed(currentPage)],
         components: [generateButtons(currentPage)],
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
       });
 
       // Creamos el colector para los botones, restringiendo la interacción al usuario que ejecutó el comando
