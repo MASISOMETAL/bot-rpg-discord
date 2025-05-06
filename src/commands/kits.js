@@ -57,7 +57,7 @@ export default {
     const yaCanjeado = await checkKitRedemption(userId, codigo);
     if (yaCanjeado) {
       return interaction.reply({
-        content: `❌ Ya canjeaste el kit ${codigo} el ${redemption.redeemed_at}.`,
+        content: `❌ Ya canjeaste el kit ${codigo} el ${yaCanjeado.redeemed_at}.`,
         flags: MessageFlags.Ephemeral
       });
     }
