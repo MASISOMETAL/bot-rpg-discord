@@ -55,9 +55,19 @@ export default {
     }
 
     const yaCanjeado = await checkKitRedemption(userId, codigo);
+
+    const fechaFormateada = new Date(yaCanjeado.redeemed_at).toLocaleString("es-ES", {
+      weekday: "long",  // Muestra el día de la semana (Ej: "martes")
+      year: "numeric",  // Año en formato numérico (Ej: "2025")
+      month: "long",    // Mes en texto completo (Ej: "mayo")
+      day: "numeric",   // Día en formato numérico (Ej: "6")
+      hour: "2-digit",  // Hora en formato de 2 dígitos (Ej: "14")
+      minute: "2-digit" // Minutos en formato de 2 dígitos (Ej: "02")
+    });
+
     if (yaCanjeado) {
       return interaction.reply({
-        content: `❌ Ya canjeaste el kit ${codigo} el ${yaCanjeado.redeemed_at}.`,
+        content: `❌ Ya canjeaste el kit **${codigo}** el **${fechaFormateada}**.`,
         flags: MessageFlags.Ephemeral
       });
     }

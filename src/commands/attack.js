@@ -188,9 +188,15 @@ export default {
         }
 
         // 🔹 Enviar mensaje de recompensa al usuario
-        const user = await interaction.client.users.fetch(user_id);
+        const user = await interaction.client.users.fetch(user_id).catch(() => null);
         if (user) {
-          user.send(mensajeRecompensa);
+          try {
+            await user.send(mensajeRecompensa);
+          } catch (error) {
+            console.error(`⚠️ No se pudo enviar DM a ${user.username}:`, error.message);
+          }
+        } else {
+          console.error("❌ No se pudo obtener el usuario.");
         }
       }
 
