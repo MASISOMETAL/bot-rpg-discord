@@ -3,7 +3,9 @@ import { monsters } from "../data/monsters.js";
 
 export function seleccionarMonstruoAleatorio(nivelUsuario) {
   if (!nivelUsuario) {
-    return monsters[Math.floor(Math.random() * monsters.length)]; // 🔹 Nivel aleatorio si el usuario no tiene personaje
+    const monster = monsters[Math.floor(Math.random() * monsters.length)]; // 🔹 Nivel aleatorio si el usuario no tiene personaje
+    const randomElement = elements[Math.floor(Math.random() * elements.length)];
+    return { monster, randomElement }
   }
 
   const nivelesPosibles = [nivelUsuario - 1, nivelUsuario, nivelUsuario + 1]
@@ -13,8 +15,8 @@ export function seleccionarMonstruoAleatorio(nivelUsuario) {
 
   const monster = monstruosFiltrados[Math.floor(Math.random() * monstruosFiltrados.length)];
 
-  const randomElement = elements[Math.floor(Math.random() * elements.length)];  
+  const randomElement = elements[Math.floor(Math.random() * elements.length)];
 
-  return {monster, randomElement}
+  return { monster, randomElement }
 }
 
