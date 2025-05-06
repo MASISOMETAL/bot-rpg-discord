@@ -70,23 +70,23 @@ export default {
       .setTitle(`📜 Perfil de ${character.name} (de ${targetUser.username})`)
       .setDescription(`Estas son las estadísticas de su personaje.`)
       .addFields(
-        { name: "Clase", value: `**${character.race}**`, inline: false },
-        { name: "Nivel", value: `**${character.nivel}**`, inline: false },
-        { name: "HP", value: `**${character.hp}/${character.hpmax}**`, inline: true },
-        { name: "Mana", value: `**${character.mana}/${character.manamax}**`, inline: true },
-        { name: "\u200B", value: "\u200B", inline: false },
-        { name: "Atk. físico", value: `**${formatStat(character.atkfisico, bonusStats.atkfisico)}**`, inline: true },
-        { name: "Def. física", value: `**${formatStat(character.deffisica, bonusStats.deffisica)}**`, inline: true },
-        { name: "\u200B", value: "\u200B", inline: false },
-        { name: "Atk. mágico", value: `**${formatStat(character.atkmagico, bonusStats.atkmagico)}**`, inline: true },
-        { name: "Def. mágica", value: `**${formatStat(character.defmagica, bonusStats.defmagica)}**`, inline: true },
-        { name: "\u200B", value: "\u200B", inline: false },
-        { name: "Precisión", value: `**${formatStat(character.precision, bonusStats.precision)}**`, inline: true },
-        { name: "Evasión", value: `**${formatStat(character.evasion, bonusStats.evasion)}**`, inline: true },
-        { name: "\u200B", value: "\u200B", inline: false },
-        { name: "Experiencia", value: `**${character.xp} / ${xpRequerida}**`, inline: false },
-        { name: "Oro", value: `**${character.gold}**`, inline: false },
-        { name: "Elemento", value: `${elementoEmoji} **${character.elemento}**`, inline: false }
+        { name: "", value: `🧑‍🎤 Clase: **${character.race}**`, inline: false },
+        { name: "", value: `🔹 Nivel: **${character.nivel}**`, inline: false },
+        { name: "", value: `❤️ HP: **${character.hp}/${character.hpmax}**`, inline: true },
+        { name: "", value: `🔮 Mana: **${character.mana}/${character.manamax}**`, inline: true },
+        { name: "", value: "", inline: false },
+        { name: "", value: `⚔️ Atk. físico: **${formatStat(character.atkfisico, bonusStats.atkfisico)}**`, inline: true },
+        { name: "", value: `🛡️ Def. física: **${formatStat(character.deffisica, bonusStats.deffisica)}**`, inline: true },
+        { name: "", value: "", inline: false },
+        { name: "", value: `🔥 Atk. mágico: **${formatStat(character.atkmagico, bonusStats.atkmagico)}**`, inline: true },
+        { name: "", value: `🔰 Def. mágica: **${formatStat(character.defmagica, bonusStats.defmagica)}**`, inline: true },
+        { name: "", value: "", inline: false },
+        { name: "", value: `🎯 Precisión: **${formatStat(character.precision, bonusStats.precision)}**`, inline: true },
+        { name: "", value: `🌀 Evasión: **${formatStat(character.evasion, bonusStats.evasion)}**`, inline: true },
+        { name: "", value: "", inline: false },
+        { name: "", value: `🔹 Experiencia: **${character.xp} / ${xpRequerida}**`, inline: false },
+        { name: "", value: `💰 Oro: **${character.gold}**`, inline: false },
+        { name: "", value: `🧬 Elemento: ${elementoEmoji} **${character.elemento}**`, inline: false }
       )
       .setThumbnail(characterTemplate?.img);
 
