@@ -137,6 +137,14 @@ async function initializeDatabase() {
     FOREIGN KEY (user_id) REFERENCES characters(user_id) ON DELETE CASCADE,
     FOREIGN KEY (iditem) REFERENCES inventory(iditem) ON DELETE CASCADE
 );
+
+  CREATE TABLE IF NOT EXISTS kit_redemptions (
+    user_id TEXT NOT NULL,
+    kit_code TEXT NOT NULL,
+    redeemed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, kit_code)
+  );
+
 `;
 
   try {

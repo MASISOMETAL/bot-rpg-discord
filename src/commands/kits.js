@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, MessageFlags } from 'discord.js';
 import { getCharacterByUserId } from '../database/characters.js';
 import { addItemToInventory } from '../database/inventory.js';
+import { checkKitRedemption, insertKitRedemption } from '../database/kits.js';
 
 export default {
   data: new SlashCommandBuilder()
@@ -53,11 +54,21 @@ export default {
       });
     }
 
+    const yaCanjeado = await checkKitRedemption(userId, codigo);
+    if (yaCanjeado) {
+      return interaction.reply({
+        content: `❌ Ya canjeaste el kit ${codigo} el ${redemption.redeemed_at}.`,
+        flags: MessageFlags.Ephemeral
+      });
+    }
+
     try {
       // Por cada item definido en el kit, lo agregamos al inventario del usuario
       for (const item of kit) {
         await addItemToInventory(userId, item.id, item.category);
       }
+
+      await insertKitRedemption(userId, codigo);
 
       return interaction.reply({
         content: `🎉 ¡Has canjeado el kit ${codigo} exitosamente! Los items han sido agregados a tu inventario.`,
