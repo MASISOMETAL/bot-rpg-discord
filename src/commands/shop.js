@@ -2,16 +2,26 @@ import { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, But
 import { itemList } from '../data/items.js';
 import { getCharacterByUserId } from '../database/characters.js';
 
+const nameFormated = {
+  Helms: "Cascos",
+  Armors: "Armaduras",
+  Pants: "Pantalones",
+  Gloves: "Guantes",
+  Boots: "Botas",
+  Weapons: "Armas",
+  Consumibles: "Consumibles"
+}
+
 export default {
   data: new SlashCommandBuilder()
-    .setName('shop')
+    .setName('tienda')
     .setDescription('Explora la tienda por categoría.')
     .addStringOption(option =>
       option.setName('categoria')
         .setDescription('Elige una categoría')
         .setRequired(true)
         .addChoices(
-          ...itemList.map(category => ({ name: category.category, value: category.category }))
+          ...itemList.map(category => ({ name: nameFormated[category.category], value: category.category }))
         )),
 
   async execute(interaction) {

@@ -13,7 +13,7 @@ import { cooldownAttack, cooldownRestoreHP } from '../../configs.js';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName('attack')
+    .setName('ataque')
     .setDescription('Ataca a un monstruo con una habilidad.')
     .addIntegerOption(option =>
       option.setName('monster_id')

@@ -1270,7 +1270,7 @@ export const itemList = [
         },
         "selleable": true,
         "coste": 70,
-        "usableBy": ["Guerrero", "Arquero"],
+        "usableBy": ["Guerrero", "Arquero", "Mago"],
         "onehand": true
       },
       {

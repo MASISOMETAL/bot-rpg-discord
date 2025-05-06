@@ -25,6 +25,7 @@ export default {
         fields: [
           { name: "`/crear_personaje`", value: "Crea un personaje en el juego." },
           { name: "`/mi_personaje`", value: "Muestra las estadísticas y equipamiento de tu personaje." },
+          { name: "`/personaje_de [@usuario]`", value: "Muestra las estadísticas y equipamiento del personaje de un usuario." },
           { name: "`/estadisticas`", value: "Muestra estadísticas generales de progreso." },
           { name: "`/asignar_puntos [stat] [cantidad]`", value: "Asigna puntos de mejora cuando subes de nivel." }
         ]
@@ -33,7 +34,7 @@ export default {
         title: "🛒 Inventario y Tienda",
         description: "Comandos relacionados con la compra y administración de ítems.",
         fields: [
-          { name: "`/shop [categoria]`", value: "Explora la tienda por categoría." },
+          { name: "`/tienda [categoria]`", value: "Explora la tienda por categoría." },
           { name: "`/comprar_item [categoria] [id]`", value: "Compra un ítem específico en la tienda." },
           { name: "`/equipar_item [id]`", value: "Equipa un ítem de tu inventario." },
           { name: "`/desequipar_item [slot]`", value: "Desequipa un ítem de un slot específico." },
@@ -48,8 +49,8 @@ export default {
         fields: [
           { name: "`/attack [monster id] [skill id]`", value: "Ataca a un monstruo. Actualmente el `skill id` es siempre `1`." },
           { name: "`/elementos`", value: "Muestra la tabla de debilidad y resistencia de los elementos." },
-          { name: "`/mi_skill`", value: "Muestra todas las habilidades que has aprendido." },
-          { name: "`/mi_skill [id]`", value: "Muestra detalles de una habilidad específica." },
+          { name: "`/mi_habilidades`", value: "Muestra todas las habilidades que has aprendido." },
+          { name: "`/mi_habilidades [id]`", value: "Muestra detalles de una habilidad específica." },
           { name: "`/monster`", value: "Muestra todos los monstruos activos en el servidor." },
           { name: "`/monster [id]`", value: "Muestra detalles de un monstruo específico." }
         ]
@@ -62,6 +63,7 @@ export default {
           { name: "`/items [categoria]`", value: "Muestra todos los ítems disponibles en una categoría." },
           { name: "`/items [categoria] [id]`", value: "Muestra información detallada sobre un ítem específico." },
           { name: "`/rank`", value: "Muestra el ranking de los personajes del bot." },
+          { name: "`/kit [codigo]`", value: "Pidele el codigo al admin de tu server." },
           { name: "`/ayuda`", value: "Muestra información sobre los comandos disponibles." }
         ]
       }
