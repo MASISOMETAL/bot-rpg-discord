@@ -41,7 +41,7 @@ async function initializeDatabase() {
 
   // const datos = await client.query(myquery)
 
-  console.log(datos.rows);
+  // console.log(datos.rows);
   
 
   // 🔹 Creación de tablas si no existen
