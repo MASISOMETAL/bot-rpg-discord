@@ -136,6 +136,6 @@ export default {
         { name: "🛡️ Mano Izquierda", value: equippedSlots.Weapons.offHand, inline: false }
       );
 
-    return interaction.reply({ embeds: [characterEmbed, equipmentEmbed] });
+    return interaction.reply({ embeds: [characterEmbed, equipmentEmbed], flags: MessageFlags.Ephemeral });
   }
 };

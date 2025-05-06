@@ -13,7 +13,7 @@ export default {
     // 🔹 Obtener datos del jugador
     const character = await getCharacterByUserId(userId);
     if (!character) {
-      return interaction.editReply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
+      return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
     const embed = new EmbedBuilder()
