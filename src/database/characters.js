@@ -5,7 +5,7 @@ export async function createCharacter(characterData) {
   const {
     user_id, name, race, nivel = 1, xp = 0, hpmax, hp, mana, manamax,
     atkfisico, deffisica, atkmagico, defmagica,
-    precision, evasion, gold = 100, elemento
+    precision, evasion, gold = 100, elemento,
   } = characterData;
 
   try {
@@ -19,7 +19,7 @@ export async function createCharacter(characterData) {
     const values = [
       user_id, name, race, nivel, xp, hp, hpmax, mana, manamax,
       atkfisico, deffisica, atkmagico, defmagica,
-      precision, evasion, gold, elemento
+      precision, evasion, gold, elemento, 0
     ];
 
     const result = await client.query(query, values);

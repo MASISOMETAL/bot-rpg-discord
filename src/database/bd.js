@@ -36,7 +36,13 @@ async function initializeDatabase() {
   //   console.log(`✅ Tabla eliminada: ${query}`);
   // }
 
-  // const myquery = `UPDATE characters SET gold = 10000 WHERE user_id = '1016566942267605002'`
+  // const myquery = `SELECT user_id, name, statPoints FROM characters;`
+  // const myquery = `UPDATE characters SET statPoints = 0 WHERE statPoints IS NULL;`
+
+  // const datos = await client.query(myquery)
+
+  console.log(datos.rows);
+  
 
   // 🔹 Creación de tablas si no existen
   const createTablesQueries = [
@@ -138,3 +144,5 @@ async function initializeDatabase() {
 }
 // 🔹 Exportar la conexión
 export { client, initializeDatabase };
+
+// await initializeDatabase()

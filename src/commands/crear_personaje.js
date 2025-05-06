@@ -63,7 +63,7 @@ export default {
       precision: characterTemplate.stats.precision,
       evasion: characterTemplate.stats.evasion,
       gold: characterTemplate.gold,
-      elemento: randomElement
+      elemento: randomElement,
     };
 
     // 🔹 Guardamos el personaje en la base de datos
