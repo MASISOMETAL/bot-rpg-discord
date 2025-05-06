@@ -43,7 +43,7 @@ const commands = {
   elementos,
   rank,
   personaje_de,
-  kits,
+  kit: kits,
 };
 
 export default async function interactionHandler(interaction) {
