@@ -47,7 +47,7 @@ export function calcularDaño(atacante, defensor, habilidad) {
 
 const calcularCritico = (precision, evasion) => {
   const diferencia = precision - evasion;
-  const probabilidadCritico = Math.max(0.05, Math.min(0.3, diferencia / (Math.abs(diferencia) + 10)));
+  const probabilidadCritico = Math.max(0.05, Math.min(0.15, diferencia / (Math.abs(diferencia) + 10)));
   const esCritico = Math.random() < probabilidadCritico;
   return esCritico ? (Math.random() < 0.5 ? 1.3 : 1.6) : 1;
 };
