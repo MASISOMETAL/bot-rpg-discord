@@ -78,28 +78,29 @@ export async function obtenerNivelUsuario(userId) {
 export async function actualizarStat(userId, stat, incremento, cantidad) {
   try {
     // 🔹 Base de la consulta UPDATE
-    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statpoints = statpoints - $2 WHERE user_id = $3`;
+    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statpoints = statpoints - $2`;
+    const values = [incremento, cantidad, userId];
 
     // 🔹 Ajuste de hpmax y manamax si aplica
-    const values = [incremento, cantidad, userId];
     if (stat === "hp") {
       query += `, hpmax = hpmax + $3`;
-      values.splice(2, 0, incremento); // Inserta el incremento en la posición correcta
+      values.push(incremento); // 🔹 Agregamos el incremento como nuevo valor en `values`
     } else if (stat === "mana") {
       query += `, manamax = manamax + $3`;
-      values.splice(2, 0, incremento);
+      values.push(incremento);
     }
 
-    query += ` WHERE user_id = $${values.length}`;
+    query += ` WHERE user_id = $${values.length}`; // 🔹 Ajustamos el índice de `user_id` correctamente
 
     await client.query(query, values);
 
-    return true; // Devuelve `true` si la actualización fue exitosa
+    return true; // ✅ Devuelve `true` si la actualización fue exitosa
   } catch (err) {
     console.error("❌ Error al actualizar stat:", err);
-    throw err; // Propaga el error para manejarlo en la llamada de la función
+    throw err; // 🔹 Propaga el error para manejarlo en la llamada de la función
   }
 }
+
 
 export async function regenerarRecursos(userId, bloques) {
   try {
