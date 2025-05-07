@@ -76,7 +76,9 @@ export default {
       .setDescription(`Aquí están las estadísticas de tu personaje.`)
       .addFields(
         { name: "", value: `🧑‍🎤 Clase: **${character.race}**`, inline: false },
-        { name: "", value: `🔹 Nivel: **${character.nivel}**`, inline: false },
+        { name: "", value: `🔹 Nivel: **${character.nivel}**`, inline: true },
+        { name: "", value: `🔹 Puntos: **${character.statpoints}**`, inline: true },
+        { name: "", value: ``, inline: false },
         { name: "", value: `❤️ HP: **${character.hp}/${character.hpmax}**`, inline: true },
         { name: "", value: `🔮 Mana: **${character.mana}/${character.manamax}**`, inline: true },
         { name: "", value: ``, inline: false },
