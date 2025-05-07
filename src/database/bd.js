@@ -136,5 +136,3 @@ async function initializeDatabase() {
 }
 // 🔹 Exportar la conexión
 export { client, initializeDatabase };
-
-await initializeDatabase()

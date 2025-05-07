@@ -78,7 +78,7 @@ export async function obtenerNivelUsuario(userId) {
 export async function actualizarStat(userId, stat, incremento, cantidad) {
   try {
     // 🔹 Base de la consulta UPDATE
-    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statPoints = statPoints - $2 WHERE user_id = $3`;
+    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statpoints = statpoints - $2 WHERE user_id = $3`;
 
     // 🔹 Ajuste de hpmax y manamax si aplica
     const values = [incremento, cantidad, userId];
