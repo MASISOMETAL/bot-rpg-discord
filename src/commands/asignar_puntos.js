@@ -35,6 +35,13 @@ export default {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
+    if (cantidad <= 0) {
+      return interaction.reply({
+        content: "❌ La cantidad de puntos debe ser un número positivo.",
+        flags: MessageFlags.Ephemeral
+      });
+    }
+
     if (cantidad > personaje.statPoints) {
       return interaction.reply({ content: `❌ No tienes suficientes puntos de mejora. Te quedan **${personaje.statPoints}** puntos disponibles.`, flags: MessageFlags.Ephemeral });
     }

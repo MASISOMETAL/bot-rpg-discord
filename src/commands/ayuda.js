@@ -62,7 +62,7 @@ export default {
           { name: "`/set_monster_channel [canal]`", value: "**Admin** Asignar un canal para la aparición de monstruos." },
           { name: "`/items [categoria]`", value: "Muestra todos los ítems disponibles en una categoría." },
           { name: "`/items [categoria] [id]`", value: "Muestra información detallada sobre un ítem específico." },
-          { name: "`/rank`", value: "Muestra el ranking de los personajes del bot." },
+          { name: "`/rank [global o server]`", value: "Muestra el ranking de los personajes en el bot o en el servidor." },
           { name: "`/kit [codigo]`", value: "Pidele el codigo al admin de tu server." },
           { name: "`/ayuda`", value: "Muestra información sobre los comandos disponibles." }
         ]

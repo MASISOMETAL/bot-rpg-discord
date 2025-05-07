@@ -11,8 +11,8 @@ export async function createCharacter(characterData) {
   try {
     const query = `
       INSERT INTO characters 
-      (user_id, name, race, nivel, xp, hp, hpmax, mana, manamax, atkfisico, deffisica, atkmagico, defmagica, precision, evasion, gold, elemento) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
+      (user_id, name, race, nivel, xp, hp, hpmax, mana, manamax, atkfisico, deffisica, atkmagico, defmagica, precision, evasion, gold, elemento, statpoints) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
       RETURNING *;
     `;
 
@@ -75,11 +75,10 @@ export async function obtenerNivelUsuario(userId) {
   }
 }
 
-
 export async function actualizarStat(userId, stat, incremento, cantidad) {
   try {
     // 🔹 Base de la consulta UPDATE
-    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statPoints = statPoints - $2`;
+    let query = `UPDATE characters SET ${stat} = ${stat} + $1, statPoints = statPoints - $2 WHERE user_id = $3`;
 
     // 🔹 Ajuste de hpmax y manamax si aplica
     const values = [incremento, cantidad, userId];

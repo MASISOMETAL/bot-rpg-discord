@@ -1,7 +1,7 @@
 // configuracion de cantidad de mensajes para que aparezca un mob y % de que aparezca
 
-export const minMessage = 100 // normalmente 100 mensajes
-export const maxMessage = 200 // normalmente 200 mensajes
+export const minMessage = 70 // normalmente 100 mensajes
+export const maxMessage = 150 // normalmente 200 mensajes
 export const porcentajeDeAparicion = 20 // 0 - 100 %
 
 // Tiempo cooldown para volver a atacar

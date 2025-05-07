@@ -36,14 +36,6 @@ async function initializeDatabase() {
   //   console.log(`✅ Tabla eliminada: ${query}`);
   // }
 
-  // const myquery = `SELECT user_id, name, statPoints FROM characters;`
-  // const myquery = `UPDATE characters SET statPoints = 0 WHERE statPoints IS NULL;`
-
-  // const datos = await client.query(myquery)
-
-  // console.log(datos.rows);
-  
-
   // 🔹 Creación de tablas si no existen
   const createTablesQueries = [
     `CREATE TABLE IF NOT EXISTS characters (
@@ -64,7 +56,7 @@ async function initializeDatabase() {
       evasion INTEGER NOT NULL,
       gold INTEGER DEFAULT 100,
       elemento TEXT DEFAULT NULL,
-      statPoints INTEGER DEFAULT 0
+      statpoints INTEGER DEFAULT 0
     );`,
 
     `CREATE TABLE IF NOT EXISTS inventory (
@@ -145,4 +137,4 @@ async function initializeDatabase() {
 // 🔹 Exportar la conexión
 export { client, initializeDatabase };
 
-// await initializeDatabase()
+await initializeDatabase()
