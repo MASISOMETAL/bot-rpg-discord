@@ -161,7 +161,7 @@ export default {
 
         // 🔹 Calcular recompensas ajustadas
         const oroGanado = Math.round(total_damage * 0.05 * ajusteRecompensa); // 5% de recompensa
-        const xpGanado = Math.round(total_damage * 0.01 * ajusteRecompensa); // 1% de recompensa
+        const xpGanado = Math.round(total_damage * 0.02 * ajusteRecompensa); // 1% de recompensa
 
         await actualizarEstadisticas(userId, "monstersdefeated", 1); // Monstruo eliminado
         await actualizarRecompensas(user_id, oroGanado, xpGanado, interaction);
@@ -170,12 +170,12 @@ export default {
         const porcentajeDanio = (total_damage / monstruoBase.hp) * 100;
         let mensajeRecompensa = `💀 El monstruo **${monstruoBase.name}** ha sido derrotado! 🎉\nHas ganado **${oroGanado} oro** y **${xpGanado} XP** por tu participación en la batalla.`;
 
-        if (porcentajeDanio >= 20) {
+        if (porcentajeDanio >= 10) {
           // 🔹 Definir si el drop sucede con un 30% de probabilidad
-          if (Math.random() <= 0.3) {
+          if (Math.random() <= 0.4) {
             // 🔹 Obtener lista de ítems en el rango de nivel permitido
             const posiblesDrops = itemList.flatMap(category => category.items)
-              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 2);
+              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 3);
 
             // 🔹 Seleccionar un ítem al azar
             const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];
