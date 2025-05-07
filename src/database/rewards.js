@@ -66,7 +66,7 @@ export async function actualizarRecompensas(userId, oroGanado, xpGanado, interac
 
     let nuevaXP = personaje.xp + xpGanado;
     let nuevoNivel = personaje.nivel;
-    let puntosStat = personaje.statPoints;
+    let puntosStat = personaje.statpoints;
     let subioNivel = false;
 
     // 🔹 Comprobar si sube de nivel
@@ -80,7 +80,7 @@ export async function actualizarRecompensas(userId, oroGanado, xpGanado, interac
     // 🔹 Actualizar recompensas en la base de datos
     const query = `
       UPDATE characters 
-      SET gold = gold + $1, xp = $2, nivel = $3, statPoints = $4 
+      SET gold = gold + $1, xp = $2, nivel = $3, statpoints = $4 
       WHERE user_id = $5
     `;
     const values = [oroGanado, nuevaXP, nuevoNivel, puntosStat, userId];

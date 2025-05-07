@@ -42,8 +42,8 @@ export default {
       });
     }
 
-    if (cantidad > personaje.statPoints) {
-      return interaction.reply({ content: `❌ No tienes suficientes puntos de mejora. Te quedan **${personaje.statPoints}** puntos disponibles.`, flags: MessageFlags.Ephemeral });
+    if (cantidad > personaje.statpoints) {
+      return interaction.reply({ content: `❌ No tienes suficientes puntos de mejora. Te quedan **${personaje.statpoints}** puntos disponibles.`, flags: MessageFlags.Ephemeral });
     }
 
     const multiplicador = statMultipliers[personaje.race]?.[stat] || 1;
