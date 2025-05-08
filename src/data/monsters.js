@@ -125,7 +125,7 @@ export const monsters = [
     name: "Dark Revenant",
     nivel: 4,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/0ybdXmfG/dark-revenant.png",
     stats: {
       hp: 2900, atkfisico: 195, deffisica: 130,
       atkmagico: 145, defmagica: 125, precision: 97, evasion: 89
@@ -136,7 +136,7 @@ export const monsters = [
     name: "Crystal Phoenix",
     nivel: 5,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/Kc873xvK/crystal-phoenix.png",
     stats: {
       hp: 3500, atkfisico: 180, deffisica: 145,
       atkmagico: 220, defmagica: 160, precision: 99, evasion: 95
@@ -147,7 +147,7 @@ export const monsters = [
     name: "Abyss Leviathan",
     nivel: 5,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/B50N2dM2/abyss-leviathan.png",
     stats: {
       hp: 3700, atkfisico: 210, deffisica: 150,
       atkmagico: 175, defmagica: 170, precision: 98, evasion: 94
@@ -158,7 +158,7 @@ export const monsters = [
     name: "Spectral Knight",
     nivel: 5,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/RGMz7h5p/spectral-knight.png",
     stats: {
       hp: 3600, atkfisico: 190, deffisica: 170,
       atkmagico: 220, defmagica: 155, precision: 99, evasion: 93
@@ -169,7 +169,7 @@ export const monsters = [
     name: "Demon Overlord",
     nivel: 6,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/ksgV5yyY/demon-overlord.png",
     stats: {
       hp: 4200, atkfisico: 250, deffisica: 190,
       atkmagico: 230, defmagica: 200, precision: 100, evasion: 97
@@ -180,7 +180,7 @@ export const monsters = [
     name: "Titan Colossus",
     nivel: 6,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/sdqLDRPb/titan-colossus.png",
     stats: {
       hp: 4300, atkfisico: 240, deffisica: 210,
       atkmagico: 220, defmagica: 190, precision: 98, evasion: 92
@@ -191,7 +191,7 @@ export const monsters = [
     name: "Celestial Dragon",
     nivel: 6,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/tT0rgjXQ/celestial-dragon.png",
     stats: {
       hp: 4400, atkfisico: 223, deffisica: 200,
       atkmagico: 250, defmagica: 210, precision: 101, evasion: 100
@@ -202,7 +202,7 @@ export const monsters = [
     name: "Void Stalker",
     nivel: 7,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/QvjYqHvJ/void-stalker.png",
     stats: {
       hp: 5000, atkfisico: 280, deffisica: 220,
       atkmagico: 260, defmagica: 230, precision: 102, evasion: 99
@@ -213,7 +213,7 @@ export const monsters = [
     name: "Ancient Warlock",
     nivel: 7,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/RG8Hq79n/ancient-warlock.png",
     stats: {
       hp: 5100, atkfisico: 250, deffisica: 220,
       atkmagico: 270, defmagica: 240, precision: 102, evasion: 95
@@ -224,7 +224,7 @@ export const monsters = [
     name: "Frost Titan",
     nivel: 7,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/mVXJ1FdV/frost-titan.png",
     stats: {
       hp: 5200, atkfisico: 275, deffisica: 245,
       atkmagico: 255, defmagica: 225, precision: 99, evasion: 102
@@ -235,7 +235,7 @@ export const monsters = [
     name: "Chaos Fiend",
     nivel: 8,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/spfCNxt4/chaos-fiend.png",
     stats: {
       hp: 5800, atkfisico: 300, deffisica: 270,
       atkmagico: 290, defmagica: 270, precision: 103, evasion: 100
@@ -246,7 +246,7 @@ export const monsters = [
     name: "Arcane Harbinger",
     nivel: 8,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/5Xbz6ZBH/arcane-harbinger.png",
     stats: {
       hp: 6000, atkfisico: 310, deffisica: 280,
       atkmagico: 295, defmagica: 265, precision: 100, evasion: 103
@@ -257,7 +257,7 @@ export const monsters = [
     name: "Void Watcher",
     nivel: 8,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/wZ9VDdg5/void-watcher.png",
     stats: {
       hp: 5900, atkfisico: 305, deffisica: 260,
       atkmagico: 300, defmagica: 275, precision: 105, evasion: 102
