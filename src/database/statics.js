@@ -35,10 +35,9 @@ export async function getStatisticsByUserId(userId) {
 export async function actualizarTiempo(userId, campo) {
   try {
     const query = `
-      INSERT INTO timers (user_id, ${campo}) VALUES ($1, $2)
-      ON CONFLICT (user_id) DO UPDATE SET ${campo} = EXCLUDED.${campo}
+      UPDATE timers SET ${campo} = NOW() WHERE user_id = $1;
     `;
-    const values = [userId, Date.now()];
+    const values = [userId];
 
     await client.query(query, values);
 
@@ -55,9 +54,11 @@ export async function obtenerTiempo(userId, campo) {
     const values = [userId];
 
     const result = await client.query(query, values);
-    return result.rows[0]?.[campo] || 0;
+
+    return result.rows[0]?.[campo] ? new Date(result.rows[0][campo]) : null;
   } catch (err) {
     console.error(`❌ Error al obtener ${campo}:`, err);
     throw err;
   }
 }
+

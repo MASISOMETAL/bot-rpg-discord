@@ -24,13 +24,25 @@ export default {
     }
 
     const tiempoUltimaRegen = await obtenerTiempo(userId, "lastregen");
-    const tiempoTranscurrido = Date.now() - tiempoUltimaRegen;
 
-    const bloquesDeRegen = Math.floor(tiempoTranscurrido / 600000);
+    if (!tiempoUltimaRegen) {
+      console.error("❌ Error: No se encontró `lastregen` en la base de datos.");
+      return;
+    }
+
+    // 🔹 Calculamos el tiempo transcurrido correctamente en milisegundos
+    const tiempoTranscurrido = Date.now() - tiempoUltimaRegen.getTime();
+
+    // 🔹 Calculamos cuántos intervalos de 10 minutos han pasado
+    const bloquesDeRegen = Math.floor(tiempoTranscurrido / (10 * 60 * 1000));
 
     if (bloquesDeRegen > 0) {
+      console.log(`🛠️ Se aplicará regeneración: ${bloquesDeRegen} ciclos de 10 min.`);
+
       // 🔹 Aplicamos la regeneración proporcional
       await regenerarRecursos(userId, bloquesDeRegen);
+
+      // 🔹 Actualizamos `lastregen` a `NOW()` en la base de datos
       await actualizarTiempo(userId, "lastregen");
     }
 

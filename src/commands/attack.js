@@ -38,13 +38,25 @@ export default {
     }
 
     const tiempoUltimaRegen = await obtenerTiempo(userId, "lastregen");
-    const tiempoTranscurrido = Date.now() - tiempoUltimaRegen;
 
-    const bloquesDeRegen = Math.floor(tiempoTranscurrido / 600000);
+    if (!tiempoUltimaRegen) {
+      console.error("❌ Error: No se encontró `lastregen` en la base de datos.");
+      return;
+    }
+
+    // 🔹 Calculamos el tiempo transcurrido correctamente en milisegundos
+    const tiempoTranscurrido = Date.now() - tiempoUltimaRegen.getTime();
+
+    // 🔹 Calculamos cuántos intervalos de 10 minutos han pasado
+    const bloquesDeRegen = Math.floor(tiempoTranscurrido / (10 * 60 * 1000));
 
     if (bloquesDeRegen > 0) {
+      console.log(`🛠️ Se aplicará regeneración: ${bloquesDeRegen} ciclos de 10 min.`);
+
       // 🔹 Aplicamos la regeneración proporcional
       await regenerarRecursos(userId, bloquesDeRegen);
+
+      // 🔹 Actualizamos `lastregen` a `NOW()` en la base de datos
       await actualizarTiempo(userId, "lastregen");
     }
 
@@ -53,7 +65,17 @@ export default {
     }
 
     const tiempoUltimoAtaque = await obtenerTiempo(userId, "lastattack");
-    const tiempoRestante = Math.ceil((cooldownAttack - (Date.now() - tiempoUltimoAtaque)) / 1000); // 🔹 Calculamos los segundos restantes
+
+    if (!tiempoUltimoAtaque) {
+      console.error("❌ Error: No se encontró `lastattack` en la base de datos.");
+      return;
+    }
+
+    // 🔹 Convertimos `TIMESTAMP` a milisegundos y calculamos la diferencia de tiempo
+    const tiempoTranscurridoAtk = Date.now() - tiempoUltimoAtaque.getTime();
+
+    // 🔹 Calculamos los segundos restantes para el cooldown del ataque
+    const tiempoRestante = Math.max(0, Math.ceil((cooldownAttack - tiempoTranscurridoAtk) / 1000));
 
     if (tiempoRestante > 0) {
       return interaction.editReply({
@@ -175,7 +197,7 @@ export default {
           if (Math.random() <= 0.4) {
             // 🔹 Obtener lista de ítems en el rango de nivel permitido
             const posiblesDrops = itemList.flatMap(category => category.items)
-              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 3);
+              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 4);
 
             // 🔹 Seleccionar un ítem al azar
             const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];

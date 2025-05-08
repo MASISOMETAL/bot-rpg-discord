@@ -110,10 +110,10 @@ async function initializeDatabase() {
       totaldamage INTEGER DEFAULT 0
     );`,
 
-    `CREATE TABLE IF NOT EXISTS timers (
-      user_id TEXT PRIMARY KEY,
-      lastattack BIGINT DEFAULT 0,
-      lastregen BIGINT DEFAULT 0
+    `CREATE TABLE timers (
+      user_id TEXT PRIMARY KEY REFERENCES characters(user_id),
+      lastattack TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      lastregen TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );`,
 
     `CREATE TABLE IF NOT EXISTS kit_redemptions (
