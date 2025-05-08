@@ -13,6 +13,7 @@ export default {
         .setRequired(false)),
 
   async execute(interaction) {
+    await interaction.deferReply()
     const serverId = interaction.guild.id;
     const monsterId = interaction.options.getInteger('id');
 
@@ -28,13 +29,13 @@ export default {
       // 🔹 Obtener detalles de un monstruo específico
       const monstruoActivo = await obtenerDetallesMonstruo(serverId, monsterId);
       if (!monstruoActivo) {
-        return interaction.reply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
+        return interaction.editReply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
       }
 
       // 🔹 Obtener datos adicionales desde `monsters.js`
       const monstruoData = monsters.find(m => m.id === monsterId);
       if (!monstruoData) {
-        return interaction.reply({ content: "❌ No se encontraron detalles del monstruo en la base de datos.", flags: MessageFlags.Ephemeral });
+        return interaction.editReply({ content: "❌ No se encontraron detalles del monstruo en la base de datos.", flags: MessageFlags.Ephemeral });
       }
 
       const elementEmojis = {
@@ -74,7 +75,7 @@ export default {
     // 🔹 Obtener lista de monstruos activos
     const monstruosActivos = await obtenerMonstruosActivos(serverId);
     if (!monstruosActivos.length) {
-      return interaction.reply({ content: "❌ No hay monstruos activos en este servidor.", flags: MessageFlags.Ephemeral });
+      return interaction.editReply({ content: "❌ No hay monstruos activos en este servidor.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Paginación
@@ -113,7 +114,7 @@ export default {
         .setDisabled(currentPage === totalPages - 1)
     );
 
-    const monsterMessage = await interaction.reply({ embeds: [generateEmbed(currentPage)], components: [row] });
+    const monsterMessage = await interaction.editReply({ embeds: [generateEmbed(currentPage)], components: [row] });
 
     const pageCollector = monsterMessage.createMessageComponentCollector({ time: 60000 });
 
