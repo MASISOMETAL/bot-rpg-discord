@@ -44,7 +44,7 @@ export const characters = [
 ];
 
 export const statMultipliers = {
-  Guerrero: { hp: 15, mana: 5, atkfisico: 3, deffisica: 3, atkmagico: 1, defmagica: 1, precision: 1, evasion: 1 },
-  Mago: { hp: 7, mana: 15, atkfisico: 1, deffisica: 1, atkmagico: 3, defmagica: 3, precision: 1, evasion: 1 },
+  Guerrero: { hp: 15, mana: 5, atkfisico: 3, deffisica: 3, atkmagico: 1, defmagica: 2, precision: 1, evasion: 1 },
+  Mago: { hp: 7, mana: 15, atkfisico: 1, deffisica: 2, atkmagico: 3, defmagica: 3, precision: 1, evasion: 1 },
   Arquero: { hp: 10, mana: 7, atkfisico: 2, deffisica: 2, atkmagico: 2, defmagica: 2, precision: 2, evasion: 2 }
 };
