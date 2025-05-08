@@ -268,7 +268,7 @@ export const monsters = [
     name: "Celestial Tyrant",
     nivel: 9,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/H5f7DjN/celestial-tyrant.png",
     stats: {
       hp: 6500, atkfisico: 340, deffisica: 300,
       atkmagico: 320, defmagica: 290, precision: 110, evasion: 98
@@ -279,7 +279,7 @@ export const monsters = [
     name: "Infernal Archmage",
     nivel: 9,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/MDYTFtv6/infernal-archmage.png",
     stats: {
       hp: 6600, atkfisico: 330, deffisica: 290,
       atkmagico: 340, defmagica: 300, precision: 104, evasion: 100
@@ -290,7 +290,7 @@ export const monsters = [
     name: "Phantom Warlord",
     nivel: 9,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/dwCNtsPh/phantom-warlord.png",
     stats: {
       hp: 6700, atkfisico: 335, deffisica: 320,
       atkmagico: 325, defmagica: 300, precision: 100, evasion: 102
@@ -301,7 +301,7 @@ export const monsters = [
     name: "Cosmic Devourer",
     nivel: 10,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/ZtrLRC8/cosmic-devourer.png",
     stats: {
       hp: 7500, atkfisico: 300, deffisica: 300,
       atkmagico: 400, defmagica: 300, precision: 106, evasion: 102
@@ -312,7 +312,7 @@ export const monsters = [
     name: "Ancient Overlord",
     nivel: 10,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/gZ3mXvjy/ancient-overlord.png",
     stats: {
       hp: 7700, atkfisico: 400, deffisica: 300,
       atkmagico: 300, defmagica: 300, precision: 100, evasion: 105
@@ -323,7 +323,7 @@ export const monsters = [
     name: "Eldritch Sovereign",
     nivel: 10,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/GfyPMKZB/eldritch-sovereign.png",
     stats: {
       hp: 7800, atkfisico: 375, deffisica: 370,
       atkmagico: 370, defmagica: 350, precision: 106, evasion: 100
@@ -334,7 +334,7 @@ export const monsters = [
     name: "Nether Wraith",
     nivel: 11,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/BVQ7Q6Qk/nether-wraith.png",
     stats: {
       hp: 8500, atkfisico: 350, deffisica: 350,
       atkmagico: 400, defmagica: 390, precision: 108, evasion: 101
@@ -345,7 +345,7 @@ export const monsters = [
     name: "Void Emperor",
     nivel: 11,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/RTPhBWWN/void-emperor.png",
     stats: {
       hp: 8600, atkfisico: 410, deffisica: 400,
       atkmagico: 360, defmagica: 340, precision: 107, evasion: 102
@@ -356,7 +356,7 @@ export const monsters = [
     name: "Apocalyptic Titan",
     nivel: 11,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/TB0nMHVj/apocalyptic-titan.png",
     stats: {
       hp: 8700, atkfisico: 355, deffisica: 350,
       atkmagico: 415, defmagica: 410, precision: 105, evasion: 105
@@ -367,7 +367,7 @@ export const monsters = [
     name: "Eclipse Phantom",
     nivel: 12,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/gLmx4P78/eclipse-phantom.png",
     stats: {
       hp: 9200, atkfisico: 440, deffisica: 430,
       atkmagico: 370, defmagica: 410, precision: 110, evasion: 105
@@ -378,7 +378,7 @@ export const monsters = [
     name: "Astral Behemoth",
     nivel: 12,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/tM4mXzt1/astral-behemoth.png",
     stats: {
       hp: 9300, atkfisico: 390, deffisica: 380,
       atkmagico: 445, defmagica: 440, precision: 108, evasion: 104
