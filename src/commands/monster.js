@@ -69,7 +69,7 @@ export default {
         )
         .setThumbnail(monstruoData.image)
 
-      return interaction.reply({ embeds: [monsterEmbed] });
+      return interaction.editReply({ embeds: [monsterEmbed] });
     }
 
     // 🔹 Obtener lista de monstruos activos
