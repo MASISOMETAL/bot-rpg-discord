@@ -35,7 +35,10 @@ export async function getStatisticsByUserId(userId) {
 export async function actualizarTiempo(userId, campo) {
   try {
     const query = `
-      UPDATE timers SET ${campo} = NOW() WHERE user_id = $1;
+      INSERT INTO timers (user_id, ${campo})
+      VALUES ($1, NOW())
+      ON CONFLICT (user_id) DO UPDATE 
+      SET ${campo} = NOW();
     `;
     const values = [userId];
 
@@ -47,6 +50,7 @@ export async function actualizarTiempo(userId, campo) {
     throw err;
   }
 }
+
 
 export async function obtenerTiempo(userId, campo) {
   try {
