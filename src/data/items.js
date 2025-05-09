@@ -1054,7 +1054,7 @@ export const itemList = [
         type: "Gloves",
         name: "Guantes del Guardián Sombrío",
         description: "Diseñada para una defensa total en combate cuerpo a cuerpo.",
-        nivel: 15,
+        nivel: 19,
         stats: {
           hp: 110, mana: 35, atkfisico: 3, deffisica: 8,
           atkmagico: 6, defmagica: 8, precision: 1, evasion: 2
@@ -1865,7 +1865,7 @@ export const itemList = [
         nivel: 1,
         stats: { hp: 0, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
-        coste: 1000,
+        coste: 1500,
         usableBy: ["Todos"],
         nivel_min: 16,
         nivel_max: 20,
@@ -1878,7 +1878,7 @@ export const itemList = [
         nivel: 1,
         stats: { hp: 0, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
         selleable: true,
-        coste: 1000,
+        coste: 2000,
         usableBy: ["Todos"],
         nivel_min: 21,
         nivel_max: 25,
