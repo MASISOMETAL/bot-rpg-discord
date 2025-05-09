@@ -150,7 +150,7 @@ export const itemList = [
         description: "Un casco resistente con grabados antiguos.",
         nivel: 14,
         stats: {
-          hp: 30, mana: 15, atkfisico: 3, deffisica: 12,
+          hp: 130, mana: 15, atkfisico: 5, deffisica: 12,
           atkmagico: 2, defmagica: 7, precision: 2, evasion: 1
         },
         selleable: true,
@@ -160,11 +160,11 @@ export const itemList = [
       {
         id: 12,
         type: "Helm",
-        name: "Casco de Centella",
+        name: "Casco de Luz Arcana",
         description: "Un casco ligero que mejora la agilidad.",
         nivel: 14,
         stats: {
-          hp: 20, mana: 30, atkfisico: 0, deffisica: 8,
+          hp: 110, mana: 30, atkfisico: 0, deffisica: 8,
           atkmagico: 6, defmagica: 12, precision: 3, evasion: 4
         },
         selleable: true,
@@ -174,12 +174,12 @@ export const itemList = [
       {
         id: 13,
         type: "Helm",
-        name: "Casco del Vigilante",
+        name: "Casco del Cazador Nocturno",
         description: "Un casco con visión mística.",
         nivel: 14,
         stats: {
-          hp: 25, mana: 10, atkfisico: 2, deffisica: 10,
-          atkmagico: 3, defmagica: 6, precision: 4, evasion: 2
+          hp: 120, mana: 10, atkfisico: 2, deffisica: 10,
+          atkmagico: 3, defmagica: 10, precision: 2, evasion: 2
         },
         selleable: true,
         coste: 540,
@@ -192,10 +192,10 @@ export const itemList = [
         type: "Helm",
         name: "Casco de Dragón Espectral",
         description: "Un casco ornamentado con esencia mágica.",
-        nivel: 15,
+        nivel: 18,
         stats: {
-          hp: 40, mana: 20, atkfisico: 4, deffisica: 14,
-          atkmagico: 6, defmagica: 10, precision: 3, evasion: -1
+          hp: 135, mana: 20, atkfisico: 5, deffisica: 14,
+          atkmagico: 6, defmagica: 10, precision: 3, evasion: 1
         },
         selleable: true,
         coste: 600,
@@ -206,10 +206,10 @@ export const itemList = [
         type: "Helm",
         name: "Casco de Cristal Eterno",
         description: "Su superficie refleja la luz y mejora la concentración.",
-        nivel: 15,
+        nivel: 18,
         stats: {
-          hp: 30, mana: 50, atkfisico: 0, deffisica: 8,
-          atkmagico: 10, defmagica: 15, precision: 4, evasion: 3
+          hp: 130, mana: 50, atkfisico: 0, deffisica: 12,
+          atkmagico: 10, defmagica: 12, precision: 2, evasion: -2
         },
         selleable: true,
         coste: 620,
@@ -220,26 +220,26 @@ export const itemList = [
         type: "Helm",
         name: "Casco del Arquero Supremo",
         description: "Diseñado para una visión impecable.",
-        nivel: 15,
+        nivel: 18,
         stats: {
-          hp: 35, mana: 15, atkfisico: 3, deffisica: 12,
-          atkmagico: 5, defmagica: 8, precision: 5, evasion: 2
+          hp: 120, mana: 15, atkfisico: 4, deffisica: 12,
+          atkmagico: 5, defmagica: 7, precision: 5, evasion: 2
         },
         selleable: true,
         coste: 640,
         usableBy: ["Arquero"]
       },
 
-      // Nivel 16
+      // Nivel 22
       {
         id: 17,
         type: "Helm",
         name: "Casco del Titán de Hierro",
         description: "Un casco robusto con resistencia extrema.",
-        nivel: 16,
+        nivel: 22,
         stats: {
-          hp: 50, mana: 30, atkfisico: 6, deffisica: 16,
-          atkmagico: 8, defmagica: 12, precision: 3, evasion: -2
+          hp: 200, mana: 50, atkfisico: 7, deffisica: 16,
+          atkmagico: 8, defmagica: 12, precision: 5, evasion: 1
         },
         selleable: true,
         coste: 700,
@@ -250,10 +250,10 @@ export const itemList = [
         type: "Helm",
         name: "Casco Arcano Celestial",
         description: "Su interior brilla con energía mágica.",
-        nivel: 16,
+        nivel: 22,
         stats: {
-          hp: 40, mana: 60, atkfisico: 0, deffisica: 10,
-          atkmagico: 12, defmagica: 18, precision: 5, evasion: 3
+          hp: 160, mana: 100, atkfisico: 2, deffisica: 10,
+          atkmagico: 8, defmagica: 18, precision: 4, evasion: 2
         },
         selleable: true,
         coste: 720,
@@ -264,17 +264,17 @@ export const itemList = [
         type: "Helm",
         name: "Casco del Guardián de las Sombras",
         description: "Un casco que mejora la percepción en la oscuridad.",
-        nivel: 16,
+        nivel: 22,
         stats: {
-          hp: 45, mana: 20, atkfisico: 4, deffisica: 14,
-          atkmagico: 6, defmagica: 10, precision: 6, evasion: 2
+          hp: 180, mana: 80, atkfisico: 5, deffisica: 14,
+          atkmagico: 5, defmagica: 10, precision: 6, evasion: 6
         },
         selleable: true,
         coste: 740,
-        usableBy: ["Guerrero", "Arquero"]
+        usableBy: ["Arquero"]
       },
 
-      // Nivel 17 - 20 (siguiendo la misma lógica)      
+      // Nivel 22 (siguiendo la misma lógica) 
     ]
   },
   {
@@ -428,8 +428,8 @@ export const itemList = [
         description: "Forjada con materiales de una era antigua, otorga gran resistencia.",
         nivel: 14,
         stats: {
-          hp: 100, mana: 30, atkfisico: 5, deffisica: 16,
-          atkmagico: 4, defmagica: 10, precision: 3, evasion: -1
+          hp: 150, mana: 20, atkfisico: 5, deffisica: 16,
+          atkmagico: 4, defmagica: 10, precision: 3, evasion: 2
         },
         selleable: true,
         coste: 800,
@@ -442,7 +442,7 @@ export const itemList = [
         description: "Infundida con poder místico, mejora la magia del portador.",
         nivel: 14,
         stats: {
-          hp: 50, mana: 80, atkfisico: 0, deffisica: 10,
+          hp: 125, mana: 80, atkfisico: 0, deffisica: 10,
           atkmagico: 10, defmagica: 18, precision: 4, evasion: 3
         },
         selleable: true,
@@ -456,7 +456,7 @@ export const itemList = [
         description: "Un diseño ligero que otorga velocidad y precisión.",
         nivel: 14,
         stats: {
-          hp: 80, mana: 40, atkfisico: 3, deffisica: 14,
+          hp: 140, mana: 40, atkfisico: 3, deffisica: 14,
           atkmagico: 5, defmagica: 8, precision: 5, evasion: 4
         },
         selleable: true,
@@ -464,15 +464,15 @@ export const itemList = [
         usableBy: ["Arquero"]
       },
 
-      // Nivel 15
+      // Nivel 19
       {
         id: 14,
         type: "Armor",
         name: "Armadura de Acero Celestial",
         description: "Resistente como la piedra, su brillo impone respeto.",
-        nivel: 15,
+        nivel: 19,
         stats: {
-          hp: 120, mana: 40, atkfisico: 6, deffisica: 18,
+          hp: 150, mana: 40, atkfisico: 6, deffisica: 18,
           atkmagico: 5, defmagica: 12, precision: 3, evasion: -2
         },
         selleable: true,
@@ -484,28 +484,28 @@ export const itemList = [
         type: "Armor",
         name: "Túnica de las Estrellas",
         description: "Tejida con energía cósmica, fortalece la magia.",
-        nivel: 15,
+        nivel: 19,
         stats: {
-          hp: 60, mana: 100, atkfisico: 0, deffisica: 12,
-          atkmagico: 12, defmagica: 20, precision: 5, evasion: 3
+          hp: 140, mana: 100, atkfisico: 0, deffisica: 14,
+          atkmagico: 12, defmagica: 18, precision: 3, evasion: 3
         },
         selleable: true,
         coste: 920,
         usableBy: ["Mago"]
       },
       {
-        id: 16,
+        id: 19,
         type: "Armor",
         name: "Armadura del Guardián Sombrío",
         description: "Diseñada para una defensa total en combate cuerpo a cuerpo.",
         nivel: 15,
         stats: {
-          hp: 100, mana: 50, atkfisico: 4, deffisica: 16,
-          atkmagico: 6, defmagica: 10, precision: 5, evasion: 2
+          hp: 140, mana: 50, atkfisico: 5, deffisica: 16,
+          atkmagico: 6, defmagica: 11, precision: 5, evasion: 5
         },
         selleable: true,
         coste: 940,
-        usableBy: ["Guerrero", "Arquero"]
+        usableBy: ["Arquero"]
       },
 
       // Nivel 16
@@ -514,10 +514,10 @@ export const itemList = [
         type: "Armor",
         name: "Armadura del Titán de Guerra",
         description: "Una defensa impenetrable que domina el campo de batalla.",
-        nivel: 16,
+        nivel: 22,
         stats: {
-          hp: 140, mana: 60, atkfisico: 7, deffisica: 20,
-          atkmagico: 6, defmagica: 15, precision: 3, evasion: -2
+          hp: 250, mana: 60, atkfisico: 8, deffisica: 20,
+          atkmagico: 3, defmagica: 15, precision: 3, evasion: -2
         },
         selleable: true,
         coste: 1000,
@@ -528,10 +528,10 @@ export const itemList = [
         type: "Armor",
         name: "Túnica de Energía Radiante",
         description: "Canaliza una inmensa cantidad de maná para hechizos devastadores.",
-        nivel: 16,
+        nivel: 22,
         stats: {
-          hp: 70, mana: 120, atkfisico: 0, deffisica: 14,
-          atkmagico: 15, defmagica: 24, precision: 6, evasion: 3
+          hp: 200, mana: 120, atkfisico: 3, deffisica: 15,
+          atkmagico: 8, defmagica: 20, precision: 4, evasion: 3
         },
         selleable: true,
         coste: 1020,
@@ -542,14 +542,14 @@ export const itemList = [
         type: "Armor",
         name: "Armadura del Centinela de la Tormenta",
         description: "Protege al usuario de impactos y mejora la movilidad.",
-        nivel: 16,
+        nivel: 22,
         stats: {
-          hp: 120, mana: 60, atkfisico: 5, deffisica: 18,
-          atkmagico: 7, defmagica: 12, precision: 6, evasion: 2
+          hp: 220, mana: 60, atkfisico: 12, deffisica: 18,
+          atkmagico: 3, defmagica: 18, precision: 6, evasion: 4
         },
         selleable: true,
         coste: 1040,
-        usableBy: ["Guerrero", "Arquero"]
+        usableBy: ["Arquero"]
       },
 
       // Nivel 17 - 20 (siguiendo la misma lógica)
@@ -706,7 +706,7 @@ export const itemList = [
         "description": "Protegen con la fuerza de la tradición antigua.",
         "nivel": 14,
         "stats": {
-          "hp": 80, "mana": 30, "atkfisico": 4, "deffisica": 14,
+          "hp": 140, "mana": 20, "atkfisico": 4, "deffisica": 14,
           "atkmagico": 3, "defmagica": 9, "precision": 2, "evasion": 0
         },
         "selleable": true,
@@ -720,8 +720,8 @@ export const itemList = [
         "description": "Conectan el flujo del maná con el usuario.",
         "nivel": 14,
         "stats": {
-          "hp": 40, "mana": 70, "atkfisico": 0, "deffisica": 10,
-          "atkmagico": 8, "defmagica": 15, "precision": 3, "evasion": 3
+          "hp": 120, "mana": 70, "atkfisico": 0, "deffisica": 8,
+          "atkmagico": 8, "defmagica": 15, "precision": 3, "evasion": 2
         },
         "selleable": true,
         "coste": 820,
@@ -734,24 +734,24 @@ export const itemList = [
         "description": "Diseñadas para velocidad y precisión.",
         "nivel": 14,
         "stats": {
-          "hp": 60, "mana": 40, "atkfisico": 3, "deffisica": 12,
-          "atkmagico": 5, "defmagica": 8, "precision": 4, "evasion": 4
+          "hp": 135, "mana": 30, "atkfisico": 2, "deffisica": 12,
+          "atkmagico": 4, "defmagica": 7, "precision": 4, "evasion": 4
         },
         "selleable": true,
         "coste": 840,
         "usableBy": ["Arquero"]
       },
 
-      // Nivel 15
+      // Nivel 19
       {
         "id": 14,
         "type": "Pants",
         "name": "Grebas del Guardián de Hierro",
         "description": "Forjadas con materiales indestructibles.",
-        "nivel": 15,
+        "nivel": 18,
         "stats": {
-          "hp": 100, "mana": 40, "atkfisico": 6, "deffisica": 16,
-          "atkmagico": 5, "defmagica": 12, "precision": 3, "evasion": -1
+          "hp": 140, "mana": 35, "atkfisico": 5, "deffisica": 16,
+          "atkmagico": 4, "defmagica": 10, "precision": 2, "evasion": 1
         },
         "selleable": true,
         "coste": 900,
@@ -762,10 +762,10 @@ export const itemList = [
         "type": "Pants",
         "name": "Pantalones de las Estrellas",
         "description": "Tejidos con energía cósmica.",
-        "nivel": 15,
+        "nivel": 18,
         "stats": {
-          "hp": 50, "mana": 90, "atkfisico": 0, "deffisica": 12,
-          "atkmagico": 10, "defmagica": 18, "precision": 5, "evasion": 3
+          "hp": 135, "mana": 90, "atkfisico": 0, "deffisica": 12,
+          "atkmagico": 10, "defmagica": 16, "precision": 2, "evasion": 2
         },
         "selleable": true,
         "coste": 920,
@@ -776,26 +776,26 @@ export const itemList = [
         "type": "Pants",
         "name": "Grebas del Explorador Sombrío",
         "description": "Diseñadas para una rápida movilidad.",
-        "nivel": 15,
+        "nivel": 18,
         "stats": {
-          "hp": 80, "mana": 50, "atkfisico": 4, "deffisica": 14,
+          "hp": 135, "mana": 50, "atkfisico": 4, "deffisica": 14,
           "atkmagico": 6, "defmagica": 10, "precision": 5, "evasion": 3
         },
         "selleable": true,
         "coste": 940,
-        "usableBy": ["Guerrero", "Arquero"]
+        "usableBy": ["Arquero"]
       },
 
-      // Nivel 16
+      // Nivel 22
       {
         "id": 17,
         "type": "Pants",
         "name": "Grebas del Titán de Guerra",
         "description": "Un blindaje impenetrable en combate.",
-        "nivel": 16,
+        "nivel": 22,
         "stats": {
-          "hp": 120, "mana": 60, "atkfisico": 7, "deffisica": 18,
-          "atkmagico": 6, "defmagica": 13, "precision": 3, "evasion": -2
+          "hp": 230, "mana": 50, "atkfisico": 7, "deffisica": 18,
+          "atkmagico": 2, "defmagica": 13, "precision": 3, "evasion": 1
         },
         "selleable": true,
         "coste": 1000,
@@ -806,10 +806,10 @@ export const itemList = [
         "type": "Pants",
         "name": "Pantalones de Energía Radiante",
         "description": "Brillan con el poder puro del maná.",
-        "nivel": 16,
+        "nivel": 22,
         "stats": {
-          "hp": 60, "mana": 110, "atkfisico": 0, "deffisica": 14,
-          "atkmagico": 12, "defmagica": 20, "precision": 6, "evasion": 4
+          "hp": 180, "mana": 110, "atkfisico": 2, "deffisica": 13,
+          "atkmagico": 7, "defmagica": 18, "precision": 3, "evasion": 2
         },
         "selleable": true,
         "coste": 1020,
@@ -820,14 +820,14 @@ export const itemList = [
         "type": "Pants",
         "name": "Grebas del Centinela de la Tormenta",
         "description": "Protegen de impactos devastadores.",
-        "nivel": 16,
+        "nivel": 22,
         "stats": {
-          "hp": 90, "mana": 60, "atkfisico": 5, "deffisica": 16,
-          "atkmagico": 7, "defmagica": 12, "precision": 6, "evasion": 3
+          "hp": 200, "mana": 50, "atkfisico": 10, "deffisica": 16,
+          "atkmagico": 2, "defmagica": 16, "precision": 5, "evasion": 3
         },
         "selleable": true,
         "coste": 1040,
-        "usableBy": ["Guerrero", "Arquero"]
+        "usableBy": ["Arquero"]
       },
 
       // Nivel 17 - 20 (siguiendo la misma lógica)
@@ -975,7 +975,138 @@ export const itemList = [
         selleable: true,
         coste: 300,
         usableBy: ["Guerrero", "Mago", "Arquero"]
-      }
+      },
+      // Nivel 14
+      {
+        id: 11,
+        type: "Gloves",
+        name: "Guantes del Ancestro",
+        description: "Forjada con materiales de una era antigua, otorga gran resistencia.",
+        nivel: 14,
+        stats: {
+          hp: 100, mana: 10, atkfisico: 2, deffisica: 6,
+          atkmagico: 1, defmagica: 3, precision: 1, evasion: 1
+        },
+        selleable: true,
+        coste: 800,
+        usableBy: ["Guerrero"]
+      },
+      {
+        id: 12,
+        type: "Gloves",
+        name: "Guantes de Luz Arcana",
+        description: "Infundida con poder místico, mejora la magia del portador.",
+        nivel: 14,
+        stats: {
+          hp: 80, mana: 50, atkfisico: 1, deffisica: 6,
+          atkmagico: 2, defmagica: 3, precision: 1, evasion: 1
+        },
+        selleable: true,
+        coste: 820,
+        usableBy: ["Mago"]
+      },
+      {
+        id: 13,
+        type: "Gloves",
+        name: "Guantes de Cazador Nocturno",
+        description: "Un diseño ligero que otorga velocidad y precisión.",
+        nivel: 14,
+        stats: {
+          hp: 90, mana: 25, atkfisico: 2, deffisica: 4,
+          atkmagico: 1, defmagica: 4, precision: 2, evasion: 2
+        },
+        selleable: true,
+        coste: 840,
+        usableBy: ["Arquero"]
+      },
+
+      // Nivel 19
+      {
+        id: 14,
+        type: "Gloves",
+        name: "Guantes de Acero Celestial",
+        description: "Resistente como la piedra, su brillo impone respeto.",
+        nivel: 19,
+        stats: {
+          hp: 120, mana: 30, atkfisico: 3, deffisica: 9,
+          atkmagico: 5, defmagica: 7, precision: 1, evasion: 1
+        },
+        selleable: true,
+        coste: 900,
+        usableBy: ["Guerrero"]
+      },
+      {
+        id: 15,
+        type: "Gloves",
+        name: "Guantes de las Estrellas",
+        description: "Tejida con energía cósmica, fortalece la magia.",
+        nivel: 19,
+        stats: {
+          hp: 100, mana: 40, atkfisico: 0, deffisica: 7,
+          atkmagico: 3, defmagica: 9, precision: 1, evasion: 1
+        },
+        selleable: true,
+        coste: 920,
+        usableBy: ["Mago"]
+      },
+      {
+        id: 19,
+        type: "Gloves",
+        name: "Guantes del Guardián Sombrío",
+        description: "Diseñada para una defensa total en combate cuerpo a cuerpo.",
+        nivel: 15,
+        stats: {
+          hp: 110, mana: 35, atkfisico: 3, deffisica: 8,
+          atkmagico: 6, defmagica: 8, precision: 1, evasion: 2
+        },
+        selleable: true,
+        coste: 940,
+        usableBy: ["Arquero"]
+      },
+
+      // Nivel 16
+      {
+        id: 17,
+        type: "Gloves",
+        name: "Guantes del Titán de Guerra",
+        description: "Una defensa impenetrable que domina el campo de batalla.",
+        nivel: 22,
+        stats: {
+          hp: 150, mana: 35, atkfisico: 5, deffisica: 8,
+          atkmagico: 2, defmagica: 8, precision: 3, evasion: 1
+        },
+        selleable: true,
+        coste: 1000,
+        usableBy: ["Guerrero"]
+      },
+      {
+        id: 18,
+        type: "Gloves",
+        name: "Guantes de Energía Radiante",
+        description: "Canaliza una inmensa cantidad de maná para hechizos devastadores.",
+        nivel: 22,
+        stats: {
+          hp: 120, mana: 50, atkfisico: 2, deffisica: 9,
+          atkmagico: 5, defmagica: 7, precision: 2, evasion: 2
+        },
+        selleable: true,
+        coste: 1020,
+        usableBy: ["Mago"]
+      },
+      {
+        id: 19,
+        type: "Gloves",
+        name: "Guantes del Centinela de la Tormenta",
+        description: "Protege al usuario de impactos y mejora la movilidad.",
+        nivel: 22,
+        stats: {
+          hp: 135, mana: 40, atkfisico: 5, deffisica: 8,
+          atkmagico: 2, defmagica: 8, precision: 4, evasion: 1
+        },
+        selleable: true,
+        coste: 1040,
+        usableBy: ["Arquero"]
+      },
     ]
   },
   {
@@ -1436,8 +1567,8 @@ export const itemList = [
         "description": "Un arma colosal capaz de partir enemigos con un solo golpe.",
         "nivel": 7,
         "stats": {
-          "hp": 25, "mana": 0, "atkfisico": 16, "deffisica": 4,
-          "atkmagico": 0, "defmagica": 0, "precision": 3, "evasion": -3
+          "hp": 25, "mana": 0, "atkfisico": 18, "deffisica": 4,
+          "atkmagico": 0, "defmagica": 0, "precision": 3, "evasion": -2
         },
         "selleable": true,
         "coste": 220,
@@ -1709,6 +1840,50 @@ export const itemList = [
         usableBy: ["Todos"],
         description: "Un elixir de esencia arcana que **restaura 150 puntos de Mana**. Se dice que fue creado por magos antiguos en templos ocultos."
       }
+    ]
+  },
+  {
+    category: "Box",
+    items: [
+      {
+        id: 1,
+        type: "hierro",
+        name: "Caja de Hierro",
+        nivel: 1,
+        stats: { hp: 0, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
+        selleable: true,
+        coste: 1000,
+        usableBy: ["Todos"],
+        nivel_min: 10,
+        nivel_max: 15,
+        description: "Una misteriosa caja que puede darte un item aleatorio de nivel 10 a 14."
+      },
+      {
+        id: 2,
+        type: "bronce",
+        name: "Caja de Bronce",
+        nivel: 1,
+        stats: { hp: 0, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
+        selleable: true,
+        coste: 1000,
+        usableBy: ["Todos"],
+        nivel_min: 16,
+        nivel_max: 20,
+        description: "Una misteriosa caja que puede darte un item aleatorio de nivel 15 a 18."
+      },
+      {
+        id: 3,
+        type: "plata",
+        name: "Caja de Plata",
+        nivel: 1,
+        stats: { hp: 0, mana: 0, atkfisico: 0, deffisica: 0, atkmagico: 0, defmagica: 0, precision: 0, evasion: 0 },
+        selleable: true,
+        coste: 1000,
+        usableBy: ["Todos"],
+        nivel_min: 21,
+        nivel_max: 25,
+        description: "Una misteriosa caja que puede darte un item aleatorio de nivel 19 a 22."
+      },
     ]
   }
 ]

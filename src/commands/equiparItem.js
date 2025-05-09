@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, MessageFlags } from 'discord.js';
-import { getCharacterByUserId, modificarStatsPersonaje } from '../database/characters.js';
+import { getCharacterByUserId } from '../database/characters.js';
 import { getInventoryItems, removeItemFromInventory, addItemToInventory } from '../database/inventory.js';
 import { getEquippedItems, addItemToEquipment, removeItemFromEquipment } from '../database/equipment.js';
 import { itemList } from '../data/items.js';
@@ -36,6 +36,10 @@ export default {
       return interaction.reply({ content: "❌ Los ítems consumibles no pueden ser equipados. Usa `/usar_item` para consumirlos.", flags: MessageFlags.Ephemeral });
     }
 
+    if (inventoryItem.category === "Box") {
+      return interaction.reply({ content: "❌ Los ítems Box no pueden ser equipados. Usa `/usar_item` para abrirlos.", flags: MessageFlags.Ephemeral });
+    }
+
     // 🔹 Buscamos el ítem en `itemList`
     const selectedItem = itemList.find(cat => cat.category === inventoryItem.category)
       ?.items.find(i => i.id === inventoryItem.iditem);
@@ -68,7 +72,6 @@ export default {
         if (mainHandItem) {
           const mainHandData = itemList.find(cat => cat.category === mainHandItem.category)
             ?.items.find(i => i.id === mainHandItem.iditem);
-          await modificarStatsPersonaje(userId, mainHandData.stats, "restar");
           await addItemToInventory(userId, mainHandItem.iditem, mainHandItem.category);
           previouslyEquipped = mainHandItem;
         }
@@ -76,7 +79,6 @@ export default {
         if (offHandItem) {
           const offHandData = itemList.find(cat => cat.category === offHandItem.category)
             ?.items.find(i => i.id === offHandItem.iditem);
-          await modificarStatsPersonaje(userId, offHandData.stats, "restar");
           await addItemToInventory(userId, offHandItem.iditem, offHandItem.category);
           replacedItems.push(offHandItem);
         }
@@ -94,7 +96,6 @@ export default {
             ?.items.find(i => i.id === mainHandItem.iditem);
 
           if (mainHandData && !mainHandData.onehand) {
-            await modificarStatsPersonaje(userId, mainHandData.stats, "restar");
             await addItemToInventory(userId, mainHandItem.iditem, mainHandItem.category);
             await removeItemFromEquipment(userId, "mainHand");
             previouslyEquipped = mainHandItem;
@@ -115,14 +116,10 @@ export default {
         const prevItemData = itemList.find(cat => cat.category === previouslyEquipped.category)
           ?.items.find(i => i.id === previouslyEquipped.iditem);
 
-        await modificarStatsPersonaje(userId, prevItemData.stats, "restar");
         await addItemToInventory(userId, previouslyEquipped.iditem, previouslyEquipped.category);
         await removeItemFromEquipment(userId, slot);
       }
     }
-
-    // 🔹 Sumamos los stats del nuevo ítem
-    await modificarStatsPersonaje(userId, selectedItem.stats, "sumar");
 
     // 🔹 Equipamos el nuevo objeto
     await addItemToEquipment(userId, selectedItem.id, inventoryItem.category, slot);

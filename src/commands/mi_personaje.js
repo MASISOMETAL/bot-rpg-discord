@@ -5,6 +5,7 @@ import { characters } from '../data/character.js';
 import { itemList } from '../data/items.js';
 import { calcularXPRequerida } from '../database/rewards.js';
 import { actualizarTiempo, obtenerTiempo } from '../database/statics.js';
+import { calcularStatsEquipados } from '../utils/equipamiento.js';
 
 export default {
   data: new SlashCommandBuilder()
@@ -15,7 +16,7 @@ export default {
     const userId = interaction.user.id;
 
     // 🔹 Buscamos al personaje en la base de datos
-    const character = await getCharacterByUserId(userId);
+    let character = await getCharacterByUserId(userId);
     if (!character) {
       return interaction.reply({
         content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.",
@@ -46,29 +47,18 @@ export default {
       await actualizarTiempo(userId, "lastregen");
     }
 
+    character = await getCharacterByUserId(userId);
+
     const characterTemplate = characters.find(char => char.race === character.race);
 
     // 🔹 Buscamos los objetos equipados
     const equippedItems = await getEquippedItems(userId);
 
-
-    const bonusStats = {
-      hp: 0, mana: 0, atkfisico: 0, deffisica: 0,
-      atkmagico: 0, defmagica: 0, precision: 0, evasion: 0
-    };
-
-    equippedItems.forEach(({ iditem, category }) => {
-      const itemData = itemList.find(cat => cat.category === category)
-        ?.items.find(i => i.id === iditem);
-      if (itemData) {
-        Object.keys(bonusStats).forEach(stat => {
-          bonusStats[stat] += itemData.stats[stat] || 0;
-        });
-      }
-    });
+    // 🔹 Unificamos todos los stats en uno
+    const bonusStats = calcularStatsEquipados(equippedItems)
 
     // 🔹 Estructura de los stats con bonus
-    const formatStat = (base, bonus) => `${base} ${bonus > 0 ? `(+${bonus})` : ""}`;
+    const formatStat = (base, bonus) => `${base + bonus} ${bonus > 0 ? `(+${bonus})` : ""}`;
     const xpRequerida = calcularXPRequerida(character.nivel)
 
     const elementEmojis = {

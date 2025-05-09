@@ -10,6 +10,7 @@ import { actualizarEstadisticas, actualizarTiempo, obtenerTiempo } from '../data
 import { itemList } from '../data/items.js';
 import { addItemToInventory } from '../database/inventory.js';
 import { cooldownAttack, cooldownRestoreHP } from '../../configs.js';
+import { calcularStatsEquipados } from '../utils/equipamiento.js';
 
 export default {
   data: new SlashCommandBuilder()
@@ -109,8 +110,19 @@ export default {
 
     // 🔹 Cálculo de daño preliminar
 
+    const equippedItems = await getEquippedItems(userId);
+    const bonusStats = calcularStatsEquipados(equippedItems);
+
     let atacante = {
       ...character,
+      hpmax: character.hpmax + bonusStats.hp,
+      manamax: character.manamax + bonusStats.mana,
+      atkfisico: character.atkfisico + bonusStats.atkfisico,
+      deffisica: character.deffisica + bonusStats.deffisica,
+      atkmagico: character.atkmagico + bonusStats.atkmagico,
+      defmagica: character.defmagica + bonusStats.defmagica,
+      precision: character.precision + bonusStats.precision,
+      evasion: character.evasion + bonusStats.evasion,
       ataca: "Personaje"
     }
 

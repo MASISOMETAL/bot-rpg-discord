@@ -28,20 +28,37 @@ export default {
       return interaction.reply({ content: "❌ No tienes un objeto en ese orden en tu inventario.", flags: MessageFlags.Ephemeral });
     }
 
-    // 🔹 Validar que el ítem sea consumible
-    const categoriaConsumibles = itemList.find(c => c.category === "Consumibles");
-    const itemData = categoriaConsumibles?.items.find(i => i.id === inventarioItem.iditem);
+    // 🔹 Validar la categoría permitida
+    const itemData = itemList.flatMap(category => category.items)
+      .find(i => i.id === inventarioItem.iditem);
 
-    if (!itemData) {
-      return interaction.reply({ content: "❌ No puedes usar este objeto, solo los consumibles pueden ser utilizados.", flags: MessageFlags.Ephemeral });
+    if (!itemData || !["Consumibles", "Box"].includes(itemData.category)) {
+      return interaction.reply({ content: "❌ No puedes usar este objeto, solo los **Consumibles** y **Cajas** pueden ser utilizados.", flags: MessageFlags.Ephemeral });
     }
 
-    // 🔹 Aplicar efectos del ítem
-    await actualizarRecursos(userId, itemData.stats.hp, itemData.stats.mana);
+    // 🔹 Aplicar efectos según el tipo de ítem
+    if (itemData.category === "Consumibles") {
+      await actualizarRecursos(userId, itemData.stats.hp, itemData.stats.mana);
+      await removeItemFromInventory(userId, itemOrder);
+      return interaction.reply({ content: `✅ Has usado **${itemData.name}** y recuperaste **${itemData.stats.hp} HP** y **${itemData.stats.mana} Mana**.`, flags: MessageFlags.Ephemeral });
+    }
 
-    // 🔹 Eliminar el ítem del inventario
-    await removeItemFromInventory(userId, itemOrder);
+    if (itemData.category === "Box") {
+      // 🔹 Filtrar ítems dentro del rango de nivel permitido
+      const posiblesDrops = itemList.flatMap(category => category.items)
+        .filter(item => item.nivel >= itemData.nivel_min && item.nivel <= itemData.nivel_max)
+        .filter(item => !["Consumibles", "Box"].includes(item.category)); // 🔹 Excluir Consumibles y Box
 
-    return interaction.reply({ content: `✅ Has usado **${itemData.name}** y recuperaste **${itemData.stats.hp} HP** y **${itemData.stats.mana} Mana**.`, flags: MessageFlags.Ephemeral });
+      if (!posiblesDrops.length) {
+        return interaction.reply({ content: "❌ No hay ítems disponibles en esta caja.", flags: MessageFlags.Ephemeral });
+      }
+
+      // 🔹 Elegir un ítem aleatorio dentro del rango válido
+      const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];
+      await addItemToInventory(userId, itemDrop.id, itemDrop.category);
+      await removeItemFromInventory(userId, itemOrder);
+
+      return interaction.reply({ content: `🎁 Has abierto una **${itemData.name}** y obtenido **${itemDrop.name}**!`, flags: MessageFlags.Ephemeral });
+    }
   }
 };
