@@ -9,7 +9,8 @@ const nameFormated = {
   Gloves: "Guantes",
   Boots: "Botas",
   Weapons: "Armas",
-  Consumibles: "Consumibles"
+  Consumibles: "Consumibles",
+  Box: "Cajas"
 }
 
 export default {
