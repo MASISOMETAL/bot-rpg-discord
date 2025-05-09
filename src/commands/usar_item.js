@@ -29,8 +29,8 @@ export default {
     }
 
     // 🔹 Validar la categoría permitida
-    const itemData = itemList.flatMap(category => category.items)
-      .find(i => i.id === inventarioItem.iditem);
+    const itemData = itemList.find(cat => cat.category === inventarioItem.category)
+      ?.items.find(i => i.id === inventarioItem.iditem);
 
     if (!itemData || !["Consumibles", "Box"].includes(itemData.category)) {
       return interaction.reply({ content: "❌ No puedes usar este objeto, solo los **Consumibles** y **Cajas** pueden ser utilizados.", flags: MessageFlags.Ephemeral });
