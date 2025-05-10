@@ -80,7 +80,7 @@ export async function actualizarStat(userId, stat, incremento, cantidad) {
     // 🔹 Base de la consulta UPDATE
     let query = `UPDATE characters SET ${stat} = ${stat} + $1, statpoints = GREATEST(0, statpoints - $2)`;
 
-    const values = [incremento, cantidad, String(userId)];
+    const values = [incremento, cantidad];
 
     // 🔹 Ajuste de hpmax y manamax si aplica
     if (stat === "hp") {
@@ -90,6 +90,8 @@ export async function actualizarStat(userId, stat, incremento, cantidad) {
       query += `, manamax = manamax + $3`;
       values.push(incremento);
     }
+
+    values.push(String(userId)); // Siempre como `TEXT`
 
     query += ` WHERE user_id = $${values.length}`; // 🔹 Ajustamos el índice de `user_id` correctamente
 
