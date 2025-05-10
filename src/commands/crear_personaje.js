@@ -73,6 +73,7 @@ export default {
     }
 
     await actualizarTiempo(String(userId), 'lastattack')
+    await actualizarTiempo(String(userId), 'lastregen')
 
     const elementEmojis = {
       "Fuego": "🔥",
