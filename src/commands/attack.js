@@ -150,7 +150,7 @@ export default {
         magical: "mágico"
       }
 
-      return interaction.editReply({ content: `⚔️ Atacaste a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}. ¡El monstruo contraataco, ${damageMob.mensaje} con daño ${normalizeHabilidadType[habilidadMob.type]}!` });
+      return interaction.editReply({ content: `⚔️ Atacaste a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}. ¡El monstruo contraataco, ${damageMob.mensaje} con daño ${normalizeHabilidadType[habilidadMob.type]}, le queda ${newHP} de vida!` });
     } else {
       // 🔹 Si el monstruo muere
 
@@ -215,7 +215,7 @@ export default {
       }
 
       await limpiarRegistroCombate(serverId, monster_id); // 🔥 Limpiar registros
-      return interaction.editReply({ content: `💀 Has derrotado a **${monstruoBase.name}** con **${habilidad.name}**! 🎉` });
+      return interaction.editReply({ content: `💀 Has derrotado a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}! 🎉` });
     }
   }
 };
