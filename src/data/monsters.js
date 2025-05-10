@@ -389,7 +389,7 @@ export const monsters = [
     name: "Primordial Colossus",
     nivel: 12,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/nM9WxpMb/primordial-colossus.png",
     stats: {
       hp: 7200, atkfisico: 500, deffisica: 400,
       atkmagico: 500, defmagica: 400, precision: 110, evasion: 106
@@ -400,7 +400,7 @@ export const monsters = [
     name: "Celestial Harbinger",
     nivel: 13,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/DDpSXBPF/celestial-harbinger.png",
     stats: {
       hp: 7800, atkfisico: 490, deffisica: 470,
       atkmagico: 480, defmagica: 460, precision: 111, evasion: 105
@@ -411,7 +411,7 @@ export const monsters = [
     name: "Stellar Archmage",
     nivel: 13,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/Z18D8Csh/stellar-archmage.png",
     stats: {
       hp: 7880, atkfisico: 460, deffisica: 420,
       atkmagico: 500, defmagica: 470, precision: 112, evasion: 106
@@ -424,7 +424,7 @@ export const monsters = [
     name: "Elder Basilisk",
     nivel: 14,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/pjjssKB0/elder-basilisk.png",
     stats: {
       hp: 8450, atkfisico: 520, deffisica: 500,
       atkmagico: 510, defmagica: 460, precision: 108, evasion: 110
@@ -435,7 +435,7 @@ export const monsters = [
     name: "Solar Titan",
     nivel: 14,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/4wjsXCpV/solar-titan.png",
     stats: {
       hp: 8500, atkfisico: 500, deffisica: 460,
       atkmagico: 540, defmagica: 510, precision: 110, evasion: 105
@@ -446,20 +446,19 @@ export const monsters = [
     name: "Obsidian Revenant",
     nivel: 14,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/5X3WVFpx/obsidian-revenant.png",
     stats: {
       hp: 8550, atkfisico: 540, deffisica: 520,
       atkmagico: 500, defmagica: 500, precision: 109, evasion: 108
     }
   },
-
-  // Nivel 15
+  // Nivel 15  
   {
     id: 42,
     name: "Ancient Chimera",
     nivel: 15,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/LDzfbNc0/ancient-chimera.png",
     stats: {
       hp: 9000, atkfisico: 570, deffisica: 490,
       atkmagico: 525, defmagica: 560, precision: 111, evasion: 108
@@ -470,7 +469,7 @@ export const monsters = [
     name: "Storm Colossus",
     nivel: 15,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/6R0F5C3g/storm-colossus.png",
     stats: {
       hp: 9100, atkfisico: 570, deffisica: 550,
       atkmagico: 560, defmagica: 530, precision: 115, evasion: 105
@@ -481,7 +480,7 @@ export const monsters = [
     name: "Void Specter",
     nivel: 15,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/fGrNsYyk/void-specter.png",
     stats: {
       hp: 9200, atkfisico: 580, deffisica: 560,
       atkmagico: 570, defmagica: 540, precision: 112, evasion: 108
@@ -494,7 +493,7 @@ export const monsters = [
     name: "Sunborn Warden",
     nivel: 16,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/sJs9NWm4/sunborn-warden.png",
     stats: {
       hp: 9800, atkfisico: 620, deffisica: 520,
       atkmagico: 580, defmagica: 580, precision: 115, evasion: 110
@@ -505,7 +504,7 @@ export const monsters = [
     name: "Frozen Overlord",
     nivel: 16,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/MDQNZMGt/frozen-overlord.png",
     stats: {
       hp: 9850, atkfisico: 610, deffisica: 590,
       atkmagico: 580, defmagica: 570, precision: 110, evasion: 115
@@ -516,7 +515,7 @@ export const monsters = [
     name: "Tyrant of the Deep",
     nivel: 16,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/8vwmcyv/tyrant-of-the-deep.png",
     stats: {
       hp: 9900, atkfisico: 570, deffisica: 555,
       atkmagico: 620, defmagica: 610, precision: 117, evasion: 110
