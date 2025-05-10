@@ -25,7 +25,7 @@ export default {
     const userId = interaction.user.id;
 
     // 🔹 Validamos si el usuario tiene un personaje
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({
         content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.",
@@ -51,14 +51,14 @@ export default {
     }
 
     // 🔹 Obtenemos el oro actual del usuario
-    const userGold = await getUserGold(userId);
+    const userGold = await getUserGold(String(userId));
     if (userGold < item.coste) {
       return interaction.reply({ content: `❌ No tienes suficiente oro. Necesitas ${item.coste} oro para comprar **${item.name}**.`, flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Realizamos la transacción
-    await deductGold(userId, item.coste);
-    await addItemToInventory(userId, item.id, selectedCategory);
+    await deductGold(String(userId), item.coste);
+    await addItemToInventory(String(userId), item.id, selectedCategory);
 
     return interaction.reply({ content: `✅ Has comprado **${item.name}** por 💰 ${item.coste} oro.` });
   }

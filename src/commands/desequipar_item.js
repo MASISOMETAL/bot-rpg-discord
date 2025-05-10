@@ -28,13 +28,13 @@ export default {
     const slot = interaction.options.getString('slot');
 
     // 🔹 Obtener datos del jugador
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Buscamos el ítem equipado en el slot indicado
-    const equippedItems = await getEquippedItems(userId);
+    const equippedItems = await getEquippedItems(String(userId));
     const equippedItem = equippedItems.find(item => item.slot === slot);
 
     const slotMessages = {
@@ -60,10 +60,10 @@ export default {
     }
 
     // 🔹 Movemos el ítem al inventario
-    await addItemToInventory(userId, equippedItem.iditem, equippedItem.category);
+    await addItemToInventory(String(userId), equippedItem.iditem, equippedItem.category);
 
     // 🔹 Eliminamos el ítem del equipo
-    await removeItemFromEquipment(userId, slot);
+    await removeItemFromEquipment(String(userId), slot);
 
     // 🔹 Mensaje de resultado
     return interaction.reply({

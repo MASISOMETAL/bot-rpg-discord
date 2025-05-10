@@ -1,11 +1,11 @@
 import { DivisorDMGBase } from "../../configs.js";
 
 const multiplicadorSTAB = {
-  "Fuego": { "Fuego": 1, "Viento": 1.4, "Oscuridad": 1.7, "Tierra": 0.7, "Agua": 0.4 },
-  "Viento": { "Viento": 1, "Oscuridad": 1.4, "Agua": 1.7, "Fuego": 0.7, "Tierra": 0.4 },
-  "Oscuridad": { "Oscuridad": 1, "Tierra": 1.4, "Fuego": 1.7, "Viento": 0.7, "Agua": 0.4 },
-  "Tierra": { "Tierra": 1, "Agua": 1.4, "Viento": 1.7, "Oscuridad": 0.7, "Fuego": 0.4 },
-  "Agua": { "Agua": 1, "Fuego": 1.4, "Tierra": 1.7, "Oscuridad": 0.7, "Viento": 0.4 }
+  "Agua":       { "Agua": 1,        "Fuego": 1.4,     "Tierra": 1.7,    "Oscuridad": 0.4, "Viento": 0.7 },
+  "Fuego":      { "Fuego": 1,       "Viento": 1.4,    "Oscuridad": 1.7, "Tierra": 0.4,    "Agua": 0.7 },
+  "Viento":     { "Viento": 1,      "Oscuridad": 1.4, "Agua": 1.7,      "Fuego": 0.4,     "Tierra": 0.7 },
+  "Tierra":     { "Tierra": 1,      "Agua": 1.4,      "Viento": 1.7,    "Oscuridad": 0.4, "Fuego": 0.7 },
+  "Oscuridad":  { "Oscuridad": 1,   "Tierra": 1.4,    "Fuego": 1.7,     "Viento": 0.4,    "Agua": 0.7 },
 };
 
 export function calcularDaño(atacante, defensor, habilidad) {

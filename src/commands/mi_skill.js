@@ -16,7 +16,7 @@ export default {
     const skillId = interaction.options.getInteger('id');
 
     // 🔹 Obtener datos del jugador
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }

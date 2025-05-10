@@ -17,7 +17,7 @@ export async function createCharacter(characterData) {
     `;
 
     const values = [
-      user_id, name, race, nivel, xp, hp, hpmax, mana, manamax,
+      String(user_id), name, race, nivel, xp, hp, hpmax, mana, manamax,
       atkfisico, deffisica, atkmagico, defmagica,
       precision, evasion, gold, elemento, 0
     ];
@@ -36,7 +36,7 @@ export async function createCharacter(characterData) {
 export async function getCharacterByUserId(userId) {
   try {
     const query = "SELECT * FROM characters WHERE user_id = $1";
-    const values = [userId];
+    const values = [String(userId)];
 
     const result = await client.query(query, values);
     return result.rows[0] || null; // 🔹 Devuelve el personaje si existe, o `null` si no hay resultado
@@ -50,7 +50,7 @@ export async function getCharacterByUserId(userId) {
 export async function updateCharacterGold(userId, newGoldAmount) {
   try {
     const query = "UPDATE characters SET gold = $1 WHERE user_id = $2";
-    const values = [newGoldAmount, userId];
+    const values = [newGoldAmount, String(userId)];
 
     await client.query(query, values);
 
@@ -65,7 +65,7 @@ export async function updateCharacterGold(userId, newGoldAmount) {
 export async function obtenerNivelUsuario(userId) {
   try {
     const query = "SELECT nivel FROM characters WHERE user_id = $1";
-    const values = [userId];
+    const values = [String(userId)];
 
     const result = await client.query(query, values);
     return result.rows[0]?.nivel || null; // 🔹 Si el usuario no tiene personaje, devuelve `null`
@@ -80,7 +80,7 @@ export async function actualizarStat(userId, stat, incremento, cantidad) {
     // 🔹 Base de la consulta UPDATE
     let query = `UPDATE characters SET ${stat} = ${stat} + $1, statpoints = GREATEST(0, statpoints - $2)`;
 
-    const values = [incremento, cantidad, userId];
+    const values = [incremento, cantidad, String(userId)];
 
     // 🔹 Ajuste de hpmax y manamax si aplica
     if (stat === "hp") {
@@ -113,7 +113,7 @@ export async function regenerarRecursos(userId, bloques) {
           mana = LEAST(manamax, mana + $1) 
       WHERE user_id = $2
     `;
-    const values = [cantidadRegen, userId];
+    const values = [cantidadRegen, String(userId)];
 
     await client.query(query, values);
     return true;
@@ -133,7 +133,7 @@ export async function actualizarRecursos(userId, hpRecuperado, manaRecuperado) {
       WHERE user_id = $3
     `;
 
-    const values = [hpRecuperado, manaRecuperado, userId];
+    const values = [hpRecuperado, manaRecuperado, String(userId)];
 
     await client.query(query, values);
 
@@ -163,7 +163,7 @@ export async function modificarStatsPersonaje(userId, stats, operacion) {
 
     const values = [
       stats.hp || 0, stats.mana || 0, stats.atkfisico || 0, stats.deffisica || 0,
-      stats.atkmagico || 0, stats.defmagica || 0, stats.precision || 0, stats.evasion || 0, userId
+      stats.atkmagico || 0, stats.defmagica || 0, stats.precision || 0, stats.evasion || 0, String(userId)
     ];
 
     await client.query(query, values);
@@ -183,7 +183,7 @@ export async function actualizarHPPersonaje(userId, newHP) {
       WHERE user_id = $2
     `;
 
-    const values = [newHP, userId];
+    const values = [newHP, String(userId)];
 
     await client.query(query, values);
 
@@ -217,7 +217,7 @@ export async function getUserRanking(userId) {
   try {
     // Obtenemos el nivel y xp del usuario
     const characterQuery = `SELECT nivel, xp FROM characters WHERE user_id = $1`;
-    const characterRes = await client.query(characterQuery, [userId]);
+    const characterRes = await client.query(characterQuery, [String(userId)]);
     if (!characterRes.rows.length) {
       throw new Error("El personaje no se encontró");
     }

@@ -4,7 +4,7 @@ import { client } from './bd.js';
 export async function getUserGold(userId) {
   try {
     const query = "SELECT gold FROM characters WHERE user_id = $1";
-    const values = [userId];
+    const values = [String(userId)];
 
     const result = await client.query(query, values);
     return result.rows[0]?.gold ?? 0; // Si el usuario no tiene oro, devuelve `0`
@@ -18,7 +18,7 @@ export async function getUserGold(userId) {
 export async function deductGold(userId, amount) {
   try {
     const query = "UPDATE characters SET gold = gold - $1 WHERE user_id = $2";
-    const values = [amount, userId];
+    const values = [amount, String(userId)];
 
     await client.query(query, values);
     return true;
@@ -32,14 +32,14 @@ export async function deductGold(userId, amount) {
 export async function addItemToInventory(userId, iditem, category) {
   try {
     const orderQuery = "SELECT MAX(item_order) AS maxOrder FROM inventory WHERE user_id = $1";
-    const orderResult = await client.query(orderQuery, [userId]);
+    const orderResult = await client.query(orderQuery, [String(userId)]);
     const newOrder = (orderResult.rows[0]?.maxorder ?? 0) + 1;
 
     const query = `
       INSERT INTO inventory (user_id, iditem, category, item_order) 
       VALUES ($1, $2, $3, $4)
     `;
-    const values = [userId, iditem, category, newOrder];
+    const values = [String(userId), iditem, category, newOrder];
 
     await client.query(query, values);
     return true;
@@ -60,7 +60,7 @@ export async function getInventoryItems(userId) {
       WHERE user_id = $1 
       ORDER BY item_order
     `;
-    const values = [userId];
+    const values = [String(userId)];
 
     const result = await client.query(query, values);
     return result.rows; // Devuelve lista de ítems
@@ -73,7 +73,7 @@ export async function getInventoryItems(userId) {
 export async function removeItemFromInventory(userId, itemOrder) {
   try {
     const query = "DELETE FROM inventory WHERE user_id = $1 AND item_order = $2";
-    const values = [userId, itemOrder];
+    const values = [String(userId), itemOrder];
 
     await client.query(query, values);
     return true;
@@ -90,7 +90,7 @@ export async function obtenerItemPorOrden(userId, itemOrder) {
       FROM inventory 
       WHERE user_id = $1 AND item_order = $2
     `;
-    const values = [userId, itemOrder];
+    const values = [String(userId), itemOrder];
 
     const result = await client.query(query, values);
     return result.rows[0] || null; // Devuelve el ítem si existe, o `null` si no hay resultado

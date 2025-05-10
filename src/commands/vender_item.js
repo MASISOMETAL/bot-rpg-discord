@@ -17,13 +17,13 @@ export default {
     const itemOrder = interaction.options.getInteger('id');
 
     // 🔹 Verificamos si el usuario tiene un personaje
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Buscamos el ítem en el inventario
-    const inventory = await getInventoryItems(userId);
+    const inventory = await getInventoryItems(String(userId));
     const inventoryItem = inventory.find(item => item.item_order === itemOrder);
 
     if (!inventoryItem) {
@@ -47,10 +47,10 @@ export default {
     const goldReceived = Math.floor(itemData.coste * 0.5);
 
     // 🔹 Sumamos el oro al personaje
-    await updateCharacterGold(userId, character.gold + goldReceived);
+    await updateCharacterGold(String(userId), character.gold + goldReceived);
 
     // 🔹 Eliminamos el ítem del inventario
-    await removeItemFromInventory(userId, itemOrder);
+    await removeItemFromInventory(String(userId), itemOrder);
 
     // 🔹 Mensaje de confirmación
     return interaction.reply({

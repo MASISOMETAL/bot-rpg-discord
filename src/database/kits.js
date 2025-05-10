@@ -23,7 +23,7 @@ export async function insertKitRedemption(userId, kitCode) {
       INSERT INTO kit_redemptions (user_id, kit_code)
       VALUES ($1, $2)
     `;
-    const values = [userId, kitCode];
+    const values = [String(userId), kitCode];
     await client.query(query, values);
     return true;
   } catch (error) {

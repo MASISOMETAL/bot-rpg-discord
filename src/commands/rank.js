@@ -19,7 +19,7 @@ export default {
     const tipoRanking = interaction.options.getString('tipo');
 
     // 🔹 Obtener datos del jugador
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
@@ -31,7 +31,7 @@ export default {
       // 🔹 Filtrar si el usuario seleccionó "server"
       if (tipoRanking === 'server') {
         const members = await interaction.guild.members.fetch();
-        const userIdsEnServidor = members.map(member => member.id);
+        const userIdsEnServidor = members.map(member => String(member.id));
         ranking = ranking.filter(char => userIdsEnServidor.includes(char.user_id));
       }
 
@@ -42,7 +42,7 @@ export default {
         });
       }
 
-      const userRanking = await getUserRanking(userId) || "N/A";
+      const userRanking = await getUserRanking(String(userId)) || "N/A";
 
       let currentPage = 0;
       const itemsPerPage = 10;

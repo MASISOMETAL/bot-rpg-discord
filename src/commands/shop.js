@@ -30,7 +30,7 @@ export default {
     const userId = interaction.user.id;
 
     // 🔹 Validamos si el usuario tiene un personaje
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({
         content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.",

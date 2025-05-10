@@ -7,7 +7,7 @@ export async function registrarAtaque(serverId, monsterId, userId, damage) {
       INSERT INTO combat_log (server_id, monster_id, user_id, damage) 
       VALUES ($1, $2, $3, $4)
     `;
-    const values = [serverId, monsterId, userId, damage];
+    const values = [serverId, monsterId, String(userId), damage];
 
     await client.query(query, values);
 
@@ -83,7 +83,7 @@ export async function actualizarRecompensas(userId, oroGanado, xpGanado, interac
       SET gold = gold + $1, xp = $2, nivel = $3, statpoints = $4 
       WHERE user_id = $5
     `;
-    const values = [oroGanado, nuevaXP, nuevoNivel, puntosStat, userId];
+    const values = [oroGanado, nuevaXP, nuevoNivel, puntosStat, String(userId)];
 
     await client.query(query, values);
 

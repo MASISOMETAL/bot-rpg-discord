@@ -28,7 +28,7 @@ export default {
     const race = interaction.options.getString('raza');
 
     // 🔹 Verificamos si el usuario ya tiene un personaje registrado
-    const existingCharacter = await getCharacterByUserId(userId);
+    const existingCharacter = await getCharacterByUserId(String(userId));
     if (existingCharacter) {
       return interaction.reply({
         content: `❌ Ya tienes un personaje registrado como **${existingCharacter.name}** (${existingCharacter.race}). No puedes crear otro.`,
@@ -47,7 +47,7 @@ export default {
 
     // 🔹 Creamos el objeto con los datos del personaje
     const characterData = {
-      user_id: userId,
+      user_id: String(userId),
       name,
       race,
       nivel: characterTemplate.nivel,
@@ -68,7 +68,6 @@ export default {
 
     // 🔹 Guardamos el personaje en la base de datos
     const success = await createCharacter(characterData);
-    await actualizarTiempo(userId, "lastregen"); // Registra el tiempo inicial
     if (!success) {
       return interaction.reply({ content: "❌ Hubo un error al crear tu personaje. Inténtalo nuevamente.", flags: MessageFlags.Ephemeral });
     }

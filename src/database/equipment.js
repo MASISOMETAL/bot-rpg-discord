@@ -7,7 +7,7 @@ export async function addItemToEquipment(userId, iditem, category, slot) {
       INSERT INTO equipment (user_id, iditem, category, slot) 
       VALUES ($1, $2, $3, $4)
     `;
-    const values = [userId, iditem, category, slot];
+    const values = [String(userId), iditem, category, slot];
 
     await client.query(query, values);
 
@@ -25,7 +25,7 @@ export async function removeItemFromEquipment(userId, slot) {
       DELETE FROM equipment 
       WHERE user_id = $1 AND slot = $2
     `;
-    const values = [userId, slot];
+    const values = [String(userId), slot];
 
     await client.query(query, values);
 
@@ -45,7 +45,7 @@ export async function getEquippedItems(userId) {
       FROM equipment 
       WHERE user_id = $1
     `;
-    const values = [userId];
+    const values = [String(userId)];
 
     const result = await client.query(query, values);
     return result.rows; // Devuelve todos los ítems equipados en un array

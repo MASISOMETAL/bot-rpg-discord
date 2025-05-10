@@ -33,7 +33,7 @@ export default {
     const skillId = interaction.options.getInteger('skill_id');
 
     // 🔹 Obtener datos del jugador
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.editReply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
@@ -42,7 +42,7 @@ export default {
       return interaction.editReply({ content: "❌ Estás fuera de combate. Debes esperar a recuperar vida o usar una curación antes de atacar nuevamente.", flags: MessageFlags.Ephemeral });
     }
 
-    const tiempoUltimoAtaque = await obtenerTiempo(userId, "lastattack");
+    const tiempoUltimoAtaque = await obtenerTiempo(String(userId), "lastattack");
 
     if (!tiempoUltimoAtaque) {
       console.error("❌ Error: No se encontró `lastattack` en la base de datos.");
@@ -87,7 +87,7 @@ export default {
 
     // 🔹 Cálculo de daño preliminar
 
-    const equippedItems = await getEquippedItems(userId);
+    const equippedItems = await getEquippedItems(String(userId));
     const bonusStats = calcularStatsEquipados(equippedItems);
 
     let atacante = {
@@ -115,11 +115,11 @@ export default {
     // 🔹 Actualizar HP del monstruo en la base de datos
     await actualizarHPMonstruo(serverId, monstruoBase.id, newHP);
     // 🔹 Guardamos el daño realizado en estadisticas
-    await actualizarEstadisticas(userId, "totaldamage", damage.daño); // Daño causado
+    await actualizarEstadisticas(String(userId), "totaldamage", damage.daño); // Daño causado
     // 🔹 Actualizarmos el tiempo para esperar 90 segundos
-    await actualizarTiempo(userId, "lastattack"); // Actualiza el momento del ataque
+    await actualizarTiempo(String(userId), "lastattack"); // Actualiza el momento del ataque
     // 🔹 Vamos almacenando el daño para luego poder dar una recompensa
-    await registrarAtaque(serverId, monstruoBase.id, userId, damage.daño);
+    await registrarAtaque(serverId, monstruoBase.id, String(userId), damage.daño);
 
     // 🔹 Si el monstruo sobrevive, contraataca
     if (newHP > 0) {
@@ -143,7 +143,7 @@ export default {
       newHP = character.hp - damageMob.daño;
 
       // actualizar hp del personaje
-      await actualizarHPPersonaje(userId, newHP)
+      await actualizarHPPersonaje(String(userId), newHP)
 
       const normalizeHabilidadType = {
         physical: "fisico",
@@ -174,7 +174,7 @@ export default {
         const oroGanado = Math.round(total_damage * 0.05 * ajusteRecompensa); // 5% de recompensa
         const xpGanado = Math.round(total_damage * 0.02 * ajusteRecompensa); // 1% de recompensa
 
-        await actualizarEstadisticas(userId, "monstersdefeated", 1); // Monstruo eliminado
+        await actualizarEstadisticas(String(userId), "monstersdefeated", 1); // Monstruo eliminado
         await actualizarRecompensas(user_id, oroGanado, xpGanado, interaction);
 
         // 🔹 Verificar si el usuario hizo más del 20% del daño total
@@ -183,10 +183,10 @@ export default {
 
         if (porcentajeDanio >= 10) {
           // 🔹 Definir si el drop sucede con un 30% de probabilidad
-          if (Math.random() <= 0.4) {
+          if (Math.random() <= 0.6) {
             // 🔹 Obtener lista de ítems en el rango de nivel permitido
             const posiblesDrops = itemList.flatMap(category => category.items)
-              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 4);
+              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 10);
 
             // 🔹 Seleccionar un ítem al azar
             const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];

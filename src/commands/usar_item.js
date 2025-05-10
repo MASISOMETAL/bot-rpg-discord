@@ -17,13 +17,13 @@ export default {
     const itemOrder = interaction.options.getInteger('item_order');
 
     // 🔹 Verificar existencia del personaje
-    const personaje = await getCharacterByUserId(userId);
+    const personaje = await getCharacterByUserId(String(userId));
     if (!personaje) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Obtener el ítem por su orden en el inventario
-    const inventarioItem = await obtenerItemPorOrden(userId, itemOrder);
+    const inventarioItem = await obtenerItemPorOrden(String(userId), itemOrder);
     if (!inventarioItem) {
       return interaction.reply({ content: "❌ No tienes un objeto en ese orden en tu inventario.", flags: MessageFlags.Ephemeral });
     }
@@ -38,8 +38,8 @@ export default {
 
     // 🔹 Aplicar efectos según el tipo de ítem
     if (inventarioItem.category === "Consumibles") {
-      await actualizarRecursos(userId, itemData.stats.hp, itemData.stats.mana);
-      await removeItemFromInventory(userId, itemOrder);
+      await actualizarRecursos(String(userId), itemData.stats.hp, itemData.stats.mana);
+      await removeItemFromInventory(String(userId), itemOrder);
       return interaction.reply({ content: `✅ Has usado **${itemData.name}** y recuperaste **${itemData.stats.hp} HP** y **${itemData.stats.mana} Mana**.`, flags: MessageFlags.Ephemeral });
     }
 
@@ -55,8 +55,8 @@ export default {
 
       // 🔹 Elegir un ítem aleatorio dentro del rango válido
       const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];
-      await addItemToInventory(userId, itemDrop.id, itemDrop.category);
-      await removeItemFromInventory(userId, itemOrder);
+      await addItemToInventory(String(userId), itemDrop.id, itemDrop.category);
+      await removeItemFromInventory(String(userId), itemOrder);
 
       return interaction.reply({ content: `🎁 Has abierto una **${itemData.name}** y obtenido **${itemDrop.name}**!`, flags: MessageFlags.Ephemeral });
     }

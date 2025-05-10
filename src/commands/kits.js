@@ -19,7 +19,7 @@ export default {
     const codigo = interaction.options.getString('codigo').trim().toUpperCase();
 
     // 🔹 Obtener datos del jugador
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
@@ -54,7 +54,7 @@ export default {
       });
     }
 
-    const yaCanjeado = await checkKitRedemption(userId, codigo);
+    const yaCanjeado = await checkKitRedemption(String(userId), codigo);
 
     if (yaCanjeado) {
       const fechaFormateada = new Date(yaCanjeado.redeemed_at).toLocaleString("es-ES", {
@@ -75,10 +75,10 @@ export default {
     try {
       // Por cada item definido en el kit, lo agregamos al inventario del usuario
       for (const item of kit) {
-        await addItemToInventory(userId, item.id, item.category);
+        await addItemToInventory(String(userId), item.id, item.category);
       }
 
-      await insertKitRedemption(userId, codigo);
+      await insertKitRedemption(String(userId), codigo);
 
       return interaction.reply({
         content: `🎉 ¡Has canjeado el kit ${codigo} exitosamente! Los items han sido agregados a tu inventario.`,

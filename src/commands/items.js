@@ -52,7 +52,7 @@ export default {
         .setTitle(`📜 ${itemData.name}`)
         .setDescription(`🏷️ **ID:** ${itemData.id}\n💰 **Precio:** ${itemData.coste} oro\n🛡️ **Usable por:** ${itemData.usableBy.join(', ')}\n📖 **Descripción:** "${itemData.description}"`)
         .addFields(
-          { name: "⚔️ Atributos", value: `HP: ${itemData.stats.hp}\nMana: ${itemData.stats.mana}\nAtaque Físico: ${itemData.stats.atkfisico}\nDefensa Física: ${itemData.stats.deffisica}\nAtaque Mágico: ${itemData.stats.atkmagico}\nDefensa Mágica: ${itemData.stats.defmagica}\nPrecisión: ${itemData.stats.precision}\nEvasión: ${itemData.stats.evasion}`, inline: true },
+          { name: "⚔️ Atributos", value: `HP: ${itemData.stats.hp}\nMana: ${itemData.stats.mana}\nAtaque Físico: ${itemData.stats.atkfisico}\nDefensa Física: ${itemData.stats.deffisica}\nAtaque Mágico: ${itemData.stats.atkmagico}\nDefensa Mágica: ${itemData.stats.defmagica}\nPresición: ${itemData.stats.precision}\nEvasión: ${itemData.stats.evasion}`, inline: true },
           { name: "🛒 Comerciable", value: itemData.selleable ? "✅ Sí" : "❌ No", inline: true }
         );
 

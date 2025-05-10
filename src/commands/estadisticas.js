@@ -11,13 +11,13 @@ export default {
     const userId = interaction.user.id;
 
     // 🔹 Validamos si el usuario tiene un personaje
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Obtener estadísticas del usuario
-    const stats = await getStatisticsByUserId(userId);
+    const stats = await getStatisticsByUserId(String(userId));
     if (!stats) {
       return interaction.reply({ content: "❌ No tienes estadísticas registradas aún. ¡Empieza a combatir!", flags: MessageFlags.Ephemeral });
     }

@@ -18,13 +18,13 @@ export default {
     const itemOrder = interaction.options.getInteger('id');
 
     // 🔹 Validamos si el usuario tiene un personaje
-    const character = await getCharacterByUserId(userId);
+    const character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({ content: "❌ No tienes un personaje. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Obtenemos el inventario del usuario
-    const inventory = await getInventoryItems(userId);
+    const inventory = await getInventoryItems(String(userId));
     const inventoryItem = inventory.find(item => item.item_order === itemOrder);
 
     if (!inventoryItem) {
@@ -59,7 +59,7 @@ export default {
     let replacedItems = [];
 
     // 🔹 Manejo especial para armas
-    const equippedItems = await getEquippedItems(userId);
+    const equippedItems = await getEquippedItems(String(userId));
     if (inventoryItem.category === "Weapons") {
       const mainHandOccupied = equippedItems.some(e => e.slot === "mainHand");
       const offHandOccupied = equippedItems.some(e => e.slot === "offHand");
@@ -72,19 +72,19 @@ export default {
         if (mainHandItem) {
           const mainHandData = itemList.find(cat => cat.category === mainHandItem.category)
             ?.items.find(i => i.id === mainHandItem.iditem);
-          await addItemToInventory(userId, mainHandItem.iditem, mainHandItem.category);
+          await addItemToInventory(String(userId), mainHandItem.iditem, mainHandItem.category);
           previouslyEquipped = mainHandItem;
         }
 
         if (offHandItem) {
           const offHandData = itemList.find(cat => cat.category === offHandItem.category)
             ?.items.find(i => i.id === offHandItem.iditem);
-          await addItemToInventory(userId, offHandItem.iditem, offHandItem.category);
+          await addItemToInventory(String(userId), offHandItem.iditem, offHandItem.category);
           replacedItems.push(offHandItem);
         }
 
-        await removeItemFromEquipment(userId, "mainHand");
-        await removeItemFromEquipment(userId, "offHand");
+        await removeItemFromEquipment(String(userId), "mainHand");
+        await removeItemFromEquipment(String(userId), "offHand");
 
         slot = "mainHand";
       } else {
@@ -96,8 +96,8 @@ export default {
             ?.items.find(i => i.id === mainHandItem.iditem);
 
           if (mainHandData && !mainHandData.onehand) {
-            await addItemToInventory(userId, mainHandItem.iditem, mainHandItem.category);
-            await removeItemFromEquipment(userId, "mainHand");
+            await addItemToInventory(String(userId), mainHandItem.iditem, mainHandItem.category);
+            await removeItemFromEquipment(String(userId), "mainHand");
             previouslyEquipped = mainHandItem;
             slot = "mainHand";
           } else {
@@ -105,7 +105,7 @@ export default {
           }
         } else {
           previouslyEquipped = equippedItems.find(item => item.slot === "mainHand");
-          await removeItemFromEquipment(userId, "mainHand");
+          await removeItemFromEquipment(String(userId), "mainHand");
           slot = "mainHand";
         }
       }
@@ -116,16 +116,16 @@ export default {
         const prevItemData = itemList.find(cat => cat.category === previouslyEquipped.category)
           ?.items.find(i => i.id === previouslyEquipped.iditem);
 
-        await addItemToInventory(userId, previouslyEquipped.iditem, previouslyEquipped.category);
-        await removeItemFromEquipment(userId, slot);
+        await addItemToInventory(String(userId), previouslyEquipped.iditem, previouslyEquipped.category);
+        await removeItemFromEquipment(String(userId), slot);
       }
     }
 
     // 🔹 Equipamos el nuevo objeto
-    await addItemToEquipment(userId, selectedItem.id, inventoryItem.category, slot);
+    await addItemToEquipment(String(userId), selectedItem.id, inventoryItem.category, slot);
 
     // 🔹 Eliminamos el ítem del inventario
-    await removeItemFromInventory(userId, itemOrder);
+    await removeItemFromInventory(String(userId), itemOrder);
 
     const slotMessages = {
       Helms: "Cabeza",

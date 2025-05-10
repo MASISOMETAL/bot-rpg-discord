@@ -30,7 +30,7 @@ export default {
     const stat = interaction.options.getString('stat');
     const cantidad = interaction.options.getInteger('cantidad');
 
-    const personaje = await getCharacterByUserId(userId);
+    const personaje = await getCharacterByUserId(String(userId));
     if (!personaje) {
       return interaction.reply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
     }
@@ -49,7 +49,7 @@ export default {
     const multiplicador = statMultipliers[personaje.race]?.[stat] || 1;
     const incremento = cantidad * multiplicador;
 
-    await actualizarStat(userId, stat, incremento, cantidad);
+    await actualizarStat(String(userId), stat, incremento, cantidad);
 
     return interaction.reply({ content: `✅ Has asignado **${cantidad} puntos** a **${stat}**, aumentando su valor en **${incremento}**.`, flags: MessageFlags.Ephemeral });
   }

@@ -22,7 +22,7 @@ export default {
     const targetUserId = targetUser.id;
 
     // Buscar el personaje del usuario mencionado
-    const character = await getCharacterByUserId(targetUserId);
+    const character = await getCharacterByUserId(String(targetUserId));
     if (!character) {
       return interaction.reply({
         content: `❌ El usuario ${targetUser} no tiene un personaje creado. Pídele que use \`/crear_personaje\` para comenzar su aventura.`,
@@ -34,7 +34,7 @@ export default {
     const characterTemplate = characters.find(char => char.race === character.race);
 
     // Obtener los objetos equipados
-    const equippedItems = await getEquippedItems(targetUserId);
+    const equippedItems = await getEquippedItems(String(targetUserId));
     const bonusStats = {
       hp: 0, mana: 0, atkfisico: 0, deffisica: 0,
       atkmagico: 0, defmagica: 0, precision: 0, evasion: 0

@@ -15,7 +15,7 @@ export default {
     const userId = interaction.user.id;
 
     // 🔹 Buscamos al personaje en la base de datos
-    let character = await getCharacterByUserId(userId);
+    let character = await getCharacterByUserId(String(userId));
     if (!character) {
       return interaction.reply({
         content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.",
@@ -26,7 +26,7 @@ export default {
     const characterTemplate = characters.find(char => char.race === character.race);
 
     // 🔹 Buscamos los objetos equipados
-    const equippedItems = await getEquippedItems(userId);
+    const equippedItems = await getEquippedItems(String(userId));
 
     // 🔹 Unificamos todos los stats en uno
     const bonusStats = calcularStatsEquipados(equippedItems)
