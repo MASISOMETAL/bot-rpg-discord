@@ -34,18 +34,18 @@ export default {
 
       console.log(itemData);
 
-    if (!itemData || !["Consumibles", "Box"].includes(itemData.category)) {
+    if (!itemData || !["Consumibles", "Box"].includes(inventarioItem.category)) {
       return interaction.reply({ content: "❌ No puedes usar este objeto, solo los **Consumibles** y **Cajas** pueden ser utilizados.", flags: MessageFlags.Ephemeral });
     }
 
     // 🔹 Aplicar efectos según el tipo de ítem
-    if (itemData.category === "Consumibles") {
+    if (inventarioItem.category === "Consumibles") {
       await actualizarRecursos(userId, itemData.stats.hp, itemData.stats.mana);
       await removeItemFromInventory(userId, itemOrder);
       return interaction.reply({ content: `✅ Has usado **${itemData.name}** y recuperaste **${itemData.stats.hp} HP** y **${itemData.stats.mana} Mana**.`, flags: MessageFlags.Ephemeral });
     }
 
-    if (itemData.category === "Box") {
+    if (inventarioItem.category === "Box") {
       // 🔹 Filtrar ítems dentro del rango de nivel permitido
       const posiblesDrops = itemList.flatMap(category => category.items)
         .filter(item => item.nivel >= itemData.nivel_min && item.nivel <= itemData.nivel_max)
