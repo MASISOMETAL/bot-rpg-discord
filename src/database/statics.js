@@ -3,8 +3,10 @@ import { client } from './bd.js';
 export async function actualizarEstadisticas(userId, campo, cantidad) {
   try {
     const query = `
-      INSERT INTO statistics (user_id, ${campo}) VALUES ($1, $2)
-      ON CONFLICT (user_id) DO UPDATE SET ${campo} = statistics.${campo} + EXCLUDED.${campo}
+      INSERT INTO statistics (user_id, ${campo}) 
+      VALUES ($1, $2)
+      ON CONFLICT (user_id) 
+      DO UPDATE SET ${campo} = COALESCE(statistics.${campo}, 0) + $2
     `;
     const values = [userId, cantidad];
 
@@ -16,6 +18,7 @@ export async function actualizarEstadisticas(userId, campo, cantidad) {
     throw err;
   }
 }
+
 
 export async function getStatisticsByUserId(userId) {
   try {
