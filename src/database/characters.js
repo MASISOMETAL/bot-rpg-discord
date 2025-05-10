@@ -240,3 +240,15 @@ export async function getUserRanking(userId) {
     return null;
   }
 }
+
+export async function obtenerTodosLosJugadores() {
+  try {
+    const query = `SELECT user_id, name FROM characters`;
+    const result = await client.query(query);
+
+    return result.rows; // 🔹 Devuelve un array con todos los jugadores
+  } catch (err) {
+    console.error("❌ Error al obtener jugadores:", err);
+    throw err;
+  }
+}

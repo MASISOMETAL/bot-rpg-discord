@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from 'discord.js';
 import { actualizarHPMonstruo, eliminarMonstruo, obtenerDetallesMonstruo } from '../database/monster.js';
-import { actualizarHPPersonaje, getCharacterByUserId, regenerarRecursos } from '../database/characters.js';
+import { actualizarHPPersonaje, getCharacterByUserId } from '../database/characters.js';
 import { skillsByRace } from '../data/skills.js';
 import { calcularDaño } from '../utils/attacks.js';
 import { getEquippedItems } from '../database/equipment.js';
@@ -9,7 +9,7 @@ import { actualizarRecompensas, calcularRecompensas, limpiarRegistroCombate, reg
 import { actualizarEstadisticas, actualizarTiempo, obtenerTiempo } from '../database/statics.js';
 import { itemList } from '../data/items.js';
 import { addItemToInventory } from '../database/inventory.js';
-import { cooldownAttack, cooldownRestoreHP } from '../../configs.js';
+import { cooldownAttack } from '../../configs.js';
 import { calcularStatsEquipados } from '../utils/equipamiento.js';
 
 export default {
@@ -36,29 +36,6 @@ export default {
     const character = await getCharacterByUserId(userId);
     if (!character) {
       return interaction.editReply({ content: "❌ No tienes un personaje creado. Usa `/crear_personaje` para comenzar tu aventura.", flags: MessageFlags.Ephemeral });
-    }
-
-    const tiempoUltimaRegen = await obtenerTiempo(userId, "lastregen");
-
-    if (!tiempoUltimaRegen) {
-      console.error("❌ Error: No se encontró `lastregen` en la base de datos.");
-      return;
-    }
-
-    // 🔹 Calculamos el tiempo transcurrido correctamente en milisegundos
-    const tiempoTranscurrido = Date.now() - tiempoUltimaRegen.getTime();
-
-    // 🔹 Calculamos cuántos intervalos de 10 minutos han pasado
-    const bloquesDeRegen = Math.floor(tiempoTranscurrido / (10 * 60 * 1000));
-
-    if (bloquesDeRegen > 0) {
-      console.log(`🛠️ Se aplicará regeneración: ${bloquesDeRegen} ciclos de 10 min.`);
-
-      // 🔹 Aplicamos la regeneración proporcional
-      await regenerarRecursos(userId, bloquesDeRegen);
-
-      // 🔹 Actualizamos `lastregen` a `NOW()` en la base de datos
-      await actualizarTiempo(userId, "lastregen");
     }
 
     if (character.hp <= 0) {

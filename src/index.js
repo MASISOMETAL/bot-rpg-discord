@@ -3,6 +3,7 @@ import interactionHandler from './commands/interactionHandler.js';
 import messagesHandler from './messages/messagesHandler.js';
 import 'dotenv/config'
 import { initializeDatabase } from './database/bd.js';
+import { obtenerTodosLosJugadores, regenerarRecursos } from './database/characters.js';
 
 const TOKEN = process.env.TOKEN
 
@@ -24,6 +25,17 @@ client.on('interactionCreate', async (interaction) => {
 client.on('messageCreate', async (message) => {
   await messagesHandler(message);
 });
+
+setInterval(async () => {
+  console.log("✨ Iniciando regeneración automática de HP y Mana...");
+
+  const jugadores = await obtenerTodosLosJugadores(); // 🔹 Obtiene todos los usuarios registrados
+
+  for (const jugador of jugadores) {
+    await regenerarRecursos(jugador.user_id, 1); // 🔹 Aplica 1 bloque de regeneración (25 HP/Mana)
+  }
+
+}, 10 * 60 * 1000); // 🔹 Ejecuta cada 10 minutos
 
 client.login(TOKEN); // 🔹 Reemplaza con tu token
 
