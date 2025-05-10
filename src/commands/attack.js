@@ -111,6 +111,7 @@ export default {
     const damage = calcularDaño(atacante, defensor, habilidad)
 
     let newHP = monstruoDB.hp - damage.daño;
+    const hpDeMob = newHP
 
     // 🔹 Actualizar HP del monstruo en la base de datos
     await actualizarHPMonstruo(serverId, monstruoBase.id, newHP);
@@ -150,7 +151,7 @@ export default {
         magical: "mágico"
       }
 
-      return interaction.editReply({ content: `⚔️ Atacaste a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}. ¡El monstruo contraataco, ${damageMob.mensaje} con daño ${normalizeHabilidadType[habilidadMob.type]}, le queda ${newHP} de vida!` });
+      return interaction.editReply({ content: `⚔️ Atacaste a **${monstruoBase.name}** con **${habilidad.name}**, ${damage.mensaje}. ¡El monstruo contraataco, ${damageMob.mensaje} con daño ${normalizeHabilidadType[habilidadMob.type]}, le queda **${hpDeMob}** de hp!` });
     } else {
       // 🔹 Si el monstruo muere
 
