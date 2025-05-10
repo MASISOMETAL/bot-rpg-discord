@@ -184,15 +184,18 @@ export default {
         if (porcentajeDanio >= 10) {
           // 🔹 Definir si el drop sucede con un 30% de probabilidad
           if (Math.random() <= 0.6) {
-            // 🔹 Obtener lista de ítems en el rango de nivel permitido
-            const posiblesDrops = itemList.flatMap(category => category.items)
-              .filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 10);
+            // 🔹 Elegir una categoría aleatoria
+            const primerasCategorias = itemList.slice(0, 5);
+            const categoriaRandom = primerasCategorias[Math.floor(Math.random() * primerasCategorias.length)].category;
 
-            // 🔹 Seleccionar un ítem al azar
-            const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];
+            // 🔹 Obtener los ítems dentro de la categoría seleccionada
+            const posiblesDrops = itemList.find(cat => cat.category === categoriaRandom)
+              ?.items.filter(item => item.nivel >= nivelMonstruo && item.nivel <= nivelMonstruo + 10);
 
-            if (itemDrop) {
-              await addItemToInventory(user_id, itemDrop.id, itemDrop.category);
+            if (posiblesDrops?.length > 0) { // 🔹 Verificamos que haya ítems disponibles
+              const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)]; // 🔹 Seleccionamos un ítem aleatorio
+
+              await addItemToInventory(String(user_id), itemDrop.id, categoriaRandom);
               mensajeRecompensa += `\n🎁 Además, has obtenido **${itemDrop.name}** como recompensa!`;
             }
           }
