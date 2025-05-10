@@ -67,6 +67,7 @@ export default {
     };
 
     // 🔹 Guardamos el personaje en la base de datos
+    await actualizarTiempo(String(userId), 'lastattack')
     const success = await createCharacter(characterData);
     if (!success) {
       return interaction.reply({ content: "❌ Hubo un error al crear tu personaje. Inténtalo nuevamente.", flags: MessageFlags.Ephemeral });
