@@ -32,7 +32,7 @@ export default {
     const itemData = itemList.find(cat => cat.category === inventarioItem.category)
       ?.items.find(i => i.id === inventarioItem.iditem);
 
-    if (!itemData || !["Consumibles", "Box"].includes(itemData.category)) {
+    if (!itemData || !["Consumibles", "Box"].includes(itemData.category.trim())) {
       return interaction.reply({ content: "❌ No puedes usar este objeto, solo los **Consumibles** y **Cajas** pueden ser utilizados.", flags: MessageFlags.Ephemeral });
     }
 
