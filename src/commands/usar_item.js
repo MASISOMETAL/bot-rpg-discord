@@ -32,7 +32,7 @@ export default {
     const itemData = itemList.find(cat => cat.category === inventarioItem.category)
       ?.items.find(i => i.id === inventarioItem.iditem);
 
-      console.log(itemData);
+      console.log(inventarioItem);
       
 
     if (!itemData || !["Consumibles", "Box"].includes(itemData.category.trim())) {
