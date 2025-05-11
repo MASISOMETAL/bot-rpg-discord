@@ -547,10 +547,10 @@ export const monsters = [
   },
   {
     id: 50,
-    name: "https://i.ibb.co/7tTsq0Sw/netherborne-gargantua.png",
+    name: "Netherborne Gargantua",
     nivel: 17,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/7tTsq0Sw/netherborne-gargantua.png",
     stats: {
       hp: 10600, atkfisico: 600, deffisica: 600,
       atkmagico: 600, defmagica: 600, precision: 121, evasion: 110
