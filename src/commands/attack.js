@@ -184,7 +184,7 @@ export default {
 
         if (porcentajeDanio >= 10) {
           // 🔹 Definir si el drop sucede con un 30% de probabilidad
-          if (Math.random() <= 0.6) {
+          if (Math.random() <= 0.95) {
             // 🔹 Elegir una categoría aleatoria
             const primerasCategorias = itemList.slice(0, 5);
             const categoriaRandom = primerasCategorias[Math.floor(Math.random() * primerasCategorias.length)].category;
