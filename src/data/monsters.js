@@ -528,7 +528,7 @@ export const monsters = [
     name: "Ashen Behemoth",
     nivel: 17,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/fY3Yy6Qd/ashen-behemoth.png",
     stats: {
       hp: 10400, atkfisico: 650, deffisica: 580,
       atkmagico: 612, defmagica: 624, precision: 119, evasion: 111
@@ -536,10 +536,10 @@ export const monsters = [
   },
   {
     id: 49,
-    name: "Lunar Archfiend",
+    name: "Lunar Mooncraft",
     nivel: 17,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/mFDXs6vj/lunar-mooncraft.png",
     stats: {
       hp: 10500, atkfisico: 621, deffisica: 615,
       atkmagico: 657, defmagica: 595, precision: 120, evasion: 110
@@ -547,7 +547,7 @@ export const monsters = [
   },
   {
     id: 50,
-    name: "Netherborne Gargantua",
+    name: "https://i.ibb.co/7tTsq0Sw/netherborne-gargantua.png",
     nivel: 17,
     description: "",
     image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
@@ -563,7 +563,7 @@ export const monsters = [
     name: "Cosmic Leviathan",
     nivel: 18,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/35TTBw5M/cosmic-leviathan.png",
     stats: {
       hp: 11100, atkfisico: 680, deffisica: 660,
       atkmagico: 650, defmagica: 600, precision: 122, evasion: 111
@@ -571,10 +571,10 @@ export const monsters = [
   },
   {
     id: 52,
-    name: "Radiant Titan",
+    name: "Radiant Nevermore",
     nivel: 18,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/8L1hFNYf/radiant-nevermore.png",
     stats: {
       hp: 11200, atkfisico: 663, deffisica: 598,
       atkmagico: 580, defmagica: 645, precision: 115, evasion: 120
@@ -585,7 +585,7 @@ export const monsters = [
     name: "Demon Stalker",
     nivel: 18,
     description: "",
-    image: "https://i.ibb.co/SwYW1wXL/rock-golem.png",
+    image: "https://i.ibb.co/4Z43z1FC/demon-stalker.png",
     stats: {
       hp: 11300, atkfisico: 666, deffisica: 666,
       atkmagico: 666, defmagica: 666, precision: 122, evasion: 112
