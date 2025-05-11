@@ -179,12 +179,12 @@ export default {
         await actualizarRecompensas(user_id, oroGanado, xpGanado, interaction);
 
         // 🔹 Verificar si el usuario hizo más del 20% del daño total
-        const porcentajeDanio = (total_damage / monstruoBase.hp) * 100;
+        const porcentajeDanio = (total_damage / monstruoBase.stats.hp) * 100;
         let mensajeRecompensa = `💀 El monstruo **${monstruoBase.name}** ha sido derrotado! 🎉\nHas ganado **${oroGanado} oro** y **${xpGanado} XP** por tu participación en la batalla.`;
 
         if (porcentajeDanio >= 10) {
           // 🔹 Definir si el drop sucede con un 30% de probabilidad
-          if (Math.random() <= 0.95) {
+          if (Math.random() <= 0.6) {
             // 🔹 Elegir una categoría aleatoria
             const primerasCategorias = itemList.slice(0, 5);
             const categoriaRandom = primerasCategorias[Math.floor(Math.random() * primerasCategorias.length)].category;
