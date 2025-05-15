@@ -22,6 +22,11 @@ export default async function messagesHandler(message) {
 
   const { monster, randomElement } = monsterSpawn
 
+  if (!monster) {
+    console.error("❌ Error: 'monster' es null o undefined.");
+    return;
+  }
+
   // 🔹 Verificar existencia antes de incrementar el contador
   const yaExiste = await verificarMonstruoActivo(serverId, monster?.id);
   if (yaExiste) return; // 🔹 Si ya hay uno, no generar otro
