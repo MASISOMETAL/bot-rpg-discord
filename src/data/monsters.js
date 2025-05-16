@@ -591,4 +591,16 @@ export const monsters = [
       atkmagico: 666, defmagica: 666, precision: 122, evasion: 112
     }
   },
+  // Nivel 19
+  {
+    id: 54,
+    name: "Fire Cube",
+    nivel: 19,
+    description: "Un terrorifico cubo en llamas",
+    image: "https://i.ibb.co/F4zq2Gmd/fire-cube.png",
+    stats: {
+      hp: 12200, atkfisico: 700, deffisica: 680,
+      atkmagico: 650, defmagica: 610, precision: 140, evasion: 105
+    }
+  },
 ]
