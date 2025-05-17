@@ -1599,13 +1599,13 @@ export const itemList = [
         type: "Crossbow",
         name: "Ballesta de Cazador",
         description: "Descripcion",
-        nivel: 1,
+        nivel: 9,
         stats: {
-          hp: 0, mana: 0, atkfisico: 6, deffisica: 1,
-          atkmagico: 0, defmagica: 0, precision: 3, evasion: 2
+          hp: 0, mana: 0, atkfisico: 20, deffisica: 2,
+          atkmagico: 0, defmagica: 2, precision: 3, evasion: 2
         },
         selleable: true,
-        coste: 200,
+        coste: 300,
         usableBy: ["Arquero"],
         onehand: false
       },
