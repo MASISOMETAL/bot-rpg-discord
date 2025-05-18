@@ -33,7 +33,7 @@ export default {
       return;
     }
 
-    await interaction.deferReply({ fetchReply: true });
+    await interaction.deferReply();
     const userId = interaction.user.id;
     const serverId = interaction.guild.id;
     const monster_id = interaction.options.getInteger('monster_id');
