@@ -26,6 +26,13 @@ export default {
         .setRequired(true)),
 
   async execute(interaction) {
+
+    // 🔹 Validar que la interacción aún es repliable
+    if (!interaction.isRepliable()) {
+      console.error("❌ La interacción ya no es válida.");
+      return;
+    }
+
     await interaction.deferReply();
     const userId = interaction.user.id;
     const serverId = interaction.guild.id;
