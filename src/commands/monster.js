@@ -15,7 +15,12 @@ export default {
   async execute(interaction) {
 
     await interaction.deferReply()
+
+    if (!interaction.guild) {
+      return interaction.reply({ content: "❌ Este comando solo se puede usar en un servidor.", flags: MessageFlags.Ephemeral });
+    }
     const serverId = interaction.guild.id;
+
     const monsterId = interaction.options.getInteger('id');
 
     const userId = interaction.user.id;
