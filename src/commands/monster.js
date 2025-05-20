@@ -13,6 +13,7 @@ export default {
         .setRequired(false)),
 
   async execute(interaction) {
+
     await interaction.deferReply()
     const serverId = interaction.guild.id;
     const monsterId = interaction.options.getInteger('id');
@@ -27,7 +28,7 @@ export default {
 
     if (monsterId) {
       // 🔹 Obtener detalles de un monstruo específico
-      const monstruoActivo = await obtenerDetallesMonstruo(serverId, monsterId);
+      const monstruoActivo = await obtenerDetallesMonstruo(String(serverId), monsterId);
       if (!monstruoActivo) {
         return interaction.editReply({ content: "❌ No hay un monstruo activo con ese ID.", flags: MessageFlags.Ephemeral });
       }
