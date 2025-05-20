@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from 'discord.js';
 import { getCharacterByUserId, actualizarRecursos } from '../database/characters.js';
-import { obtenerItemPorOrden, removeItemFromInventory } from '../database/inventory.js';
+import { addItemToInventory, obtenerItemPorOrden, removeItemFromInventory } from '../database/inventory.js';
 import { itemList } from '../data/items.js';
 
 export default {
