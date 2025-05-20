@@ -32,6 +32,12 @@ export default {
     const itemData = itemList.find(cat => cat.category === inventarioItem.category)
       ?.items.find(i => i.id === inventarioItem.iditem);
 
+    console.log("🧐 Debug itemData:", itemData);
+    if (!itemData) {
+      return interaction.reply({ content: "❌ Hubo un error al obtener los datos del objeto. Verifica que exista en la lista de ítems.", flags: MessageFlags.Ephemeral });
+    }
+
+
     if (!itemData || !["Consumibles", "Box"].includes(inventarioItem.category)) {
       return interaction.reply({ content: "❌ No puedes usar este objeto, solo los **Consumibles** y **Cajas** pueden ser utilizados.", flags: MessageFlags.Ephemeral });
     }
