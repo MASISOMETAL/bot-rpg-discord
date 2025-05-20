@@ -73,7 +73,7 @@ export default {
     }
 
     // 🔹 Obtener lista de monstruos activos
-    const monstruosActivos = await obtenerMonstruosActivos(serverId);
+    const monstruosActivos = await obtenerMonstruosActivos(String(serverId));
     if (!monstruosActivos.length) {
       return interaction.editReply({ content: "❌ No hay monstruos activos en este servidor.", flags: MessageFlags.Ephemeral });
     }
