@@ -61,7 +61,10 @@ export default {
 
       // 🔹 Elegir un ítem aleatorio dentro del rango válido
       const itemDrop = posiblesDrops[Math.floor(Math.random() * posiblesDrops.length)];
-      await addItemToInventory(String(userId), itemDrop.id, itemDrop.category);
+      const categoriaObjeto = itemList.find(cat => cat.items.some(i => i.id === itemDrop.id));
+      const categoriaFinal = categoriaObjeto ? categoriaObjeto.category : "Desconocido";
+
+      await addItemToInventory(String(userId), itemDrop.id, categoriaFinal);
       await removeItemFromInventory(String(userId), itemOrder);
 
       return interaction.reply({ content: `🎁 Has abierto una **${itemData.name}** y obtenido **${itemDrop.name}**!`, flags: MessageFlags.Ephemeral });
