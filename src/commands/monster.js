@@ -17,7 +17,7 @@ export default {
     await interaction.deferReply()
 
     if (!interaction.guild) {
-      return interaction.reply({ content: "❌ Este comando solo se puede usar en un servidor.", flags: MessageFlags.Ephemeral });
+      return interaction.editReply({ content: "❌ Este comando solo se puede usar en un servidor.", flags: MessageFlags.Ephemeral });
     }
     const serverId = interaction.guild.id;
 
