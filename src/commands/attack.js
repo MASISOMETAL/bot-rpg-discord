@@ -179,8 +179,8 @@ export default {
         const ajusteRecompensa = nivelJugador < nivelMonstruo ? diferenciaNivel : 1 / diferenciaNivel;
 
         // 🔹 Calcular recompensas ajustadas
-        const oroGanado = Math.round(total_damage * 0.05 * ajusteRecompensa); // 5% de recompensa
-        const xpGanado = Math.round(total_damage * 0.02 * ajusteRecompensa); // 1% de recompensa
+        const oroGanado = Math.round(total_damage * 0.06 * ajusteRecompensa); // 6% de recompensa
+        const xpGanado = Math.round(total_damage * 0.05 * ajusteRecompensa); // 5% de recompensa
 
         await actualizarEstadisticas(String(userId), "monstersdefeated", 1); // Monstruo eliminado
         await actualizarRecompensas(user_id, oroGanado, xpGanado, interaction);
